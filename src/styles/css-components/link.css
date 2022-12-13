@@ -1,0 +1,9 @@
+.link {
+    font: 1.8rem/1.25 var(--font-family-primary);
+    transition: color .3s ease;
+}
+
+.link:hover,
+.link:focus {
+    color: var(--accent-primary);
+}

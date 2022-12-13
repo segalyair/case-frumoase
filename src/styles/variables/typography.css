@@ -1,0 +1,85 @@
+:root {
+    --font-family-primary: 'Inter';
+    --font-family-secondary: 'Courgette';
+    --font-h1: 400 9.6rem/1.1 var(--font-family-primary);
+    --font-h2: 400 6.4rem/1.1 var(--font-family-primary);
+    --font-h3: 400 4.8rem/1.1 var(--font-family-primary);
+    --font-h4: 400 2.4rem/1.25 var(--font-family-primary);
+    --font-h5: 400 1.6rem/1.25 var(--font-family-primary);
+    --font-h6: 400 1.2rem/1.25 var(--font-family-primary);
+    --font-body: 1.6rem/1.5 var(--font-family-primary);
+    --font-h1-mobile: 400 6.4rem/1.1 var(--font-family-primary);
+    --font-h2-mobile: 400 4.8rem/1.1 var(--font-family-primary);
+    --font-h3-mobile: 400 3.2rem/1.1 var(--font-family-primary);
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    margin: 0;
+}
+
+.h1 {
+    font: var(--font-h1);
+}
+
+.h2 {
+    font: var(--font-h2);
+}
+
+.h3 {
+    font: var(--font-h3);
+}
+
+.h4 {
+    font: var(--font-h4);
+    letter-spacing: 0.1em;
+}
+
+.h5 {
+    font: var(--font-h5);
+    letter-spacing: 0.1em;
+}
+
+.h6 {
+    font: var(--font-h6);
+    letter-spacing: 0.1em;
+}
+
+.body {
+    font: var(--font-body);
+}
+
+.body--small {
+    font-size: 1.4rem;
+}
+
+.body--large {
+    font-size: 1.8rem;
+}
+
+.body--vlarge {
+    font-size: 2.4rem;
+}
+
+.caps {
+    font: 700 1.6rem/1.18 var(--font-family-primary);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* var(--phone) */
+@media (width < 768px) {
+    .h1 {
+        font: var(--font-h1-mobile);
+        letter-spacing: 0.05em;
+    }
+
+    .h2 {
+        font: var(--font-h2-mobile);
+        letter-spacing: 0.05em;
+    }
+
+    .h3 {
+        font: var(--font-h3-mobile);
+        letter-spacing: 0.05em;
+    }
+}

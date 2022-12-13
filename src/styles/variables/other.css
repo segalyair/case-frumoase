@@ -1,0 +1,19 @@
+:root {
+    --content-width: min(68vw, calc(100% - 4rem));
+    --content-margin: 30rem;
+	--header-height: 9.2rem;
+}
+
+/* var(--laptop) */
+@media only screen and (max-width: 1440px) {
+	:root {
+		--content-margin: 4rem;
+	}
+}
+
+/* var(--phone-sm) */
+@media only screen and (max-width: 576px) {
+	:root {
+		--content-margin: 2rem;
+	}
+}

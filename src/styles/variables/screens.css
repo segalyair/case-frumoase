@@ -1,0 +1,12 @@
+/* using CSS vars in media queries is not yet supported */
+/* when using media queries make sure you add a comment with the relevant css variable */
+
+:root {
+    --phone-xs: 375px;
+    --phone-sm: 576px;
+    --phone: 768px;
+    --tablet: 992px;
+    --tablet-lg: 1024px;
+    --laptop-sm: 1200px;
+    --laptop: 1440px;
+}
