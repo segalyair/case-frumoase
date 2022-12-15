@@ -1,5 +1,4 @@
 <script>
-	import ArrowRight from '$lib/svgs/arrow-right.svg?component';
 	let cookiesAccepted = false;
 </script>
 
@@ -13,7 +12,6 @@
 				>
 				<button class="button button--arrow">
 					Learn more
-					<ArrowRight color="var(--accent-primary)" />
 				</button>
 			</div>
 		</div>

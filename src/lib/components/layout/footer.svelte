@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Logo from '$lib/svgs/logo.svg?component';
 	const currentYear = new Date().getFullYear();
 	const generalLinks: Array<{ label: string; url: string }> = [
 		{
@@ -43,7 +42,6 @@
 <footer class="footer">
 	<div class="footerContent">
 		<nav class="footerLinks">
-			<a href="/" aria-label="To home page"><Logo /></a>
 			<span class="generalLinks">
 				{#each generalLinks as { url, label } (label)}
 					<a href={url} class="link body">{label}</a>

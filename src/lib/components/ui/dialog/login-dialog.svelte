@@ -1,7 +1,6 @@
 <script lang="ts">
 	import DialogHeader from './dialog-header.svelte';
 	import RegisterDialog from './register-dialog.svelte';
-	import SocialLogins from './social-logins.svelte';
 
 	export let modal: HTMLDialogElement;
 	let registerModal: HTMLDialogElement;
@@ -26,7 +25,6 @@
 		<button type="button" class="button--text">Forgot password?</button>
 		<button type="submit" class="button button--primary">Sign in</button>
 	</form>
-	<SocialLogins />
 	{#each [...Array(2)] as _, j (j)}
 		<span class={`edge edge--active edge--simple nr${j * 3}`} />
 	{/each}

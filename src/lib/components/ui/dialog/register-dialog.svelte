@@ -1,6 +1,5 @@
 <script lang="ts">
 	import DialogHeader from './dialog-header.svelte';
-	import SocialLogins from './social-logins.svelte';
 
 	export let modal: HTMLDialogElement;
 	export let loginModal: HTMLDialogElement;
@@ -22,7 +21,6 @@
 		<input id="email" type="email" placeholder="example@email.com" />
 		<button type="submit" class="button button--primary">Sign in</button>
 	</form>
-	<SocialLogins />
 	{#each [...Array(2)] as _, j (j)}
 		<span class={`edge edge--active edge--simple nr${j * 3}`} />
 	{/each}
