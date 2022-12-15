@@ -8,7 +8,12 @@
 </script>
 
 <main>
-	<Carousel images={[slide0, slide1, slide2]} sizes={'(max-width: 480px) 480px, (max-width: 768px) 1024px, 1280px'}/>
+	<Carousel
+		images={[slide0, slide1, slide2]}
+		sizes={'(max-width: 480px) 480px, (max-width: 768px) 1024px, 1280px'}
+		width={480}
+		height={270}
+	/>
 </main>
 
 <style>

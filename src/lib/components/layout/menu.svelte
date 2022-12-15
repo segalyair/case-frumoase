@@ -1,5 +1,6 @@
 <script lang="ts">
 	import LoginDialog from '../ui/dialog/login-dialog.svelte';
+	import { NAV_LINKS } from '$lib/scripts/constants';
 	import { onMount } from 'svelte';
 
 	let sidebarOpen = false;
@@ -20,11 +21,16 @@
 
 <nav class="nav" class:scroll={scrollY !== 0} class:sidebarOpen>
 	<div class="content">
-		<a href="/" class="logo">Case Frumoase</a>
-		<a href="/" class="link">Proiecte</a>
-		<a href="/" class="link">Servicii</a>
-		<a href="/" class="link">Blog</a>
-		<a href="/" class="link button">Contact</a>
+		{#each NAV_LINKS as LINK, i}
+			<a
+				href={LINK.href}
+				class:logo={i === 0}
+				class:link={i > 0}
+				class:button={i === NAV_LINKS.length - 1}
+			>
+				{LINK.label}
+			</a>
+		{/each}
 	</div>
 </nav>
 <LoginDialog bind:modal={loginModal} />

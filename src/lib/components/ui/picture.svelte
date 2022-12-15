@@ -3,11 +3,13 @@
 	export let className = undefined,
 		srcset,
 		sizes,
+		width = undefined,
+		height = undefined,
 		alt,
 		preload = false,
 		loading = undefined,
 		borderRadius = '0';
-	const fallback = srcset.split(',').at(-1).split(' ')[1];
+	const [, fallback] = srcset.split(',').at(-1).split(' ');
 </script>
 
 <svelte:head>
@@ -20,8 +22,16 @@
 	class={className}
 	{alt}
 	src={fallback}
+	{width}
+	{height}
 	{srcset}
 	{sizes}
 	{loading}
 	style={`border-radius: ${borderRadius}`}
 />
+
+<style>
+	img {
+		height: auto;
+	}
+</style>

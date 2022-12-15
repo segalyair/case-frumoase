@@ -7,7 +7,9 @@
 	import type { AutoplayType } from 'embla-carousel-autoplay';
 
 	export let images: string[] = [],
-		sizes: string | undefined = undefined;
+		sizes: string | undefined = undefined,
+		width: number | undefined = undefined,
+		height: number | undefined = undefined;
 	let embla: EmblaCarouselType;
 	let autoplay: AutoplayType;
 	let currentSlide: number = 0;
@@ -42,6 +44,8 @@
 						className="embla__slide__img"
 						preload={i === 0}
 						srcset={image}
+						{width}
+						{height}
 						alt="Slide"
 						{sizes}
 						borderRadius="8px"
@@ -64,7 +68,7 @@
 	<div class="caption">
 		<h1 class="h3">Case în stil neoromânesc</h1>
 		<p class="body body--large">Realizăm proiecte de case în stil românesc!</p>
-		<a href="/" class="button">Vezi proiecte</a>
+		<a href="/proiecte" class="button">Vezi proiecte</a>
 	</div>
 </div>
 
