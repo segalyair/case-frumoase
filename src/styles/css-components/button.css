@@ -1,10 +1,12 @@
 .button {
+    background: #8d5530;
+    border-radius: 32px;
+    color: white;
+    padding: 1rem 2rem;
     text-align: center;
-    color: var(--text-primary);
     text-decoration: none;
-    text-transform: uppercase;
-    font: 700 1.6rem/1.2 var(--font-family-primary);
-    font-family: 'Urbanist';
+    font: 1.8rem/1.25 var(--font-family-primary);
+    width: fit-content;
 }
 
 .button--primary {

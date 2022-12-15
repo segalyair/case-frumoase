@@ -4,11 +4,9 @@
 @import url("./variables/other.css");
 
 @import url("./css-components/scrollbar.css");
-@import url("./css-components/edge.css");
 @import url("./css-components/link.css");
 @import url("./css-components/dialog.css");
 @import url("./css-components/button.css");
-@import url("./css-components/input.css");
 
 
 *,

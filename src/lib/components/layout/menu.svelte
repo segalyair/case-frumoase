@@ -24,7 +24,7 @@
 		<a href="/" class="link">Proiecte</a>
 		<a href="/" class="link">Servicii</a>
 		<a href="/" class="link">Blog</a>
-		<a href="/" class="link">Contact</a>
+		<a href="/" class="link button">Contact</a>
 	</div>
 </nav>
 <LoginDialog bind:modal={loginModal} />
@@ -62,12 +62,5 @@
 		color: var(--primary-color);
 		text-shadow: 1px 1px 2px lightgray;
 		width: fit-content;
-	}
-
-	.content > a:last-child {
-		background: #8d5530;
-		border-radius: 32px;
-		color: white;
-		padding: 1rem 2rem;
 	}
 </style>

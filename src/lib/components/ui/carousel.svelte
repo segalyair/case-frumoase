@@ -6,7 +6,8 @@
 	import Autoplay from 'embla-carousel-autoplay';
 	import type { AutoplayType } from 'embla-carousel-autoplay';
 
-	export let images: string[] = [];
+	export let images: string[] = [],
+		sizes: string | undefined = undefined;
 	let embla: EmblaCarouselType;
 	let autoplay: AutoplayType;
 	let currentSlide: number = 0;
@@ -39,9 +40,10 @@
 				<div class="embla__slide">
 					<Picture
 						className="embla__slide__img"
+						preload={i === 0}
 						srcset={image}
 						alt="Slide"
-						sizes="(max-width: 768px) 1024px, 1280px"
+						{sizes}
 						borderRadius="8px"
 						loading={i > 0 ? 'lazy' : undefined}
 					/>
@@ -62,6 +64,7 @@
 	<div class="caption">
 		<h1 class="h3">Case în stil neoromânesc</h1>
 		<p class="body body--large">Realizăm proiecte de case în stil românesc!</p>
+		<a href="/" class="button">Vezi proiecte</a>
 	</div>
 </div>
 
@@ -70,7 +73,6 @@
 		position: relative;
 		--slide-spacing: 1rem;
 		--slide-size: 100%;
-		--slide-height: 78rem;
 		border-radius: 12px;
 	}
 	.embla__viewport {
@@ -89,7 +91,6 @@
 		position: relative;
 	}
 	.embla__slide :global(.embla__slide__img) {
-		height: var(--slide-height);
 		width: 100%;
 	}
 
