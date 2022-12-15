@@ -16,10 +16,6 @@
 </div>
 
 <style>
-	.layoutContainer {
-		max-width: 128rem;
-		margin: auto;
-	}
 	.layout {
 		padding-top: 10rem;
 		margin: auto;

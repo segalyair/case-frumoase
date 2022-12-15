@@ -27,21 +27,19 @@
 
 .h3 {
     font: var(--font-h3);
+    letter-spacing: -0.05em;
 }
 
 .h4 {
     font: var(--font-h4);
-    letter-spacing: 0.1em;
 }
 
 .h5 {
     font: var(--font-h5);
-    letter-spacing: 0.1em;
 }
 
 .h6 {
     font: var(--font-h6);
-    letter-spacing: 0.1em;
 }
 
 .body {
@@ -62,7 +60,6 @@
 
 .caps {
     font: 700 1.6rem/1.18 var(--font-family-primary);
-    letter-spacing: 0.05em;
     text-transform: uppercase;
 }
 
@@ -70,16 +67,13 @@
 @media (width < 768px) {
     .h1 {
         font: var(--font-h1-mobile);
-        letter-spacing: 0.05em;
     }
 
     .h2 {
         font: var(--font-h2-mobile);
-        letter-spacing: 0.05em;
     }
 
     .h3 {
         font: var(--font-h3-mobile);
-        letter-spacing: 0.05em;
     }
 }

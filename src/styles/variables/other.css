@@ -1,6 +1,6 @@
 :root {
-    --content-width: min(68vw, calc(100% - 4rem));
-    --content-margin: 30rem;
+	--content-width: 128rem;
+	--content-margin: 30rem;
 	--header-height: 9.2rem;
 }
 
