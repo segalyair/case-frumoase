@@ -42,7 +42,6 @@
 				<div class="embla__slide">
 					<Picture
 						className="embla__slide__img"
-						preload={i === 0}
 						srcset={image}
 						{width}
 						{height}
