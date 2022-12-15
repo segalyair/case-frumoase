@@ -12,7 +12,8 @@ const config = {
 		// 	entries
 		// },
 		csp: {
-			mode: 'auto',
+			mode: "auto",
+			directives: { "script-src": ["self"] },
 		},
 		csrf: {
 			checkOrigin: true
