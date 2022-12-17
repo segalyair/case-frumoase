@@ -13,7 +13,8 @@
 		height: number | undefined = undefined;
 	let embla: EmblaCarouselType;
 	let autoplay: AutoplayType;
-	let currentSlide: number = 0;
+	let initialized = false;
+	// let currentSlide: number = 0;
 
 	// function scrollTo(index: number) {
 	// 	autoplay.reset();
@@ -21,15 +22,16 @@
 	// 	currentSlide = index;
 	// }
 
-	function onSelect() {
-		const slidesTo = embla.slidesInView(true)[0];
-		currentSlide = slidesTo >= images.length ? 0 : slidesTo;
-	}
+	// function onSelect() {
+	// 	const slidesTo = embla.slidesInView(true)[0];
+	// 	currentSlide = slidesTo >= images.length ? 0 : slidesTo;
+	// }
 
 	function emblaCarousel(node: HTMLElement, options: EmblaOptionsType) {
 		autoplay = Autoplay({ delay: 6000 });
 		embla = EmblaCarousel(node, options, [autoplay]);
-		embla.on('select', onSelect);
+		// embla.on('select', onSelect);
+		embla.on('init', () => (initialized = true));
 	}
 	onMount(() => {
 		embla.reInit();
@@ -39,9 +41,9 @@
 	});
 </script>
 
-<div class="embla">
+<div class="embla" style={`visibility: ${initialized ? 'initial' : 'hidden'}`}>
 	<div
-		use:emblaCarousel={{ loop: true, align: 'center', draggable: false, speed: 5 }}
+		use:emblaCarousel={{ loop: true, align: 'center', draggable: false, speed: 6 }}
 		class="embla__viewport"
 	>
 		<div class="embla__container">
@@ -59,7 +61,9 @@
 			{/each}
 		</div>
 	</div>
-	<h1 class="h3 caption">În stil neoromânesc</h1>
+	{#if initialized}
+		<h1 class="h3 caption">În stil neoromânesc</h1>
+	{/if}
 </div>
 
 <style>
@@ -80,7 +84,7 @@
 		flex: 0 0 128rem;
 		min-width: 0;
 		position: relative;
-		padding-left: 1rem;
+		padding-left: 0.5rem;
 	}
 
 	.embla__slide > :global(.embla__slide__img) {
