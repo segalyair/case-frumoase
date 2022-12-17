@@ -41,16 +41,15 @@
 		position: fixed;
 		top: 0;
 		z-index: 1;
-		padding: 2rem 0;
 		background-color: var(--text-light-color);
 	}
 
 	.content {
-		max-width: var(--content-width);
 		display: grid;
 		grid-template-columns: 1fr auto auto auto auto;
 		align-items: center;
 		column-gap: 4rem;
+		padding: 2rem 10rem;
 		margin: auto;
 	}
 
@@ -64,7 +63,8 @@
 
 	.logo {
 		font-family: Courgette;
-		font-size: 4rem;
+		font-size: 5rem;
+		line-height: 1.5;
 		color: var(--primary-color);
 		text-shadow: 1px 1px 2px lightgray;
 		width: fit-content;

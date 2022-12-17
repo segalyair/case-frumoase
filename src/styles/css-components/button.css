@@ -1,11 +1,11 @@
 .button {
     background: #8d5530;
-    border-radius: 32px;
+    border-radius: 60px;
     color: white;
-    padding: 1rem 2rem;
+    padding: 1.4rem 3rem;
     text-align: center;
     text-decoration: none;
-    font: 1.8rem/1.25 var(--font-family-primary);
+    font: 2rem/1.2 var(--font-family-primary);
     width: fit-content;
 }
 
