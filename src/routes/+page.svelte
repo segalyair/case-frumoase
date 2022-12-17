@@ -2,7 +2,7 @@
 	import slide0 from '@images/slides/slide0.jpg?w=1280;1024;480&webp&quality=100&srcset&imagetools';
 	import slide1 from '@images/slides/slide1.jpg?w=1280;1024;480&webp&quality=100&srcset&imagetools';
 	import slide2 from '@images/slides/slide2.jpg?w=1280;1024;480&webp&quality=100&srcset&imagetools';
-	import architect from '@images/poza_arhitect.jpg?w=300&webp&quality=100&srcset&imagetools';
+	import architect from '@images/poza_arhitect.jpg?w=300&webp&quality=100&image&imagetools';
 	import Carousel from '$lib/components/ui/carousel/carousel.svelte';
 	import Preload from '$lib/components/head/preload.svelte';
 	import { onMount } from 'svelte';
@@ -53,14 +53,7 @@
 	/>
 	<section class="intro">
 		<h2 class="h3">Realizăm case frumoase</h2>
-		<Picture
-			srcset={architect}
-			sizes={'300px'}
-			width="300"
-			height="450"
-			alt="Architect Adrian Paun"
-			loading="lazy"
-		/>
+		<img src={architect} width="300" height="450" alt="Architect Adrian Paun" loading="lazy" />
 		<div class="content">
 			<p class="body body--large">
 				Bună ziua, sunt <strong>arhitect Adrian Păun</strong> şi vă propun o casă frumoasă pentru o viaţă
