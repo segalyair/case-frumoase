@@ -7,6 +7,14 @@ import path from 'path';
 
 const config: UserConfig = {
 	plugins: [imagetools(), sveltekit(), svg()],
+	server: {
+		port: 3333,
+		strictPort: false
+	},
+	preview: {
+		port: 4444,
+		strictPort: false
+	},
 	// define: {
 	// 	__pages__: pages
 	// },

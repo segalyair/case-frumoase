@@ -22,7 +22,8 @@
 
 <style>
 	.layout {
-		padding-top: 10rem;
+		max-width: var(--content-max-width);
+		padding-top: var(--header-height);
 		margin: auto;
 	}
 	/*var(--phone-sm)*/

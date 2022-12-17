@@ -1,10 +1,10 @@
 <script lang="ts">
-	import LoginDialog from '../ui/dialog/login-dialog.svelte';
+	// import LoginDialog from '../ui/dialog/login-dialog.svelte';
 	import { NAV_LINKS } from '$lib/scripts/constants';
 	import { onMount } from 'svelte';
 
 	let sidebarOpen = false;
-	let loginModal: HTMLDialogElement;
+	// let loginModal: HTMLDialogElement;
 	let scrollY: number;
 
 	onMount(() => {
@@ -33,32 +33,35 @@
 		{/each}
 	</div>
 </nav>
-<LoginDialog bind:modal={loginModal} />
 
+<!-- <LoginDialog bind:modal={loginModal} /> -->
 <style>
 	.nav {
 		width: 100%;
+		height: var(--header-height);
 		position: fixed;
 		top: 0;
 		z-index: 1;
+		display: flex;
 		background-color: var(--text-light-color);
 	}
 
 	.content {
+		width: 100%;
+		max-width: var(--content-max-width);
 		display: grid;
 		grid-template-columns: 1fr auto auto auto auto;
 		align-items: center;
 		column-gap: 4rem;
-		padding: 2rem 10rem;
-		margin: auto;
+		padding: 0 var(--content-padding);
 	}
 
 	/* on scroll styling */
 	.nav.scroll {
-		background-color: rgba(0, 0, 0, 0.1);
+		/* background-color: rgba(0, 0, 0, 0.1);
 		-webkit-backdrop-filter: blur(10px);
 		backdrop-filter: blur(10px);
-		transition: background-color 200ms;
+		transition: background-color 200ms; */
 	}
 
 	.logo {

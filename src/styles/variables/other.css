@@ -1,31 +1,5 @@
 :root {
-	--content-width: 128rem;
-	--content-margin: 30rem;
-	--header-height: 9.2rem;
-}
-
-/* var(--laptop) */
-@media only screen and (max-width: 1440px) {
-	:root {
-		--content-margin: 4rem;
-	}
-}
-
-@media only screen and (max-width: 1281px) {
-	:root {
-		--content-width: 80vw;
-	}
-}
-
-@media only screen and (max-width: 481px) {
-	:root {
-		--content-width: 90vw;
-	}
-}
-
-/* var(--phone-sm) */
-@media only screen and (max-width: 576px) {
-	:root {
-		--content-margin: 2rem;
-	}
+	--content-max-width: 192rem;
+	--content-padding: 10rem;
+	--header-height: 10rem;
 }

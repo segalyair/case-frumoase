@@ -62,7 +62,7 @@
 		</div>
 	</div>
 	{#if initialized}
-		<h1 class="h3 caption">În stil neoromânesc</h1>
+		<h1 class="h2 caption">În stil neoromânesc</h1>
 	{/if}
 </div>
 
@@ -78,10 +78,10 @@
 		display: flex;
 		flex-direction: row;
 		height: auto;
-		margin-left: 1rem;
+		margin-left: calc(0.5rem * -1);
 	}
 	.embla__slide {
-		flex: 0 0 128rem;
+		flex: 0 0 auto;
 		min-width: 0;
 		position: relative;
 		padding-left: 0.5rem;
@@ -103,12 +103,15 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
-		font-family: 'Inter';
-		font-style: normal;
 		font-weight: 700;
-		font-size: 68px;
-		line-height: 82px;
+		font-size: 6rem;
+		line-height: 1.2;
 		text-align: center;
-		color: #402616;
+	}
+
+	@media only screen and (max-width: 1280px) {
+		.embla__slide {
+			flex: 0 0 90%;
+		}
 	}
 </style>
