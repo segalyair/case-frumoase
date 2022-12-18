@@ -1,7 +1,7 @@
 <script lang="ts">
-	import slide0 from '@images/slides/slide0.jpg?w=1280;1024;640&webp&quality=100&srcset&imagetools';
-	import slide1 from '@images/slides/slide1.jpg?w=1280;1024;640&webp&quality=100&srcset&imagetools';
-	import slide2 from '@images/slides/slide2.jpg?w=1280;1024;640&webp&quality=100&srcset&imagetools';
+	import slide0 from '@images/slides/slide0.jpg?w=1280;1024;800;640&webp&quality=100&srcset&imagetools';
+	import slide1 from '@images/slides/slide1.jpg?w=1280;1024;800;640&webp&quality=100&srcset&imagetools';
+	import slide2 from '@images/slides/slide2.jpg?w=1280;1024;800;640&webp&quality=100&srcset&imagetools';
 	import architect from '@images/poza_arhitect.jpg?webp&quality=100&imagetools';
 	import Carousel from '$lib/components/ui/carousel/carousel.svelte';
 	import Preload from '$lib/components/head/preload.svelte';
