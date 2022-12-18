@@ -101,16 +101,13 @@
 	.caption {
 		position: absolute;
 		top: 4rem;
-		left: 8rem;
+		left: var(--content-padding);
 		padding: 1rem 2rem;
 		background: rgba(255, 255, 255, 0.7);
 		border-radius: 4px;
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
-		font-weight: 700;
-		font-size: 6rem;
-		line-height: 1.2;
 		text-align: center;
 	}
 
@@ -118,5 +115,8 @@
 		.embla__slide {
 			flex: 0 0 90%;
 		}
+	}
+
+	@media only screen and (max-width: 1024px) {
 	}
 </style>

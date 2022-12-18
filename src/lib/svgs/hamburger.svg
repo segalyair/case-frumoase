@@ -4,10 +4,11 @@
 	viewBox="0 0 50 50"
 	width="50"
 	xmlns="http://www.w3.org/2000/svg"
+	color="currentColor"
 >
-	<path d="M6.25 14.5835H43.75Z" fill="white" />
-	<path d="M6.25 14.5835H43.75" stroke="white" stroke-linecap="round" stroke-width="1.5" />
-	<path d="M6.25 25H43.75Z" fill="white" />
-	<path d="M6.25 25H43.75" stroke="white" stroke-linecap="round" stroke-width="1.5" />
-	<path d="M6.25 35.4165H43.75" stroke="white" stroke-linecap="round" stroke-width="1.5" />
+	<path d="M6.25 14.5835H43.75Z" fill="currentColor" />
+	<path d="M6.25 14.5835H43.75" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+	<path d="M6.25 25H43.75Z" fill="currentColor" />
+	<path d="M6.25 25H43.75" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+	<path d="M6.25 35.4165H43.75" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
 </svg>

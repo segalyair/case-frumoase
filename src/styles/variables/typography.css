@@ -8,9 +8,9 @@
     --font-h5: 400 1.6rem/1.2 var(--font-family-primary);
     --font-h6: 400 1.2rem/1.2 var(--font-family-primary);
     --font-body: 1.6rem/1.5 var(--font-family-primary);
-    --font-h1-mobile: 400 6.4rem/1.1 var(--font-family-primary);
-    --font-h2-mobile: 400 4.8rem/1.1 var(--font-family-primary);
-    --font-h3-mobile: 400 3.2rem/1.1 var(--font-family-primary);
+    --font-h1-mobile: 700 6.4rem/1.1 var(--font-family-primary);
+    --font-h2-mobile: 700 4.8rem/1.1 var(--font-family-primary);
+    --font-h3-mobile: 700 3.2rem/1.1 var(--font-family-primary);
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -64,7 +64,7 @@
 }
 
 /* var(--phone) */
-@media (width < 768px) {
+@media only screen and (max-width: 1024px) {
     .h1 {
         font: var(--font-h1-mobile);
     }

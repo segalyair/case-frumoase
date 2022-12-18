@@ -1,6 +1,7 @@
 <script lang="ts">
 	// import LoginDialog from '../ui/dialog/login-dialog.svelte';
 	import { NAV_LINKS } from '$lib/scripts/constants';
+	import Hamburger from '$lib/svgs/hamburger.svg?component';
 	import { onMount } from 'svelte';
 
 	let sidebarOpen = false;
@@ -31,6 +32,9 @@
 				{LINK.label}
 			</a>
 		{/each}
+		<button class="hamburger" aria-label="Open sidebar">
+			<Hamburger />
+		</button>
 	</div>
 </nav>
 
@@ -46,6 +50,10 @@
 		background-color: var(--text-light-color);
 	}
 
+	.hamburger {
+		color: #8d5530;
+		display: none;
+	}
 	.content {
 		width: 100%;
 		max-width: var(--content-max-width);
@@ -71,5 +79,20 @@
 		color: var(--primary-color);
 		text-shadow: 1px 1px 2px lightgray;
 		width: fit-content;
+	}
+	@media only screen and (max-width: 1024px) {
+		.content {
+			grid-template-columns: 1fr auto;
+		}
+		.logo {
+			font-size: 4rem;
+			line-height: 1.2;
+		}
+		.link:not(.logo) {
+			display: none;
+		}
+		.hamburger {
+			display: initial;
+		}
 	}
 </style>
