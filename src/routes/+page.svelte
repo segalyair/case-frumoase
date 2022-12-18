@@ -6,98 +6,78 @@
 	import Carousel from '$lib/components/ui/carousel/carousel.svelte';
 	import Preload from '$lib/components/head/preload.svelte';
 	import { onMount } from 'svelte';
-	import Picture from '$lib/components/ui/picture.svelte';
 	// /** @type {import('./$types').PageData} */
 	// export let data: any = {};
-	// let width = 480,
-	// 	height = 270;
-	// const sizes = [
-	// 	{ maxWidth: '1280px', width: 1280, height: 720 },
-	// 	{ maxWidth: '768px', width: 1024, height: 576 },
-	// 	{ maxWidth: '480px', width: 480, height: 270 }
-	// ];
-	// onMount(() => {
-	// 	for (let size of sizes) {
-	// 		if (window.matchMedia(`(max-width: ${size.maxWidth})`).matches) {
-	// 			width = size.width;
-	// 			height = size.height;
-	// 			return;
-	// 		}
-	// 	}
-	// 	width = sizes[0].width;
-	// 	height = sizes[0].height;
-	// });
+	const sizes = '(max-width: 480px) 480px, (max-width: 768px) 1024px, 1280px';
+	let showContent = false;
 </script>
 
 <svelte:head>
-	<Preload
-		imagesrcset={slide0}
-		imagesizes={'(max-width: 480px) 480px, (max-width: 768px) 1024px, 1280px'}
-	/>
-	<Preload
-		imagesrcset={slide1}
-		imagesizes={'(max-width: 480px) 480px, (max-width: 768px) 1024px, 1280px'}
-	/>
-	<Preload
-		imagesrcset={slide2}
-		imagesizes={'(max-width: 480px) 480px, (max-width: 768px) 1024px, 1280px'}
-	/>
+	<Preload imagesrcset={slide0} imagesizes={sizes} />
+	<Preload imagesrcset={slide1} imagesizes={sizes} />
+	<Preload imagesrcset={slide2} imagesizes={sizes} />
 </svelte:head>
 
 <main>
 	<Carousel
 		images={[slide0, slide1, slide2]}
-		sizes={'(max-width: 480px) 480px, (max-width: 768px) 1024px, 1280px'}
+		{sizes}
 		width={480}
 		height={270}
+		on:init={() => (showContent = true)}
 	/>
-	<section class="intro">
-		<h2 class="h3">Realizăm case frumoase</h2>
-		<img src={architect} width="300" height="450" alt="Architect Adrian Paun" loading="lazy" />
-		<div class="content">
-			<p class="body body--large">
-				Bună ziua, sunt <strong>arhitect Adrian Păun</strong> şi vă propun o casă frumoasă pentru o viaţă
-				frumoasă!
-			</p>
-			<p class="body body--large">
-				Veţi găsi pe acest site proiectele mele
-				<a class="button" href="/proiecte">Spre proiecte</a>
-			</p>
-			<p class="body body--large">
-				Veți găsi articole cu multe imagini despre case interbelice
-				<a class="button" href="/blog">Spre articole</a>
-			</p>
-		</div>
-	</section>
-	<section class="skills">
-		<h2 class="h3">Specializări</h2>
-		<div class="panels">
-			<div class="panel">
-				<h3 class="h4">Urmărire șantier</h3>
-				<p class="body">
-					Avand in vedere ca se primeste un termen limita pentru executia lucrarii este estential sa
-					aveti un consultant care se asigura ...
+	{#if showContent}
+		<section class="intro">
+			<h2 class="h3">Realizăm case frumoase</h2>
+			<img src={architect} width="300" height="450" alt="Architect Adrian Paun" loading="lazy" />
+			<div class="content">
+				<p class="body body--large">
+					Bună ziua, sunt <strong>arhitect Adrian Păun</strong> şi vă propun o casă frumoasă pentru o
+					viaţă frumoasă!
+				</p>
+				<p class="body body--large">
+					Veţi găsi pe acest site proiectele mele
+					<a class="button" href="/proiecte">Spre proiecte</a>
+				</p>
+				<p class="body body--large">
+					Veți găsi articole cu multe imagini despre case interbelice
+					<a class="button" href="/blog">Spre articole</a>
 				</p>
 			</div>
-			<div class="panel">
-				<h3 class="h4">Urmărire șantier</h3>
-				<p class="body">
-					Avand in vedere ca se primeste un termen limita pentru executia lucrarii este estential sa
-					aveti un consultant care se asigura ...
-				</p>
+		</section>
+		<section class="skills">
+			<h2 class="h3">Specializări</h2>
+			<div class="panels">
+				<div class="panel">
+					<h3 class="h4">Urmărire șantier</h3>
+					<p class="body">
+						Avand in vedere ca se primeste un termen limita pentru executia lucrarii este estential
+						sa aveti un consultant care se asigura ...
+					</p>
+				</div>
+				<div class="panel">
+					<h3 class="h4">Urmărire șantier</h3>
+					<p class="body">
+						Avand in vedere ca se primeste un termen limita pentru executia lucrarii este estential
+						sa aveti un consultant care se asigura ...
+					</p>
+				</div>
+				<div class="panel">
+					<h3 class="h4">Urmărire șantier</h3>
+					<p class="body">
+						Avand in vedere ca se primeste un termen limita pentru executia lucrarii este estential
+						sa aveti un consultant care se asigura ...
+					</p>
+				</div>
 			</div>
-			<div class="panel">
-				<h3 class="h4">Urmărire șantier</h3>
-				<p class="body">
-					Avand in vedere ca se primeste un termen limita pentru executia lucrarii este estential sa
-					aveti un consultant care se asigura ...
-				</p>
-			</div>
-		</div>
-	</section>
+		</section>
+	{/if}
 </main>
 
 <style>
+	:global(body) {
+		overflow-y: scroll;
+	}
 	main {
 		display: grid;
 		grid-template-columns: 1fr;

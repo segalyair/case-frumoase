@@ -5,8 +5,10 @@
 	import type { EmblaOptionsType } from 'embla-carousel/components/Options';
 	import Autoplay from 'embla-carousel-autoplay';
 	import type { AutoplayType } from 'embla-carousel-autoplay';
-	import { onDestroy, onMount } from 'svelte';
+	import { onDestroy } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 
+	const dispatch = createEventDispatcher();
 	export let images: string[] = [],
 		sizes: string | undefined = undefined,
 		width: number | undefined = undefined,
@@ -30,12 +32,15 @@
 	function emblaCarousel(node: HTMLElement, options: EmblaOptionsType) {
 		autoplay = Autoplay({ delay: 6000 });
 		embla = EmblaCarousel(node, options, [autoplay]);
-		// embla.on('select', onSelect);
-		embla.on('init', () => (initialized = true));
+		embla.on('init', () => {
+			//Seldom not all slides are loaded
+			if (embla.slidesInView().length < images.length) {
+				embla.reInit();
+			}
+			initialized = true;
+			dispatch('init');
+		});
 	}
-	onMount(() => {
-		embla.reInit();
-	});
 	onDestroy(() => {
 		embla?.destroy();
 	});
