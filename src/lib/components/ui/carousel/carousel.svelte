@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Picture from '$lib/components/ui/picture.svelte';
 	import EmblaCarousel from 'embla-carousel';
 	import type { EmblaCarouselType } from 'embla-carousel/components';
 	import type { EmblaOptionsType } from 'embla-carousel/components/Options';
@@ -54,14 +53,7 @@
 		<div class="embla__container">
 			{#each images as image, i}
 				<div class="embla__slide">
-					<Picture
-						className="embla__slide__img"
-						srcset={image}
-						{width}
-						{height}
-						alt="Slide"
-						{sizes}
-					/>
+					<img class="embla__slide__img" alt="Slide" {width} {height} srcset={image} {sizes} />
 				</div>
 			{/each}
 		</div>
@@ -92,10 +84,9 @@
 		padding-left: 0.5rem;
 	}
 
-	.embla__slide > :global(.embla__slide__img) {
+	.embla__slide__img {
 		display: block;
 		width: 100%;
-		min-height: 30rem;
 		object-fit: cover;
 	}
 
@@ -114,7 +105,20 @@
 
 	@media only screen and (max-width: 1280px) {
 		.embla__slide {
-			flex: 0 0 90%;
+			flex: 0 0 90vw;
+		}
+	}
+
+	@media only screen and (max-width: 560px) {
+		.embla__slide__img {
+			max-height: 30rem;
+		}
+		.caption {
+			text-align: left;
+			font-size: 2.4rem;
+			left: 2rem;
+			top: 2rem;
+			padding: 0.75rem;
 		}
 	}
 
@@ -123,15 +127,8 @@
 			margin: 0;
 		}
 		.embla__slide {
-			flex: 0 0 100%;
+			flex: 0 0 100vw;
 			padding: 0;
-		}
-		.caption {
-			text-align: left;
-			font-size: 2.4rem;
-			left: 2rem;
-			top: 2rem;
-			padding: 0.75rem;
 		}
 	}
 </style>

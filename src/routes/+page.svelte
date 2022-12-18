@@ -1,15 +1,14 @@
 <script lang="ts">
-	import slide0 from '@images/slides/slide0.jpg?w=1280;1024;480&webp&quality=100&srcset&imagetools';
-	import slide1 from '@images/slides/slide1.jpg?w=1280;1024;480&webp&quality=100&srcset&imagetools';
-	import slide2 from '@images/slides/slide2.jpg?w=1280;1024;480&webp&quality=100&srcset&imagetools';
-	import architect from '@images/poza_arhitect.jpg?w=300;150&webp&quality=100&srcset&imagetools';
+	import slide0 from '@images/slides/slide0.jpg?w=1280;1024;600&webp&quality=100&srcset&imagetools';
+	import slide1 from '@images/slides/slide1.jpg?w=1280;1024;600&webp&quality=100&srcset&imagetools';
+	import slide2 from '@images/slides/slide2.jpg?w=1280;1024;600&webp&quality=100&srcset&imagetools';
+	import architect from '@images/poza_arhitect.jpg?w=300&webp&quality=100&srcset&imagetools';
 	import Carousel from '$lib/components/ui/carousel/carousel.svelte';
 	import Preload from '$lib/components/head/preload.svelte';
 	import { onMount } from 'svelte';
-	import Picture from '$lib/components/ui/picture.svelte';
 	// /** @type {import('./$types').PageData} */
 	// export let data: any = {};
-	const sizes = '(max-width: 480px) 480px, (max-width: 768px) 1024px, 1280px';
+	const sizes = '100vw';
 	let showContent = false;
 </script>
 
@@ -17,20 +16,21 @@
 	<Preload imagesrcset={slide0} imagesizes={sizes} />
 	<Preload imagesrcset={slide1} imagesizes={sizes} />
 	<Preload imagesrcset={slide2} imagesizes={sizes} />
-	<Preload imagesrcset={architect} imagesizes="(max-width: 768px) 150px, 300px" />
+	<Preload imagesrcset={architect} imagesizes={sizes} />
 </svelte:head>
 
 <main>
-	<Carousel images={[slide0, slide1, slide2]} {sizes} on:init={() => (showContent = true)} />
+	<Carousel
+		images={[slide0, slide1, slide2]}
+		width={1024}
+		height={576}
+		{sizes}
+		on:init={() => (showContent = true)}
+	/>
 	{#if showContent}
 		<section class="intro">
 			<h2 class="h3">Realizăm case frumoase</h2>
-			<Picture
-				srcset={architect}
-				height={225}
-				sizes="(max-width: 768px) 150px, 300px"
-				alt="Architect Adrian Paun"
-			/>
+			<img srcset={architect} width={300} height={450} {sizes} alt="Architect Adrian Paun" />
 			<div class="content">
 				<p class="body body--large">
 					Bună ziua, sunt <strong>arhitect Adrian Păun</strong> şi vă propun o casă frumoasă pentru o
@@ -149,6 +149,10 @@
 		}
 		.intro p {
 			min-width: 25rem;
+		}
+		.intro img {
+			width: 15rem;
+			height: 22.5rem;
 		}
 		.skills .panel {
 			width: 100%;
