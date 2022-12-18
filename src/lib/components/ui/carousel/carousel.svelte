@@ -95,6 +95,7 @@
 	.embla__slide > :global(.embla__slide__img) {
 		display: block;
 		width: 100%;
+		min-height: 30rem;
 		object-fit: cover;
 	}
 
@@ -124,9 +125,6 @@
 		.embla__slide {
 			flex: 0 0 100%;
 			padding: 0;
-		}
-		.embla__slide > :global(.embla__slide__img) {
-			min-height: 30rem;
 		}
 		.caption {
 			text-align: left;

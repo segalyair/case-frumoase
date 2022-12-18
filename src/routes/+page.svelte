@@ -27,6 +27,7 @@
 			<h2 class="h3">Realizăm case frumoase</h2>
 			<Picture
 				srcset={architect}
+				height={225}
 				sizes="(max-width: 768px) 150px, 300px"
 				alt="Architect Adrian Paun"
 			/>
