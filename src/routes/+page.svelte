@@ -1,14 +1,14 @@
 <script lang="ts">
-	import slide0 from '@images/slides/slide0.jpg?w=1280;1024;600&webp&quality=100&srcset&imagetools';
-	import slide1 from '@images/slides/slide1.jpg?w=1280;1024;600&webp&quality=100&srcset&imagetools';
-	import slide2 from '@images/slides/slide2.jpg?w=1280;1024;600&webp&quality=100&srcset&imagetools';
-	import architect from '@images/poza_arhitect.jpg?w=300&webp&quality=100&srcset&imagetools';
+	import slide0 from '@images/slides/slide0.jpg?w=1280;1024;640&webp&quality=100&srcset&imagetools';
+	import slide1 from '@images/slides/slide1.jpg?w=1280;1024;640&webp&quality=100&srcset&imagetools';
+	import slide2 from '@images/slides/slide2.jpg?w=1280;1024;640&webp&quality=100&srcset&imagetools';
+	import architect from '@images/poza_arhitect.jpg?webp&quality=100&imagetools';
 	import Carousel from '$lib/components/ui/carousel/carousel.svelte';
 	import Preload from '$lib/components/head/preload.svelte';
 	import { onMount } from 'svelte';
 	// /** @type {import('./$types').PageData} */
 	// export let data: any = {};
-	const sizes = '100vw';
+	const sizes = '(max-width: 480px) 100vw, (max-width: 1280px) 90vw, 1280px';
 	let showContent = false;
 </script>
 
@@ -16,7 +16,6 @@
 	<Preload imagesrcset={slide0} imagesizes={sizes} />
 	<Preload imagesrcset={slide1} imagesizes={sizes} />
 	<Preload imagesrcset={slide2} imagesizes={sizes} />
-	<Preload imagesrcset={architect} imagesizes={sizes} />
 </svelte:head>
 
 <main>
@@ -30,7 +29,7 @@
 	{#if showContent}
 		<section class="intro">
 			<h2 class="h3">Realizăm case frumoase</h2>
-			<img srcset={architect} width={300} height={450} {sizes} alt="Architect Adrian Paun" />
+			<img src={architect} width={300} height={450} alt="Architect Adrian Paun" />
 			<div class="content">
 				<p class="body body--large">
 					Bună ziua, sunt <strong>arhitect Adrian Păun</strong> şi vă propun o casă frumoasă pentru o
