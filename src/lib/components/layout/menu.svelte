@@ -41,7 +41,7 @@
 <!-- <LoginDialog bind:modal={loginModal} /> -->
 <style>
 	.nav {
-		width: 100%;
+		width: 100vw;
 		height: var(--header-height);
 		position: fixed;
 		top: 0;
@@ -93,6 +93,11 @@
 		}
 		.hamburger {
 			display: initial;
+		}
+	}
+	@media only screen and (max-width: 480px) {
+		.logo {
+			font-size: 3.2rem;
 		}
 	}
 </style>

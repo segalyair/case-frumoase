@@ -117,6 +117,23 @@
 		}
 	}
 
-	@media only screen and (max-width: 1024px) {
+	@media only screen and (max-width: 480px) {
+		.embla__container {
+			margin: 0;
+		}
+		.embla__slide {
+			flex: 0 0 100%;
+			padding: 0;
+		}
+		.embla__slide > :global(.embla__slide__img) {
+			min-height: 30rem;
+		}
+		.caption {
+			text-align: left;
+			font-size: 2.4rem;
+			left: 2rem;
+			top: 2rem;
+			padding: 0.75rem;
+		}
 	}
 </style>

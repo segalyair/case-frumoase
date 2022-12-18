@@ -2,10 +2,11 @@
 	import slide0 from '@images/slides/slide0.jpg?w=1280;1024;480&webp&quality=100&srcset&imagetools';
 	import slide1 from '@images/slides/slide1.jpg?w=1280;1024;480&webp&quality=100&srcset&imagetools';
 	import slide2 from '@images/slides/slide2.jpg?w=1280;1024;480&webp&quality=100&srcset&imagetools';
-	import architect from '@images/poza_arhitect.jpg?w=300&webp&quality=100&image&imagetools';
+	import architect from '@images/poza_arhitect.jpg?w=300;150&webp&quality=100&srcset&imagetools';
 	import Carousel from '$lib/components/ui/carousel/carousel.svelte';
 	import Preload from '$lib/components/head/preload.svelte';
 	import { onMount } from 'svelte';
+	import Picture from '$lib/components/ui/picture.svelte';
 	// /** @type {import('./$types').PageData} */
 	// export let data: any = {};
 	const sizes = '(max-width: 480px) 480px, (max-width: 768px) 1024px, 1280px';
@@ -16,20 +17,19 @@
 	<Preload imagesrcset={slide0} imagesizes={sizes} />
 	<Preload imagesrcset={slide1} imagesizes={sizes} />
 	<Preload imagesrcset={slide2} imagesizes={sizes} />
+	<Preload imagesrcset={architect} imagesizes="(max-width: 768px) 150px, 300px" />
 </svelte:head>
 
 <main>
-	<Carousel
-		images={[slide0, slide1, slide2]}
-		{sizes}
-		width={480}
-		height={270}
-		on:init={() => (showContent = true)}
-	/>
+	<Carousel images={[slide0, slide1, slide2]} {sizes} on:init={() => (showContent = true)} />
 	{#if showContent}
 		<section class="intro">
 			<h2 class="h3">Realizăm case frumoase</h2>
-			<img src={architect} width="300" height="450" alt="Architect Adrian Paun" loading="lazy" />
+			<Picture
+				srcset={architect}
+				sizes="(max-width: 768px) 150px, 300px"
+				alt="Architect Adrian Paun"
+			/>
 			<div class="content">
 				<p class="body body--large">
 					Bună ziua, sunt <strong>arhitect Adrian Păun</strong> şi vă propun o casă frumoasă pentru o
@@ -79,9 +79,8 @@
 		overflow-y: scroll;
 	}
 	main {
-		display: grid;
-		grid-template-columns: 1fr;
-		justify-items: center;
+		display: flex;
+		flex-direction: column;
 		margin: auto;
 		--row-padding: 6rem;
 	}
@@ -140,5 +139,42 @@
 		background: rgba(255, 255, 255, 0.7);
 		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 		border-radius: 4px;
+	}
+	@media only screen and (max-width: 768px) {
+		.intro {
+			column-gap: 3rem;
+			row-gap: 2rem;
+			padding: 3rem;
+		}
+		.intro p {
+			min-width: 25rem;
+		}
+		.skills .panel {
+			width: 100%;
+			padding: 2rem;
+		}
+	}
+	@media only screen and (max-width: 480px) {
+		main {
+			--row-padding: 4rem;
+		}
+		.intro {
+			grid-template-columns: 1fr 1fr;
+			column-gap: 1rem;
+			padding: 2rem;
+		}
+		.intro .content {
+			gap: 1rem;
+		}
+		.intro h2 {
+			text-align: center;
+		}
+		.intro p {
+			font-size: 1.4rem;
+			min-width: 17.5rem;
+		}
+		.skills {
+			gap: 4rem;
+		}
 	}
 </style>

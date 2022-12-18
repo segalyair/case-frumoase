@@ -26,10 +26,4 @@
 		padding-top: var(--header-height);
 		margin: auto;
 	}
-	/*var(--phone-sm)*/
-	@media only screen and (max-width: 576px) {
-		.layout {
-			padding-top: 15rem;
-		}
-	}
 </style>
