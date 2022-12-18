@@ -21,8 +21,8 @@
 <main>
 	<Carousel
 		images={[slide0, slide1, slide2]}
-		width={1024}
-		height={576}
+		width={640}
+		height={360}
 		{sizes}
 		on:init={() => (showContent = true)}
 	/>

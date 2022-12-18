@@ -86,7 +86,8 @@
 
 	.embla__slide__img {
 		display: block;
-		width: 100%;
+		width: 128rem;
+		height: auto;
 		object-fit: cover;
 	}
 
@@ -104,6 +105,9 @@
 	}
 
 	@media only screen and (max-width: 1280px) {
+		.embla__slide__img {
+			width: auto;
+		}
 		.embla__slide {
 			flex: 0 0 90vw;
 		}
