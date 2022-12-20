@@ -1,6 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import type { UserConfig } from 'vite';
-// import { pages } from './prebuild.js';
 import { imagetools } from 'vite-imagetools';
 import svg from '@poppanator/sveltekit-svg';
 import path from 'path';
@@ -15,9 +14,6 @@ const config: UserConfig = {
 		port: 4444,
 		strictPort: false
 	},
-	// define: {
-	// 	__pages__: pages
-	// },
 	resolve: {
 		alias: {
 			'@images': path.resolve('./src/lib/images')

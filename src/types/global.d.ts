@@ -1,5 +1,4 @@
 declare const __pages__: PageData[];
-declare module 'siema' {const Siema; export default Siema;}
 declare module '*&imagetools' {
 	/**
 	 * actual types
@@ -28,4 +27,13 @@ declare module '*.svg?url' {
 declare module '*.svg?dataurl' {
 	const content: string;
 	export default content;
+}
+
+declare module '$env/static/private' {
+	export { STRAPI_API_URL, STRAPI_API_KEY };
+}
+
+declare module 'sharp' {
+	const sharp;
+	export default sharp;
 }

@@ -1,26 +1,21 @@
 <script lang="ts">
-	import slide0 from '@images/slides/slide0.jpg?w=1280;1024;800;640&webp&srcset&imagetools';
-	import slide1 from '@images/slides/slide1.jpg?w=1280;1024;800;640&webp&srcset&imagetools';
-	import slide2 from '@images/slides/slide2.jpg?w=1280;1024;800;640&webp&srcset&imagetools';
 	import architect from '@images/poza_arhitect.jpg?webp&imagetools';
 	import Carousel from '$lib/components/ui/carousel/carousel.svelte';
 	import Preload from '$lib/components/head/preload.svelte';
-	import { onMount } from 'svelte';
-	// /** @type {import('./$types').PageData} */
-	// export let data: any = {};
+	export let data: { slides: string[] };
 	const sizes = '(max-width: 480px) 100vw, (max-width: 1280px) 90vw, 1280px';
 	let showContent = false;
 </script>
 
 <svelte:head>
-	<Preload imagesrcset={slide0} imagesizes={sizes} />
-	<Preload imagesrcset={slide1} imagesizes={sizes} />
-	<Preload imagesrcset={slide2} imagesizes={sizes} />
+	{#each data.slides as slide}
+		<Preload imagesrcset={slide} imagesizes={sizes} />
+	{/each}
 </svelte:head>
 
 <main>
 	<Carousel
-		images={[slide0, slide1, slide2]}
+		images={data.slides}
 		width={640}
 		height={360}
 		{sizes}
