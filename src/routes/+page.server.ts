@@ -13,7 +13,7 @@ function addFile(urlParts: string[], fileType = 'webp') {
 
 function addResolution(urlParts: string[], index: number, width: string) {
 	let result = JSON.parse(JSON.stringify(urlParts));
-	result.splice(index + 1, 0, `w_${width}`);
+	result.splice(index + 1, 0, `w_${width}/q_70`);
 	result = result.join('/');
 	result += ` ${width}w`;
 	return result;
