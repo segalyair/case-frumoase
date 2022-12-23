@@ -1,1 +1,1 @@
-Proiecte
+<p class="empty-page body">Proiecte</p>

@@ -1,142 +1,144 @@
 <script lang="ts">
 	const currentYear = new Date().getFullYear();
-	const generalLinks: Array<{ label: string; url: string }> = [
-		{
-			label: 'Blog',
-			url: '/blog'
-		},
-		{
-			label: 'Terms Of Services',
-			url: '/'
-		},
-		{
-			label: 'Payment Method',
-			url: '/'
-		},
-		{
-			label: 'Privacy Policy',
-			url: '/'
-		},
-		{
-			label: 'Contact Us',
-			url: '/contact-us'
-		}
-	];
-
-	const socialLinks: any[] = [
-		{
-			label: 'youtube',
-			url: 'https://youtube.com'
-		},
-		{
-			label: 'twitter',
-			url: 'https://twitter.com'
-		},
-		{
-			label: 'facebook',
-			url: 'https://facebook.com'
-		}
-	];
+	export let articles: Article[] = [];
 </script>
 
 <footer class="footer">
-	<div class="footerContent">
-		<nav class="footerLinks">
-			<span class="generalLinks">
-				{#each generalLinks as { url, label } (label)}
-					<a href={url} class="link body">{label}</a>
+	<div class="content">
+		<div class="main-row">
+			<span class="description">
+				<a href="/" class="logo">Case frumoase</a>
+				<p class="body body--large">
+					Suntem o echipă de arhitecți specializați în design neoromânesc și nu numai.
+				</p>
+				<p class="body body--large">
+					Realizăm de peste 14 ani proiecte de case și design interior.
+				</p>
+			</span>
+			<span class="recent-articles">
+				<h3 class="h4">Articole recente</h3>
+				{#each articles as article}
+					<a class="body body--large" href={`/blog/${article.slug}`}>{article.title}</a>
 				{/each}
 			</span>
-			<span class="socials">
-				{#each socialLinks as { url, label }, i (i)}
-					<a href={url} class="social" rel="noopener noreferrer" target="_blank" aria-label={label}>
-						<div class={`i-${label}`} />
-					</a>
-				{/each}
+			<span class="contact">
+				<h3 class="h4">Contact</h3>
+				<form>
+					<input name="name" type="text" placeholder="Nume" />
+					<input name="email" type="email" placeholder="Email" />
+					<textarea name="message" placeholder="Mesaj" />
+					<label>
+						<input name="consent" type="checkbox" checked={true} />
+						Prin utilizarea acestui formular sunteți de acord cu stocarea și manipularea datelor dvs.
+						pe acest site web.
+					</label>
+					<button class="button" on:click|preventDefault={() => {}}>Trimite</button>
+				</form>
 			</span>
-		</nav>
-		<p class="body body--small">
-			PremiumBoosting.com isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of
-			Riot Games or anyone officially involved in producing or managing League of Legends. League of
-			Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of
-			Legends © Riot Games, Inc.
-		</p>
-		<p class="body">{`© ${currentYear} PremiumBoosting — All Rights Reserved`}</p>
+		</div>
+		<div class="separator" />
+		<div class="bottom-row">
+			<p class="body">
+				{`Copyright © ${currentYear} Case Frumoase - Toate drepturile rezervate`}
+			</p>
+		</div>
 	</div>
 </footer>
 
 <style>
 	.footer {
-		padding: 8rem 0 6rem;
+		padding: 4rem var(--content-padding) 2rem;
 		color: var(--text-secondary);
-		background: var(--accent-dark-secondary);
-		-webkit-backdrop-filter: blur(5px);
-		backdrop-filter: blur(5px);
+		background: var(--khaki-web);
 	}
-
-	.footerContent {
+	.content {
+		max-width: var(--content-max-width);
+		margin: auto;
+	}
+	.main-row {
 		display: grid;
-		gap: 5rem;
-		grid-template-rows: auto auto auto;
-		text-align: center;
-		margin: 0 var(--content-margin);
+		grid-template-columns: 1fr 1fr 1fr;
+		column-gap: 2rem;
 	}
-
-	.footerContent p {
-		font-family: 'Montserrat', 'sans-serif';
-	}
-
-	.footerLinks {
-		display: grid;
-		grid-template-columns: auto 1fr auto;
-		place-items: center;
-		width: 100%;
-	}
-
-	.generalLinks {
+	.contact,
+	.recent-articles,
+	.description {
 		display: flex;
-		gap: 4rem;
-	}
-
-	/* var(--phone) */
-	@media only screen and (max-width: 768px) {
-		.generalLinks {
-			flex-direction: column;
-			gap: 3rem;
-			align-items: center;
-		}
-	}
-
-	.socials {
-		display: flex;
+		flex-direction: column;
 		gap: 2rem;
+		padding-top: 3rem;
+	}
+	.description {
+		padding-top: 0;
+	}
+	.recent-articles {
+		gap: 1.5rem;
+	}
+	.contact form {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+	.contact form label,
+	.contact form textarea,
+	.contact form button {
+		grid-column: 1/3;
 	}
 
-	.social > * {
-		color: var(--text-primary);
-		transition: color 0.3s ease;
+	.contact form label {
+		display: grid;
+		column-gap: 1rem;
+		grid-template-columns: 1fr auto;
+		align-items: center;
 	}
 
-	.social:hover > *,
-	.social:focus > * {
-		color: var(--accent-primary);
+	.contact form button {
+		justify-self: center;
 	}
 
-	/*var(--laptop)*/
-	@media only screen and (max-width: 1440px) {
-		.footerLinks {
-			grid-template-columns: 1fr;
-			grid-template-rows: auto auto auto;
-			row-gap: 4rem;
+	.separator {
+		max-width: var(--content-max-width);
+		height: 0.2rem;
+		background-color: #8d5530;
+		margin: 2rem 0;
+	}
+
+	@media screen and (max-width: 1440px) {
+		.main-row {
+			grid-template-columns: 1fr 1fr;
+		}
+		.contact {
+			grid-column: 1/3;
+			justify-self: center;
+			max-width: 50rem;
 		}
 	}
 
-	/* var(--tablet-lg) */
-	@media only screen and (max-width: 1024px) {
-		.footer {
-			width: 100%;
-			padding-left: 4rem;
-			padding-right: 4rem;
+	@media screen and (max-width: 1024px) {
+		.main-row {
+			max-width: 50rem;
+			width: 90vw;
+			grid-template-columns: 1fr;
+			margin: auto;
+		}
+		.contact {
+			grid-column: 1;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.contact form {
+			grid-template-columns: 1fr;
+		}
+
+		.contact form label,
+		.contact form textarea,
+		.contact form button {
+			grid-column: 1;
+		}
+
+		.bottom-row {
+			text-align: center;
 		}
 	}
 </style>

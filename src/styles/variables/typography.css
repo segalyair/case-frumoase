@@ -51,7 +51,7 @@
 }
 
 .body--large {
-    font-size: 1.8rem;
+    font-size: 2rem;
 }
 
 .body--vlarge {
@@ -75,5 +75,21 @@
 
     .h3 {
         font: var(--font-h3-mobile);
+    }
+
+    .body {
+        font-size: 1.4rem;
+    }
+
+    .body--small {
+        font-size: 1.2rem;
+    }
+
+    .body--large {
+        font-size: 1.6rem;
+    }
+
+    .body--vlarge {
+        font-size: 2rem;
     }
 }

@@ -5,9 +5,10 @@
 
 @import url("./css-components/scrollbar.css");
 @import url("./css-components/link.css");
+@import url("./css-components/logo.css");
 @import url("./css-components/dialog.css");
 @import url("./css-components/button.css");
-
+@import url("./css-components/input.css");
 
 *,
 *::after,
@@ -85,16 +86,19 @@ details summary {
 	list-style: none;
 }
 
-.content {
-	margin: 0 var(--content-margin);
+.empty-page {
+	font-size: 2.4rem;
+	min-height: 50vh;
+	padding: 0 var(--content-padding);
 }
 
-.separator {
-	border-bottom: 1px solid var(--background-dark);
+.empty-page::before {
+	content: 'Pagina ';
 }
 
-.separator.separator--margins {
-	margin: 4rem 0;
+.empty-page::after {
+	display: block;
+	content: '(Pagina in lucru)';
 }
 
 /* 320px — 480px: Mobile devices

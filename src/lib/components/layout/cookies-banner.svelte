@@ -5,13 +5,13 @@
 {#if !cookiesAccepted}
 	<div class="cookies">
 		<div class="inner content">
-			<span class="body">We use cookies to ensure you get the best experience on our website.</span>
+			<span class="body body--large">Acest site web folosește cookie-uri pentru a îmbunătăți experiența utilizatorului. </span>
 			<div class="actions">
-				<button class="button button--primary" on:click={() => (cookiesAccepted = true)}
-					>Accept</button
+				<button class="button button--alt" on:click={() => (cookiesAccepted = true)}
+					>Accept cookie-uri</button
 				>
-				<button class="button button--arrow">
-					Learn more
+				<button class="button button--alt">
+					Mai multe informații
 				</button>
 			</div>
 		</div>
@@ -21,13 +21,12 @@
 <style>
 	.cookies {
 		position: fixed;
-		z-index: 1;
+		z-index: 2;
 		bottom: 0;
 		width: 100%;
-		padding: 2rem 0;
-		background: var(--background-floating-content);
-		-webkit-backdrop-filter: blur(10px);
-		backdrop-filter: blur(10px);
+		padding: 2rem var(--content-padding);
+		background: #8d5530;
+		color: white;
 	}
 
 	.inner {
@@ -38,19 +37,17 @@
 		border: none;
 	}
 
-	.actions button {
-		padding: 2rem 4rem;
-	}
-
 	.actions {
 		display: flex;
+		gap: 2rem;
 	}
 
 	/*var(--tablet-lg)*/
-	@media only screen and (max-width: 1024px) {
+	@media only screen and (max-width: 1500px) {
 		.inner {
 			justify-content: center;
 			align-items: center;
+			text-align: center;
 			gap: 2rem;
 		}
 	}

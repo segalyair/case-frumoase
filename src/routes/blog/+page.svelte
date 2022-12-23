@@ -1,1 +1,1 @@
-Blog
+<p class="empty-page body">Blog</p>

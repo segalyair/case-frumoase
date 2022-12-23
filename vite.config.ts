@@ -5,7 +5,7 @@ import svg from '@poppanator/sveltekit-svg';
 import path from 'path';
 
 const config: UserConfig = {
-	plugins: [imagetools(), sveltekit(), svg()],
+	plugins: [sveltekit(), imagetools(), svg()],
 	server: {
 		port: 3333,
 		strictPort: false

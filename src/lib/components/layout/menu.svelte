@@ -1,11 +1,11 @@
 <script lang="ts">
-	// import LoginDialog from '../ui/dialog/login-dialog.svelte';
+	import { onMount } from 'svelte';
+	import Sidebar from './sidebar.svelte';
 	import { NAV_LINKS } from '$lib/scripts/constants';
 	import Hamburger from '$lib/svgs/hamburger.svg?component';
-	import { onMount } from 'svelte';
+	import Close from '$lib/svgs/close.svg?component';
 
 	let sidebarOpen = false;
-	// let loginModal: HTMLDialogElement;
 	let scrollY: number;
 
 	onMount(() => {
@@ -32,13 +32,33 @@
 				{LINK.label}
 			</a>
 		{/each}
-		<button class="hamburger" aria-label="Open sidebar">
-			<Hamburger />
-		</button>
+
+		{#if sidebarOpen}
+			<button
+				type="button"
+				class="close"
+				aria-label="Close sidebar"
+				on:click={(e) => {
+					sidebarOpen = false;
+					e.stopPropagation();
+				}}
+			>
+				<Close />
+			</button>
+			<Sidebar on:close={() => (sidebarOpen = false)} />
+		{:else}
+			<button
+				type="button"
+				class="hamburger"
+				on:click={() => (sidebarOpen = true)}
+				aria-label="Open sidebar"
+			>
+				<Hamburger />
+			</button>
+		{/if}
 	</div>
 </nav>
 
-<!-- <LoginDialog bind:modal={loginModal} /> -->
 <style>
 	.nav {
 		width: 100vw;
@@ -53,6 +73,9 @@
 	.hamburger {
 		color: #8d5530;
 		display: none;
+	}
+	.close {
+		color: #8d5530;
 	}
 	.content {
 		width: 100%;
@@ -71,33 +94,15 @@
 		backdrop-filter: blur(10px);
 		transition: background-color 200ms; */
 	}
-
-	.logo {
-		font-family: Courgette;
-		font-size: 5rem;
-		line-height: 1.5;
-		color: var(--primary-color);
-		text-shadow: 1px 1px 2px lightgray;
-		width: fit-content;
-	}
 	@media only screen and (max-width: 1024px) {
 		.content {
 			grid-template-columns: 1fr auto;
-		}
-		.logo {
-			font-size: 4rem;
-			line-height: 1.2;
 		}
 		.link:not(.logo) {
 			display: none;
 		}
 		.hamburger {
 			display: initial;
-		}
-	}
-	@media only screen and (max-width: 480px) {
-		.logo {
-			font-size: 3.2rem;
 		}
 	}
 </style>

@@ -115,7 +115,7 @@
 
 	@media only screen and (max-width: 560px) {
 		.embla__slide__img {
-			max-height: 36rem;
+			max-height: 45rem;
 		}
 		.caption {
 			text-align: left;

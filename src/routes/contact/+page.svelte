@@ -1,1 +1,1 @@
-Contact
+<p class="empty-page body">Contact</p>

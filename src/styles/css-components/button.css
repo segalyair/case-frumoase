@@ -9,9 +9,9 @@
     width: fit-content;
 }
 
-.button--primary {
-    background-color: var(--accent-primary);
-    padding: 2rem;
+.button.button--alt {
+    background: var(--text-light-color);
+    color: #402616;
 }
 
 .button--arrow {
@@ -27,7 +27,7 @@
 }
 
 @media only screen and (max-width: 480px) {
-	.button {
+    .button {
         font-size: 1.4rem;
         padding: 1rem 2rem;
     }

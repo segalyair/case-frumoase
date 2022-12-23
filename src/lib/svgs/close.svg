@@ -7,14 +7,14 @@
 >
 	<path
 		d="M8.33496 8.33203L31.6667 31.6638"
-		stroke="white"
+		stroke="currentColor"
 		stroke-width="1.5"
 		stroke-linecap="round"
 		stroke-linejoin="round"
 	/>
 	<path
 		d="M8.33328 31.6638L31.665 8.33203"
-		stroke="white"
+		stroke="currentColor"
 		stroke-width="1.5"
 		stroke-linecap="round"
 		stroke-linejoin="round"

@@ -2,25 +2,28 @@
 	import architect from '@images/poza_arhitect.jpg?webp&imagetools';
 	import Carousel from '$lib/components/ui/carousel/carousel.svelte';
 	import Preload from '$lib/components/head/preload.svelte';
-	export let data: { slides: string[] };
+	export let data: { slides: string[]; articles: string[]; specializations: any[] };
+	const { slides, specializations } = data;
 	const sizes = '(max-width: 480px) 100vw, (max-width: 1280px) 90vw, 1280px';
-	let showContent = false;
+	let showContent = slides?.length === 0;
 </script>
 
 <svelte:head>
-	{#each data.slides as slide}
+	{#each slides as slide}
 		<Preload imagesrcset={slide} imagesizes={sizes} />
 	{/each}
 </svelte:head>
 
 <main>
-	<Carousel
-		images={data.slides}
-		width={640}
-		height={360}
-		{sizes}
-		on:init={() => (showContent = true)}
-	/>
+	{#if slides?.length}
+		<Carousel
+			images={slides}
+			width={800}
+			height={450}
+			{sizes}
+			on:init={() => (showContent = true)}
+		/>
+	{/if}
 	{#if showContent}
 		<section class="intro">
 			<h2 class="h3">Realizăm case frumoase</h2>
@@ -40,32 +43,21 @@
 				</p>
 			</div>
 		</section>
-		<section class="skills">
-			<h2 class="h3">Specializări</h2>
-			<div class="panels">
-				<div class="panel">
-					<h3 class="h4">Urmărire șantier</h3>
-					<p class="body">
-						Avand in vedere ca se primeste un termen limita pentru executia lucrarii este estential
-						sa aveti un consultant care se asigura ...
-					</p>
+		{#if specializations?.length}
+			<section class="skills">
+				<h2 class="h3">Specializări</h2>
+				<div class="panels">
+					{#each specializations as specialization}
+						<div class="panel">
+							<h3 class="h4">{specialization.title}</h3>
+							<p class="body">
+								{specialization.description}
+							</p>
+						</div>
+					{/each}
 				</div>
-				<div class="panel">
-					<h3 class="h4">Urmărire șantier</h3>
-					<p class="body">
-						Avand in vedere ca se primeste un termen limita pentru executia lucrarii este estential
-						sa aveti un consultant care se asigura ...
-					</p>
-				</div>
-				<div class="panel">
-					<h3 class="h4">Urmărire șantier</h3>
-					<p class="body">
-						Avand in vedere ca se primeste un termen limita pentru executia lucrarii este estential
-						sa aveti un consultant care se asigura ...
-					</p>
-				</div>
-			</div>
-		</section>
+			</section>
+		{/if}
 	{/if}
 </main>
 
@@ -120,8 +112,9 @@
 		padding: var(--row-padding) var(--content-padding);
 	}
 	.skills .panels {
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-auto-rows: 1fr;
 		gap: 2rem;
 	}
 
@@ -134,6 +127,19 @@
 		background: rgba(255, 255, 255, 0.7);
 		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 		border-radius: 4px;
+	}
+	.skills .panel h3 {
+		text-align: center;
+	}
+	@media only screen and (max-width: 1500px) {
+		.skills .panels {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	@media only screen and (max-width: 900px) {
+		.skills .panels {
+			grid-template-columns: 1fr;
+		}
 	}
 	@media only screen and (max-width: 768px) {
 		.intro {
@@ -170,7 +176,7 @@
 		}
 		.intro p {
 			font-size: 1.4rem;
-			min-width: 17.5rem;
+			min-width: 40vw;
 		}
 		.skills {
 			gap: 4rem;
