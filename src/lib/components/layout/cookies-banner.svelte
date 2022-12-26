@@ -23,7 +23,7 @@
 		position: fixed;
 		z-index: 2;
 		bottom: 0;
-		width: 100%;
+		width: 100vw;
 		padding: 2rem var(--content-padding);
 		background: #8d5530;
 		color: white;

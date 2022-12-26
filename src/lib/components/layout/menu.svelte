@@ -65,9 +65,12 @@
 		height: var(--header-height);
 		position: fixed;
 		top: 0;
+		left: 0;
 		z-index: 1;
 		display: flex;
+		justify-content: center;
 		background-color: var(--text-light-color);
+		box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 	}
 
 	.hamburger {

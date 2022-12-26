@@ -1,11 +1,11 @@
 <script lang="ts">
-	export let items: any[],
+	export let items: number,
 		currentItem = 0,
 		scrollTo: (index: number) => void;
 </script>
 
 <div class="pagination">
-	{#each items as _, i}
+	{#each new Array(items) as _, i}
 		<button
 			on:click={() => scrollTo(i)}
 			class="pageButton"
@@ -18,13 +18,13 @@
 <style>
 	.pagination {
 		position: absolute;
-		bottom: 4rem;
-		left: 4rem;
 		display: flex;
 		gap: 2rem;
-		background: rgba(255, 255, 255, 0.7);
 		padding: 1rem;
+		bottom: -5rem;
 		border-radius: 30px;
+		left: 50%;
+		transform: translate(-50%);
 	}
 
 	.pageButton {
@@ -34,7 +34,7 @@
 		background: rgba(0, 0, 0, 0.3);
 		border-radius: 50%;
 		margin: 0;
-		transition: background 200ms;
+		transition: background-color 200ms;
 	}
 	.pageButton:not(.active):hover {
 		background: rgba(0, 0, 0, 0.6);

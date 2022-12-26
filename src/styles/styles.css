@@ -101,6 +101,14 @@ details summary {
 	content: '(Pagina in lucru)';
 }
 
+.separator {
+	width: 100%;
+	max-width: var(--content-max-width);
+	height: 0.2rem;
+	background-color: #8d5530;
+	margin: 2rem 0;
+}
+
 /* 320px — 480px: Mobile devices
 481px — 768px: iPads, Tablets
 769px — 1024px: Small screens, laptops

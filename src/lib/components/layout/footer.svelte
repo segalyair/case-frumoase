@@ -96,13 +96,6 @@
 		justify-self: center;
 	}
 
-	.separator {
-		max-width: var(--content-max-width);
-		height: 0.2rem;
-		background-color: #8d5530;
-		margin: 2rem 0;
-	}
-
 	@media screen and (max-width: 1440px) {
 		.main-row {
 			grid-template-columns: 1fr 1fr;

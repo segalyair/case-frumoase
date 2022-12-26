@@ -1,28 +1,28 @@
 <script lang="ts">
 	import architect from '@images/poza_arhitect.jpg?webp&imagetools';
-	import Carousel from '$lib/components/ui/carousel/carousel.svelte';
 	import Preload from '$lib/components/head/preload.svelte';
-	export let data: { slides: string[]; articles: string[]; specializations: any[] };
-	const { slides, specializations } = data;
+	import HouseCarousel from '$lib/components/ui/carousel/house-carousel.svelte';
+	import ClientCarousel from '$lib/components/ui/carousel/client-carousel.svelte';
+	export let data: {
+		mainSlides: string[];
+		articles: string[];
+		specializations: any[];
+		clientSlides: any[];
+	};
+	const { mainSlides, specializations, clientSlides } = data;
 	const sizes = '(max-width: 480px) 100vw, (max-width: 1280px) 90vw, 1280px';
-	let showContent = slides?.length === 0;
+	let showContent = mainSlides?.length === 0;
 </script>
 
 <svelte:head>
-	{#each slides as slide}
+	{#each mainSlides as slide}
 		<Preload imagesrcset={slide} imagesizes={sizes} />
 	{/each}
 </svelte:head>
 
 <main>
-	{#if slides?.length}
-		<Carousel
-			images={slides}
-			width={800}
-			height={450}
-			{sizes}
-			on:init={() => (showContent = true)}
-		/>
+	{#if mainSlides?.length}
+		<HouseCarousel {mainSlides} {sizes} onInit={() => (showContent = true)} />
 	{/if}
 	{#if showContent}
 		<section class="intro">
@@ -58,6 +58,10 @@
 				</div>
 			</section>
 		{/if}
+		<section class="clients">
+			<h2 class="h3">Ce spun clienții</h2>
+			<ClientCarousel slides={clientSlides} onInit={() => (showContent = true)} />
+		</section>
 	{/if}
 </main>
 
@@ -108,7 +112,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 6rem;
+		gap: var(--row-padding);
 		padding: var(--row-padding) var(--content-padding);
 	}
 	.skills .panels {
@@ -129,6 +133,19 @@
 		border-radius: 4px;
 	}
 	.skills .panel h3 {
+		text-align: center;
+	}
+
+	.clients {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--row-padding);
+		background-color: white;
+		padding: var(--row-padding) 0 calc(var(--row-padding) + 4rem);
+	}
+	.clients h2 {
+		color: #8d5530;
 		text-align: center;
 	}
 	@media only screen and (max-width: 1500px) {
