@@ -7,7 +7,7 @@
 	<div class="content">
 		<div class="main-row">
 			<span class="description">
-				<a href="/" class="logo">Case frumoase</a>
+				<a href="/" class="logo">Case Frumoase</a>
 				<p class="body body--large">
 					Suntem o echipă de arhitecți specializați în design neoromânesc și nu numai.
 				</p>

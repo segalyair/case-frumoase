@@ -1,20 +1,29 @@
 <script lang="ts">
 	import Carousel from './carousel.svelte';
-	export let mainSlides: any[], sizes: string, onInit: () => void;
+	export let mainSlides: MainSlides = { sizes: '', slides: [] },
+		onInit: () => void;
+	const { sizes } = mainSlides;
+	function getEntries(slide: any) {
+		return Object.entries<string>(slide).filter((s) => s[0] !== 'fallback');
+	}
 </script>
 
-<Carousel on:init={onInit}>
+<Carousel active={mainSlides.slides.length > 0} on:init={onInit}>
 	<div slot="slides" class="embla__container">
-		{#each mainSlides as slide, i}
+		{#each mainSlides.slides as slide}
 			<div class="embla__slide">
-				<img
-					class="embla__slide__img"
-					alt="House slide"
-					width={800}
-					height={450}
-					srcset={slide}
-					{sizes}
-				/>
+				<picture>
+					{#each getEntries(slide) as entry}
+						<source srcset={entry[1]} {sizes} type={`image/${entry[0]}`} />
+					{/each}
+					<img
+						class="embla__slide__img"
+						width={800}
+						height={450}
+						src={slide.fallback}
+						alt="House slide"
+					/>
+				</picture>
 			</div>
 		{/each}
 	</div>

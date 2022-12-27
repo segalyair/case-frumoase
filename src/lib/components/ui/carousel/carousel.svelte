@@ -4,7 +4,7 @@
 	import type { EmblaOptionsType } from 'embla-carousel/components/Options';
 	import Autoplay from 'embla-carousel-autoplay';
 	import type { AutoplayType } from 'embla-carousel-autoplay';
-	import { onDestroy } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { createEventDispatcher } from 'svelte';
 	import type { OptionsType } from 'embla-carousel-autoplay/components/Options';
 	import Pagination from './pagination.svelte';
@@ -19,6 +19,7 @@
 		delay: 6000
 	};
 	export let slideCount: number = 0;
+	export let active: boolean = true;
 
 	const dispatch = createEventDispatcher();
 	let embla: EmblaCarouselType;
@@ -46,28 +47,32 @@
 				onSelect();
 			}
 		});
-		embla.on('resize', (e) => {
-			console.log(e);
-		});
 		if (slideCount) {
 			embla.on('scroll', onSelect);
 			embla.on('reInit', onSelect);
 		}
 	}
+	onMount(() => {
+		if (!active) {
+			dispatch('init');
+		}
+	});
 	onDestroy(() => {
 		embla?.destroy();
 	});
 </script>
 
-<div class="embla" style={`visibility: ${initialized ? 'initial' : 'hidden'}`}>
-	<div use:emblaCarousel={options} class="embla__viewport">
-		<slot name="slides" />
+{#if active}
+	<div class="embla" style={`visibility: ${initialized ? 'initial' : 'hidden'}`}>
+		<div use:emblaCarousel={options} class="embla__viewport">
+			<slot name="slides" />
+		</div>
+		{#if initialized}
+			<slot name="caption" />
+			<Pagination items={slideCount} {scrollTo} currentItem={currentSlide} />
+		{/if}
 	</div>
-	{#if initialized}
-		<slot name="caption" />
-		<Pagination items={slideCount} {scrollTo} currentItem={currentSlide} />
-	{/if}
-</div>
+{/if}
 
 <style>
 	.embla {

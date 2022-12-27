@@ -25,8 +25,32 @@
 
 <svelte:window bind:scrollY />
 
+<svelte:head>
+	<script type="application/ld+json">
+		[
+			{
+				'@context': 'https://schema.org',
+				'@type': 'Organization',
+				address: {
+					'@type': 'PostalAddress',
+					addressLocality: 'Bucharest, Romania'
+				},
+				email: 'adrianpaun@case-frumoase.ro',
+				member: [
+					{
+						'@type': 'Person',
+						name: 'Adrian Păun'
+					}
+				],
+				name: 'case-frumoase.ro',
+				telephone: '0742 081 533'
+			}
+		];
+	</script>
+</svelte:head>
+
 <Seo
-	title="Proiecte Arhitectură Case Frumoase București Stil Neoromânesc"
+	title="Proiecte Arhitectură Case Frumoase Stil Neoromânesc"
 	description="Case-Frumoase.ro iți oferă proiecte de case în diferite stiluri arhitecturale realizate în funcție de cerințele fiecărui client în parte. Experiență de peste 15 ani."
 />
 
@@ -35,16 +59,18 @@
 		<Menu />
 		<slot />
 	</div>
-	<CookiesBanner />
-	<Footer {articles} />
-	<button
-		class="scroll-to-top"
-		class:show={mounted && scrollY > 0}
-		on:click={scrollToTop}
-		aria-label="Scroll back to the top"
-	>
-		<ChevronDown />
-	</button>
+	<div style={`visibility: ${mounted ? 'initial' : 'hidden'}`}>
+		<CookiesBanner />
+		<Footer {articles} />
+		<button
+			class="scroll-to-top"
+			class:show={mounted && scrollY > 0}
+			on:click={scrollToTop}
+			aria-label="Scroll back to the top"
+		>
+			<ChevronDown />
+		</button>
+	</div>
 </div>
 
 <style>

@@ -19,9 +19,9 @@ function replaceImageType(urlParts: string[], fileType = 'webp') {
 	return urlParts.join('.');
 }
 
-function processImageUrl(url: string, widths: string[] = []) {
+function processImageUrl(url: string, widths: string[] = [], fileType = 'webp') {
 	const splitUrl = url.split('/');
-	splitUrl[splitUrl.length - 1] = replaceImageType(splitUrl);
+	splitUrl[splitUrl.length - 1] = replaceImageType(splitUrl, fileType);
 
 	if (!widths.length) {
 		return splitUrl.join('/');
@@ -42,9 +42,15 @@ export const load: Load = async ({ fetch }) => {
 	});
 	const { data } = await response.json();
 	if (response.ok) {
-		const mainSlides = data.mainSlides.map((s: any) =>
-			processImageUrl(s.url, ['1280', '1024', '800'])
-		);
+		const widths = ['1280', '1024', '800'];
+		const mainSlides = {
+			sizes: '(max-width: 480px) 100vw, (max-width: 1280px) 90vw, 1280px',
+			slides: data.mainSlides.map((s: any) => ({
+				avif: processImageUrl(s.url, widths, 'avif'),
+				webp: processImageUrl(s.url, widths, 'webp'),
+				fallback: s.url
+			}))
+		};
 		for (const slide of data.clientSlides) {
 			slide.image.url = processImageUrl(slide.image.url);
 		}

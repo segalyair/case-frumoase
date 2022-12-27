@@ -1,29 +1,19 @@
 <script lang="ts">
 	import architect from '@images/poza_arhitect.jpg?webp&imagetools';
-	import Preload from '$lib/components/head/preload.svelte';
 	import HouseCarousel from '$lib/components/ui/carousel/house-carousel.svelte';
 	import ClientCarousel from '$lib/components/ui/carousel/client-carousel.svelte';
 	export let data: {
-		mainSlides: string[];
+		mainSlides: MainSlides;
 		articles: string[];
 		specializations: any[];
 		clientSlides: any[];
 	};
 	const { mainSlides, specializations, clientSlides } = data;
-	const sizes = '(max-width: 480px) 100vw, (max-width: 1280px) 90vw, 1280px';
-	let showContent = mainSlides?.length === 0;
+	let showContent = mainSlides?.slides?.length === 0;
 </script>
 
-<svelte:head>
-	{#each mainSlides as slide}
-		<Preload imagesrcset={slide} imagesizes={sizes} />
-	{/each}
-</svelte:head>
-
 <main>
-	{#if mainSlides?.length}
-		<HouseCarousel {mainSlides} {sizes} onInit={() => (showContent = true)} />
-	{/if}
+	<HouseCarousel {mainSlides} onInit={() => (showContent = true)} />
 	{#if showContent}
 		<section class="intro">
 			<h2 class="h3">Realizăm case frumoase</h2>
