@@ -7,8 +7,9 @@
 		articles: string[];
 		specializations: any[];
 		clientSlides: any[];
+		youtubeLinks: { link: string }[];
 	};
-	const { mainSlides, specializations, clientSlides } = data;
+	const { mainSlides, specializations, clientSlides, youtubeLinks } = data;
 	let showContent = mainSlides?.slides?.length === 0;
 </script>
 
@@ -20,17 +21,13 @@
 			<img src={architect} width={300} height={450} alt="Architect Adrian Paun" />
 			<div class="content">
 				<p class="body body--large">
-					Bună ziua, sunt <strong>arhitect Adrian Păun</strong> şi vă propun o casă frumoasă pentru o
-					viaţă frumoasă!
+					Bună ziua, sunt <strong>arhitect Adrian Păun</strong> și vă propun o casă frumoasă pentru o
+					viață frumoasă!
 				</p>
-				<p class="body body--large">
-					Veţi găsi pe acest site proiectele mele
-					<a class="button" href="/proiecte">Spre proiecte</a>
-				</p>
-				<p class="body body--large">
-					Veți găsi articole cu multe imagini despre case interbelice
-					<a class="button" href="/blog">Spre articole</a>
-				</p>
+				<p class="body body--large">Veți găsi pe acest site proiectele mele</p>
+				<a class="button" href="/proiecte">Spre proiecte</a>
+				<p class="body body--large">Veți găsi articole cu multe imagini despre case interbelice</p>
+				<a class="button" href="/blog">Spre articole</a>
 			</div>
 		</section>
 		{#if specializations?.length}
@@ -51,6 +48,22 @@
 		<section class="clients">
 			<h2 class="h3">Ce spun clienții</h2>
 			<ClientCarousel slides={clientSlides} onInit={() => (showContent = true)} />
+		</section>
+		<section class="youtube">
+			<h2 class="h3">Apariții TV</h2>
+			<div class="videos">
+				{#each youtubeLinks as { link }}
+					<iframe
+						width="560"
+						height="315"
+						src={link}
+						title="YouTube video player"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen
+					/>
+				{/each}
+			</div>
 		</section>
 	{/if}
 </main>
@@ -93,11 +106,6 @@
 		min-width: 30rem;
 	}
 
-	.intro p .button {
-		margin-top: 1rem;
-		display: block;
-	}
-
 	.skills {
 		display: flex;
 		flex-direction: column;
@@ -138,6 +146,21 @@
 		color: #8d5530;
 		text-align: center;
 	}
+
+	.youtube {
+		display: flex;
+		flex-direction: column;
+		gap: var(--row-padding);
+		text-align: center;
+		padding: var(--row-padding) var(--content-padding);
+	}
+	.youtube .videos {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		align-items: center;
+		justify-content: center;
+	}
 	@media only screen and (max-width: 1500px) {
 		.skills .panels {
 			grid-template-columns: 1fr 1fr;
@@ -158,8 +181,8 @@
 			min-width: 25rem;
 		}
 		.intro img {
-			width: 15rem;
-			height: 22.5rem;
+			width: 20rem;
+			height: 30rem;
 		}
 		.skills .panel {
 			width: 100%;
@@ -171,19 +194,19 @@
 			--row-padding: 4rem;
 		}
 		.intro {
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: 1fr;
+			justify-items: center;
 			column-gap: 1rem;
 			padding: 2rem;
 		}
 		.intro .content {
+			align-items: center;
+			text-align: center;
 			gap: 1rem;
 		}
 		.intro h2 {
+			grid-column: initial;
 			text-align: center;
-		}
-		.intro p {
-			font-size: 1.4rem;
-			min-width: 40vw;
 		}
 		.skills {
 			gap: 4rem;

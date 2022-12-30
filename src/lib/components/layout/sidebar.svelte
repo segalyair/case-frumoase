@@ -40,7 +40,7 @@
 		grid-template-columns: 1fr;
 		align-items: center;
 		justify-items: center;
-		row-gap: 4rem;
+		row-gap: 6vh;
 		margin-bottom: var(--header-height);
 	}
 </style>

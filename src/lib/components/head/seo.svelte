@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-	<title>Proiecte Arhitectura Case Frumoase Bucuresti Stil Neoromanesc</title>
+	<title>Proiecte Arhitectură Case Frumoase București Stil Neoromânesc</title>
 	<meta name="description" content={description} />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={title} />

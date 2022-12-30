@@ -57,8 +57,9 @@ export const load: Load = async ({ fetch }) => {
 		return {
 			mainSlides,
 			specializations: data.specializations,
-			clientSlides: data.clientSlides
+			clientSlides: data.clientSlides,
+			youtubeLinks: data.youtubeLinks
 		};
 	}
-	return { mainSlides: [], specializations: [] };
+	return { mainSlides: [], specializations: [], clientSlides: [], youtubeLinks: [] };
 };

@@ -20,6 +20,7 @@
 
 <style>
 	.cookies {
+		box-shadow: 0px -4px 4px rgb(0 0 0 / 25%);
 		position: fixed;
 		z-index: 2;
 		bottom: 0;
