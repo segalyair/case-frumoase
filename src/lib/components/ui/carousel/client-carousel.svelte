@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Carousel from './carousel.svelte';
+	import ClientDefault from '$lib/svgs/client-default.svg?component';
 	export let slides: any[],
 		sizes: string | undefined = undefined,
 		onInit: (() => void) | undefined = undefined;
@@ -19,15 +20,19 @@
 			{#each slides as slide, i}
 				<div class="embla__slide">
 					<div class="embla__slide__content">
-						<img
-							class="embla__slide__img"
-							alt="Client"
-							width={100}
-							height={100}
-							src={slide.image.url}
-							{sizes}
-							loading="lazy"
-						/>
+						{#if slide.image?.url}
+							<img
+								class="embla__slide__img"
+								alt="Client"
+								width={100}
+								height={100}
+								src={slide.image.url}
+								{sizes}
+								loading="lazy"
+							/>
+						{:else}
+							<ClientDefault width={100} height={100} />
+						{/if}
 						<span class="quotation">“</span>
 						<div class="text-container">
 							<p class="message body body--large">
@@ -36,7 +41,9 @@
 							<div class="separator" />
 							<div class="client">
 								<p class="name body body--vlarge"><strong>{slide.name}</strong></p>
-								<p class="body body--large">{slide.role}</p>
+								<p class="body body--large">
+									{#if slide.role}{slide.role}{:else}&#8205;{/if}
+								</p>
 							</div>
 						</div>
 					</div>

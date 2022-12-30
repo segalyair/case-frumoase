@@ -40,8 +40,8 @@ export const load: Load = async ({ fetch }) => {
 	const response = await fetch(`${STRAPI_API_URL}/api/landing-page?populate=*`, {
 		headers
 	});
-	const { data } = await response.json();
 	if (response.ok) {
+		const { data } = await response.json();
 		const widths = ['1280', '1024', '800'];
 		const mainSlides = {
 			sizes: '(max-width: 480px) 100vw, (max-width: 1280px) 90vw, 1280px',
@@ -51,7 +51,7 @@ export const load: Load = async ({ fetch }) => {
 				fallback: s.url
 			}))
 		};
-		for (const slide of data.clientSlides) {
+		for (const slide of data.clientSlides.filter((s: any) => s.image?.url)) {
 			slide.image.url = processImageUrl(slide.image.url);
 		}
 		return {
