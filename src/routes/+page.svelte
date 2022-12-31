@@ -2,12 +2,13 @@
 	import architect from '@images/poza_arhitect.jpg?webp&imagetools';
 	import HouseCarousel from '$lib/components/ui/carousel/house-carousel.svelte';
 	import ClientCarousel from '$lib/components/ui/carousel/client-carousel.svelte';
+	import YoutubeEmbed from '$lib/components/ui/youtube-embed.svelte';
 	export let data: {
 		mainSlides: MainSlides;
 		articles: string[];
 		specializations: any[];
 		clientSlides: any[];
-		youtubeLinks: { link: string }[];
+		youtubeLinks: { title: string; link: string }[];
 	};
 	const { mainSlides, specializations, clientSlides, youtubeLinks } = data;
 	let showContent = mainSlides?.slides?.length === 0;
@@ -52,16 +53,8 @@
 		<section class="youtube">
 			<h2 class="h3">Apariții TV</h2>
 			<div class="videos">
-				{#each youtubeLinks as { link }}
-					<iframe
-						width="560"
-						height="315"
-						src={link}
-						title="YouTube video player"
-						frameborder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-						allowfullscreen
-					/>
+				{#each youtubeLinks as youtubeLink}
+					<YoutubeEmbed data={youtubeLink} />
 				{/each}
 			</div>
 		</section>
