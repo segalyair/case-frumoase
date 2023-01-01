@@ -6,6 +6,13 @@ const config = {
 	preprocess: preprocess(),
 	kit: {
 		adapter: adapter({ precompress: true }),
+		csp: {
+			mode: "auto",
+			directives: {
+				'default-src': ['self'],
+				'script-src': ['self']
+			},
+		},
 		csrf: {
 			checkOrigin: true
 		},
