@@ -22,7 +22,11 @@
 {#if opened}
 	{@html getEmbed(data.link)}
 {:else}
-	<button type="button" on:click={() => (opened = true)} aria-label="Click to play youtube video">
+	<button
+		type="button"
+		on:click={() => (opened = true)}
+		aria-label={`Click to play youtube video ${data.title}`}
+	>
 		<p class="body body--large">{data.title}</p>
 		<span class="play-button">
 			<Play color="white" />
