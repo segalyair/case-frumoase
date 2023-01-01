@@ -9,7 +9,6 @@ const config = {
 		csp: {
 			mode: "auto",
 			directives: {
-				'default-src': ['self'],
 				'script-src': ['self']
 			},
 		},
