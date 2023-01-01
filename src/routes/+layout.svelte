@@ -59,18 +59,16 @@
 		<Menu />
 		<slot />
 	</div>
-	<div style={`visibility: ${mounted ? 'initial' : 'hidden'}`}>
-		<CookiesBanner />
-		<Footer {articles} />
-		<button
-			class="scroll-to-top"
-			class:show={mounted && scrollY > 0}
-			on:click={scrollToTop}
-			aria-label="Scroll back to the top"
-		>
-			<ChevronDown />
-		</button>
-	</div>
+	<CookiesBanner />
+	<Footer {articles} />
+	<button
+		class="scroll-to-top"
+		class:show={mounted && scrollY > 0}
+		on:click={scrollToTop}
+		aria-label="Scroll back to the top"
+	>
+		<ChevronDown />
+	</button>
 </div>
 
 <style>

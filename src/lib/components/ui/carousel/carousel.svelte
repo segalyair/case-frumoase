@@ -63,7 +63,7 @@
 </script>
 
 {#if active}
-	<div class="embla" style={`visibility: ${initialized ? 'initial' : 'hidden'}`}>
+	<div class="embla" class:initialized>
 		<div use:emblaCarousel={options} class="embla__viewport">
 			<slot name="slides" />
 		</div>
@@ -76,9 +76,13 @@
 
 <style>
 	.embla {
+		visibility: hidden;
 		position: relative;
 	}
 	.embla__viewport {
 		overflow: hidden;
+	}
+	.initialized {
+		visibility: initial;
 	}
 </style>
