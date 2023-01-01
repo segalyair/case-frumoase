@@ -22,10 +22,6 @@
 				{
 					"key": "Permissions-Policy",
 					"value": "geolocation=(self), microphone=()"
-				},
-				{
-					"key": "Content-Security-Policy",
-					"value": "default-src 'self' res.cloudinary.com"
 				}
 			]
 		}
