@@ -14,22 +14,7 @@ export async function GET() {
             <loc>https://case-frumoase.vercel.app/</loc>
             <priority>1</priority>
         </url>
-        <url>
-            <loc>https://case-frumoase.vercel.app/proiecte/</loc>
-            <priority>0.5</priority>
-        </url>
-        <url>
-            <loc>https://case-frumoase.vercel.app/servicii/</loc>
-            <priority>0.5</priority>
-        </url>
-        <url>
-            <loc>https://case-frumoase.vercel.app/blog/</loc>
-            <priority>0.5</priority>
-        </url>
-        <url>
-            <loc>https://case-frumoase.vercel.app/contact/</loc>
-            <priority>0.5</priority>
-        </url>
+
       </urlset>`.trim(),
 		{
 			headers: {
@@ -38,3 +23,20 @@ export async function GET() {
 		}
 	);
 }
+
+// <url>
+// <loc>https://case-frumoase.vercel.app/proiecte/</loc>
+// <priority>0.5</priority>
+// </url>
+// <url>
+// <loc>https://case-frumoase.vercel.app/servicii/</loc>
+// <priority>0.5</priority>
+// </url>
+// <url>
+// <loc>https://case-frumoase.vercel.app/blog/</loc>
+// <priority>0.5</priority>
+// </url>
+// <url>
+// <loc>https://case-frumoase.vercel.app/contact/</loc>
+// <priority>0.5</priority>
+// </url>
