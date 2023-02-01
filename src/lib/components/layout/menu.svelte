@@ -48,7 +48,9 @@
 				</a>
 			{/each}
 		</span>
-		<a class="link contactLink" href=""> <Phone />0742 081 533 </a>
+		<a class="link contactLink" href="tel:0742081533" aria-label="Call mobile number 0742 081 533">
+			<Phone />0742 081 533
+		</a>
 		{#if sidebarOpen}
 			<button
 				type="button"

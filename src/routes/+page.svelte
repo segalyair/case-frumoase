@@ -19,7 +19,7 @@
 	<img class="landingImage" src={house} alt="House" />
 	<div class="caption">
 		<h1 class="h1">Realizăm case în stil neoromânesc</h1>
-		<a href="/projects" class="button caps" type="button">Vezi proiecte</a>
+		<a href="/" class="button caps" type="button">Vezi proiecte</a>
 	</div>
 </header>
 <main>
