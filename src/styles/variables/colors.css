@@ -1,8 +1,9 @@
 :root {
-    --text-light-color: rgb(237, 235, 229);
-    --primary-color: #8d5530ff;
-    --moss-green: #8B914Dff;
-    --khaki-web: #BFB094ff;
-    --kombu-green: #384027ff;
-    --text-dark-color: #292612ff;
+    --background-color: white;
+    --background-semi-transparent: rgba(37, 39, 51, 0.231);
+    --background-gray: #F3F3F3;
+    --text-light-color: white;
+    --text-dark-color: #252733;
+    --border-navbar: rgba(255, 255, 255, 0.122);
+    --primary-color: #F57F4B;
 }

@@ -20,12 +20,12 @@
 	};
 	export let slideCount: number = 0;
 	export let active: boolean = true;
+	export let currentSlide: number = 0;
 
 	const dispatch = createEventDispatcher();
 	let embla: EmblaCarouselType;
 	let autoplay: AutoplayType;
 	let initialized = false;
-	let currentSlide: number = 0;
 
 	function scrollTo(index: number) {
 		autoplay.reset();
@@ -40,6 +40,7 @@
 	function emblaCarousel(node: HTMLElement, options: EmblaOptionsType) {
 		autoplay = Autoplay(autoplayOptions);
 		embla = EmblaCarousel(node, options, [autoplay]);
+
 		embla.on('init', () => {
 			initialized = true;
 			dispatch('init');

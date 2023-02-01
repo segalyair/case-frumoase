@@ -1,21 +1,19 @@
 :root {
-    --font-family-primary: 'Inter';
-    --font-family-secondary: 'Courgette';
-    --font-h1: 700 9.6rem/1.1 var(--font-family-primary);
-    --font-h2: 700 6.4rem/1.2 var(--font-family-primary);
-    --font-h3: 700 4.8rem/1.2 var(--font-family-primary);
-    --font-h4: 700 2.4rem/1.2 var(--font-family-primary);
+    --font-family-primary: 'BarlowCondensed';
+    --font-h1: 400 9.6rem/1.1 var(--font-family-primary);
+    --font-h2: 400 6.4rem/1.2 var(--font-family-primary);
+    --font-h3: 400 4.8rem/1.2 var(--font-family-primary);
+    --font-h4: 400 2.4rem/1.2 var(--font-family-primary);
     --font-h5: 400 1.6rem/1.2 var(--font-family-primary);
     --font-h6: 400 1.2rem/1.2 var(--font-family-primary);
-    --font-body: 400 1.6rem/1.5 var(--font-family-primary);
-    --font-h1-mobile: 700 6.4rem/1.1 var(--font-family-primary);
-    --font-h2-mobile: 700 4.8rem/1.1 var(--font-family-primary);
-    --font-h3-mobile: 700 3.2rem/1.1 var(--font-family-primary);
+    --font-body: 600 1.6rem/1.5 var(--font-family-primary);
+    --font-h1-mobile: 400 6.4rem/1.1 var(--font-family-primary);
+    --font-h2-mobile: 400 4.8rem/1.1 var(--font-family-primary);
+    --font-h3-mobile: 400 3.2rem/1.1 var(--font-family-primary);
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6 {
     margin: 0;
-    color: #402616;
 }
 
 .h1 {
@@ -46,6 +44,10 @@
     font: var(--font-body);
 }
 
+.body--medium {
+    font-weight: 600;
+}
+
 .body--small {
     font-size: 1.4rem;
 }
@@ -59,7 +61,6 @@
 }
 
 .caps {
-    font: 700 1.6rem/1.18 var(--font-family-primary);
     text-transform: uppercase;
 }
 

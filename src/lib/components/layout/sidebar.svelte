@@ -26,10 +26,10 @@
 		top: 0;
 		right: 0;
 		width: 100vw;
-		height: calc(100vh - var(--header-height));
+		height: calc(100vh - var(--menu-height));
 		overflow-y: auto;
 		background: rgb(237, 235, 229);
-		margin-top: var(--header-height);
+		margin-top: var(--menu-height);
 		border-top: 1px solid var(--background-dark);
 		display: flex;
 		align-items: center;
@@ -41,6 +41,6 @@
 		align-items: center;
 		justify-items: center;
 		row-gap: 6vh;
-		margin-bottom: var(--header-height);
+		margin-bottom: var(--menu-height);
 	}
 </style>

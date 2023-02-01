@@ -4,7 +4,7 @@
 		scrollTo: (index: number) => void;
 </script>
 
-<div class="pagination">
+<div class="pagination glass">
 	{#each new Array(items) as _, i}
 		<button
 			on:click={() => scrollTo(i)}
@@ -21,10 +21,8 @@
 		display: flex;
 		gap: 2rem;
 		padding: 1rem;
-		bottom: -5rem;
-		border-radius: 30px;
-		left: 50%;
-		transform: translate(-50%);
+		bottom: 2rem;
+		left: 2rem;
 	}
 
 	.pageButton {
@@ -32,7 +30,6 @@
 		width: 1.5rem;
 		height: 1.5rem;
 		background: rgba(0, 0, 0, 0.3);
-		border-radius: 50%;
 		margin: 0;
 		transition: background-color 200ms;
 	}
@@ -40,7 +37,7 @@
 		background: rgba(0, 0, 0, 0.6);
 	}
 	.pageButton.active {
-		background: black;
+		background: var(--text-light-color);
 	}
 	.pageButton:before {
 		content: '';

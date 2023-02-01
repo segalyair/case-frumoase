@@ -5,14 +5,14 @@
 {#if !cookiesAccepted}
 	<div class="cookies">
 		<div class="inner content">
-			<span class="body body--large">Acest site web folosește cookie-uri pentru a îmbunătăți experiența utilizatorului. </span>
+			<span class="body body--vlarge">
+				Acest site web folosește cookie-uri pentru a îmbunătăți experiența utilizatorului.
+			</span>
 			<div class="actions">
-				<button class="button button--alt" on:click={() => (cookiesAccepted = true)}
-					>Accept cookie-uri</button
-				>
-				<button class="button button--alt">
-					Mai multe informații
+				<button class="button button--alt" on:click={() => (cookiesAccepted = true)}>
+					Accept cookie-uri
 				</button>
+				<button class="button button--alt"> Mai multe informații </button>
 			</div>
 		</div>
 	</div>
@@ -26,8 +26,8 @@
 		bottom: 0;
 		width: 100vw;
 		padding: 2rem var(--content-padding);
-		background: #8d5530;
-		color: white;
+		background: var(--text-dark-color);
+		color: var(--text-light-color);
 	}
 
 	.inner {

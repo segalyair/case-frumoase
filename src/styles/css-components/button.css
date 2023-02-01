@@ -1,17 +1,22 @@
 .button {
-    background: #8d5530;
-    border-radius: 60px;
-    color: white;
-    padding: 1.4rem 3rem;
+    color: var(--text-light-color);
+    padding: 2.4rem 7rem;
     text-align: center;
     text-decoration: none;
     font: 2rem/1.2 var(--font-family-primary);
     width: fit-content;
+    border: 0.8rem solid var(--text-light-color);
+    transition: all 300ms;
 }
 
-.button.button--alt {
+.button:hover {
+    border-color: transparent;
+    background: var(--text-dark-color);
+}
+
+.button.button--alt:hover {
+    color: var(--text-dark-color);
     background: var(--text-light-color);
-    color: #402616;
 }
 
 .button--arrow {

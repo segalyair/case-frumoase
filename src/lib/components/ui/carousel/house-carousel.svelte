@@ -27,7 +27,6 @@
 			</div>
 		{/each}
 	</div>
-	<h1 slot="caption" class="h2 caption">În stil neoromânesc</h1>
 </Carousel>
 
 <style>
@@ -48,22 +47,10 @@
 
 	.embla__slide__img {
 		display: block;
-		width: 128rem;
+		width: 100vw;
 		height: auto;
+		max-height: 100vh;
 		object-fit: cover;
-	}
-
-	.caption {
-		position: absolute;
-		top: 4rem;
-		left: var(--content-padding);
-		padding: 1rem 2rem;
-		background: rgba(255, 255, 255, 0.7);
-		border-radius: 4px;
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-		text-align: center;
 	}
 
 	@media only screen and (max-width: 1280px) {
@@ -78,13 +65,6 @@
 	@media only screen and (max-width: 560px) {
 		.embla__slide__img {
 			max-height: 45rem;
-		}
-		.caption {
-			text-align: left;
-			font-size: 2.4rem;
-			left: 2rem;
-			top: 2rem;
-			padding: 0.75rem;
 		}
 	}
 

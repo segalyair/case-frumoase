@@ -4,9 +4,18 @@
 	import { NAV_LINKS } from '$lib/scripts/constants';
 	import Hamburger from '$lib/svgs/hamburger.svg?component';
 	import Close from '$lib/svgs/close.svg?component';
+	import Phone from '$lib/svgs/phone.svg?component';
+	import logo from '$lib/images/logo.png';
 
-	let sidebarOpen = false;
-	let scrollY: number;
+	let sidebarOpen = false,
+		hiddenNavbar = false;
+	let oldScrollY: number = 0,
+		scrollY: number;
+
+	$: {
+		hiddenNavbar = oldScrollY - scrollY < 0;
+		oldScrollY = scrollY;
+	}
 
 	onMount(() => {
 		const mql = window.matchMedia('(max-width: 1024px)');
@@ -20,19 +29,26 @@
 
 <svelte:window bind:scrollY />
 
-<nav class="nav" class:scroll={scrollY !== 0} class:sidebarOpen>
-	<div class="content">
-		{#each NAV_LINKS as LINK, i}
-			<a
-				href={LINK.href}
-				class:logo={i === 0}
-				class:link={i > 0}
-				class:button={i === NAV_LINKS.length - 1}
-			>
-				{LINK.label}
-			</a>
-		{/each}
-
+<div class="navContainer" class:hidden={hiddenNavbar} class:glass={scrollY > 10}>
+	<div class="preNav">
+		<span class="body body--medium">Arhitectură și Design interior</span>
+		<span class="body">•</span>
+		<span class="body body--medium">Str. dr Mihail Mirinescu, nr 9, București</span>
+		<span class="body">•</span>
+		<span class="body body--medium">adrianpaun@case-frumoase.ro</span>
+	</div>
+	<nav class="nav" class:scroll={scrollY !== 0} class:sidebarOpen>
+		<a href="/" aria-label="Spre pagina principala">
+			<img width="139" src={logo} alt="Logo case frumoase" />
+		</a>
+		<span class="links">
+			{#each NAV_LINKS as link, i}
+				<a class="link" href={link.href}>
+					{link.label}
+				</a>
+			{/each}
+		</span>
+		<a class="link contactLink" href=""> <Phone />0742 081 533 </a>
 		{#if sidebarOpen}
 			<button
 				type="button"
@@ -56,21 +72,61 @@
 				<Hamburger />
 			</button>
 		{/if}
-	</div>
-</nav>
+	</nav>
+</div>
 
 <style>
-	.nav {
-		width: 100vw;
-		height: var(--header-height);
+	.navContainer {
+		height: var(--menu-height);
+		color: var(--text-light-color);
 		position: fixed;
 		top: 0;
 		left: 0;
 		z-index: 1;
+		transition: top 300ms;
+	}
+	.navContainer.hidden {
+		top: calc(var(--menu-height) * -1);
+	}
+	.preNav {
+		background-color: var(--background-semi-transparent);
 		display: flex;
+		align-items: center;
 		justify-content: center;
-		background-color: var(--text-light-color);
-		box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+		gap: 1.5rem;
+		padding: 1rem;
+	}
+	.nav {
+		width: 100vw;
+		display: grid;
+		align-items: center;
+		justify-items: start;
+		grid-template-columns: 20% 1fr 20%;
+		border-style: solid;
+		border-color: var(--border-navbar);
+		border-width: 1px 0;
+	}
+	.nav a:first-child {
+		margin: auto;
+	}
+
+	.links {
+		display: flex;
+		height: 100%;
+		align-items: center;
+		gap: 7.5rem;
+		padding-left: 15rem;
+		border-left: 1px solid var(--border-navbar);
+	}
+
+	.contactLink {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		background: var(--primary-color);
+		width: 100%;
+		height: 100%;
 	}
 
 	.hamburger {
@@ -80,27 +136,7 @@
 	.close {
 		color: #8d5530;
 	}
-	.content {
-		width: 100%;
-		max-width: var(--content-max-width);
-		display: grid;
-		grid-template-columns: 1fr auto auto auto auto;
-		align-items: center;
-		column-gap: 4rem;
-		padding: 0 var(--content-padding);
-	}
-
-	/* on scroll styling */
-	.nav.scroll {
-		/* background-color: rgba(0, 0, 0, 0.1);
-		-webkit-backdrop-filter: blur(10px);
-		backdrop-filter: blur(10px);
-		transition: background-color 200ms; */
-	}
 	@media only screen and (max-width: 1024px) {
-		.content {
-			grid-template-columns: 1fr auto;
-		}
 		.link:not(.logo) {
 			display: none;
 		}

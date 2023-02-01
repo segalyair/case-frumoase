@@ -1,12 +1,11 @@
 :root {
 	--content-max-width: 192rem;
 	--content-padding: 10rem;
-	--header-height: 10rem;
+	--menu-height: 17rem;
 }
 
 @media only screen and (max-width: 1024px) {
 	:root {
-		--header-height: 8rem;
 		--content-padding: 6rem;
 	}
 }

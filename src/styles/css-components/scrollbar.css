@@ -4,9 +4,9 @@
 }
 
 *::-webkit-scrollbar-track {
-    background: transparent;
+    background: var(--background-semi-transparent);
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: #402616;
+    background-color: var(--primary-color);
 }

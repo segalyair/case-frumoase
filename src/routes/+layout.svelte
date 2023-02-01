@@ -75,7 +75,6 @@
 	.layout {
 		min-height: 100vh;
 		max-width: var(--content-max-width);
-		padding-top: var(--header-height);
 		margin: auto;
 	}
 

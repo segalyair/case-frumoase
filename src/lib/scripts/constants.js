@@ -1,22 +1,18 @@
 export const NAV_LINKS = [
     {
-        label: 'Case Frumoase',
-        href: '/',
-    },
-    {
         label: 'Proiecte',
-        href: '/proiecte',
+        href: '/proiecte'
     },
     {
         label: 'Servicii',
-        href: '/servicii',
+        href: '/servicii'
     },
     {
         label: 'Blog',
-        href: '/blog',
+        href: '/blog'
     },
     {
         label: 'Contact',
-        href: '/contact',
+        href: '/contact'
     },
 ];
