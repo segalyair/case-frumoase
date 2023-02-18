@@ -1,7 +1,7 @@
 export const NAV_LINKS = [
     {
         label: 'Proiecte',
-        href: '/'
+        href: '/proiecte'
     },
     {
         label: 'Servicii',

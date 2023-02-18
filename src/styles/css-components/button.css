@@ -14,6 +14,16 @@
     background: var(--text-dark-color);
 }
 
+.button.button--dark {
+    color: var(--text-dark-color);
+    border-color: var(--text-dark-color);
+}
+
+.button.button--dark:hover {
+    color: var(--text-light-color);
+    background-color: var(--text-dark-color);
+}
+
 .button.button--alt:hover {
     color: var(--text-dark-color);
     background: var(--text-light-color);

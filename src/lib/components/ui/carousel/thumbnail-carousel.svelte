@@ -1,11 +1,13 @@
 <script lang="ts">
+	import type { PictureGroup } from 'src/types/picture';
+	import Picture from '../picture.svelte';
 	import Carousel from './carousel.svelte';
-	export let slides: any[] = [];
+	export let pictureGroup: PictureGroup;
 </script>
 
 <Carousel
-	active={slides.length > 0}
-	slideCount={slides.length}
+	active={pictureGroup.pictures.length > 0}
+	slideCount={pictureGroup.pictures.length}
 	options={{
 		loop: true,
 		align: 'center',
@@ -14,14 +16,12 @@
 	autoplayOptions={{ active: false }}
 >
 	<div slot="slides" class="embla__container">
-		{#each slides as slide, i}
+		{#each pictureGroup.pictures as picture, i}
 			<div class="embla__slide">
-				<img
+				<Picture
 					class="embla__slide__img"
-					width={650}
-					height={366}
-					src={slide}
-					alt="Thumbnail slide"
+					sizes={pictureGroup.sizes}
+					{picture}
 					loading={i > 0 ? 'lazy' : undefined}
 				/>
 			</div>
@@ -47,8 +47,9 @@
 		cursor: grabbing;
 	}
 
-	.embla__slide__img {
+	.embla__container :global(.embla__slide__img) {
 		display: block;
 		object-fit: contain;
+		width: 65rem;
 	}
 </style>

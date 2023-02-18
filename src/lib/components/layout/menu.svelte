@@ -79,6 +79,7 @@
 
 <style>
 	.navContainer {
+		background-color: var(--background-semi-transparent);
 		height: var(--menu-height);
 		color: var(--text-light-color);
 		position: fixed;
@@ -91,7 +92,6 @@
 		top: calc(var(--menu-height) * -1);
 	}
 	.preNav {
-		background-color: var(--background-semi-transparent);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -101,7 +101,6 @@
 	.nav {
 		width: 100vw;
 		display: grid;
-		align-items: center;
 		justify-items: start;
 		grid-template-columns: 20% 1fr 20%;
 		border-style: solid;

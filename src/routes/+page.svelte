@@ -1,9 +1,11 @@
 <script lang="ts">
-	import house from '$lib/images/dochita.jpg?webp&imagetools';
-	import RecentProjects from '$lib/components/ui/recent-projects.svelte';
+	import captionbg from '$lib/images/orange-bg.png?webp&imagetools';
+	import RecentProjects from '$lib/components/ui/project/recent-projects.svelte';
 	import OurTeam from '$lib/components/ui/our-team.svelte';
+	import type { PictureGroup } from 'src/types/picture';
+	import Picture from '$lib/components/ui/picture.svelte';
 	export let data: {
-		mainSlides: MainSlides;
+		mainSlides: PictureGroup;
 		articles: string[];
 		specializations: any[];
 		clientSlides: any[];
@@ -12,14 +14,13 @@
 		teamMembers: any[];
 	};
 	const { mainSlides, specializations, clientSlides, youtubeLinks, projects, teamMembers } = data;
-	console.log(teamMembers);
 </script>
 
 <header class="header">
-	<img class="landingImage" src={house} alt="House" />
-	<div class="caption">
-		<h1 class="h1">Realizăm case în stil neoromânesc</h1>
-		<a href="/" class="button caps" type="button">Vezi proiecte</a>
+	<Picture class="landingImage" sizes={mainSlides.sizes} picture={mainSlides.pictures[0]} />
+	<div class="caption" style={`background-image: url('${captionbg}')`}>
+		<h1 class="h2">Realizăm case <br /> în stil neoromânesc</h1>
+		<a href="/proiecte" class="button caps">Vezi proiecte</a>
 	</div>
 </header>
 <main>
@@ -33,7 +34,7 @@
 </main>
 
 <style>
-	.landingImage {
+	header :global(.landingImage) {
 		display: block;
 		width: 100vw;
 		height: auto;
@@ -52,19 +53,19 @@
 		position: relative;
 	}
 	.caption {
-		max-width: 75rem;
-		height: 100%;
+		width: 45vw;
+		aspect-ratio: 429 / 226;
+		padding: 4rem;
 		position: absolute;
-		display: flex;
-		flex-direction: column;
-		text-align: center;
-		align-items: center;
-		justify-content: center;
+		bottom: 0;
+		left: 0;
 		gap: 4rem;
 		color: var(--text-light-color);
-	}
-	.header img {
-		filter: brightness(80%);
+		background-repeat: no-repeat;
+		background-size: contain;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 	main {
 		display: flex;

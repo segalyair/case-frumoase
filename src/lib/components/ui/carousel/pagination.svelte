@@ -7,7 +7,7 @@
 <div class="pagination glass">
 	{#each new Array(items) as _, i}
 		<button
-			on:click={() => scrollTo(i)}
+			on:click|preventDefault={() => scrollTo(i)}
 			class="pageButton"
 			class:active={currentItem === i}
 			aria-label={`Go to page number ${i + 1}`}
@@ -27,8 +27,8 @@
 
 	.pageButton {
 		position: relative;
-		width: 1.5rem;
-		height: 1.5rem;
+		width: 3rem;
+		height: 3rem;
 		background: rgba(0, 0, 0, 0.3);
 		margin: 0;
 		transition: background-color 200ms;
