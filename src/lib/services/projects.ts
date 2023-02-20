@@ -55,6 +55,24 @@ export async function getProjects(fetch: any) {
 	}
 }
 
+export async function getProjectBySlug(fetch: any, slug: string) {
+	const headers = { authorization: `bearer ${STRAPI_API_KEY}` };
+	try {
+		const response = await fetch(
+			`${STRAPI_API_URL}/api/projects?populate=*&filters[slug][$eq]=${slug}`,
+			{
+				headers
+			}
+		);
+		if (response.ok) {
+			const { data } = await response.json();
+			return data;
+		}
+	} catch {
+		return [];
+	}
+}
+
 export async function getProjectTypes(fetch: any) {
 	const headers = { authorization: `bearer ${STRAPI_API_KEY}` };
 	try {

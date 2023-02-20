@@ -1,12 +1,13 @@
 import type { Picture, Source } from 'src/types/picture';
 import type { Media } from 'src/types/base-strapi';
+import type { CloudinaryTransform } from 'src/types/cloudinary-transform';
 
 type TransformWidthPair = {
-	transform: string;
+	transform: CloudinaryTransform;
 	width: string;
 };
 
-function getCloudinaryLink(imageUrlPart: string, transform: string) {
+function getCloudinaryLink(imageUrlPart: string, transform: CloudinaryTransform) {
 	return `https://res.cloudinary.com/dfjaetvir/image/upload/t_${transform}/${imageUrlPart}`;
 }
 
@@ -19,7 +20,7 @@ function buildSrcset(imageUrlPart: string, transformWidthPairs: TransformWidthPa
 export function buildPictureGroup(
 	sizes: string,
 	images: Media[],
-	transform: string,
+	transform: CloudinaryTransform,
 	types: string[] = ['webp'],
 	widths: string[] = []
 ) {

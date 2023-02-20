@@ -1,4 +1,1 @@
-export type CloudinaryTransform =
-	| 'landing-image'
-	| 'project-thumbnail'
-	| 'watermark';
+export type CloudinaryTransform = 'landing-image' | 'project-thumbnail' | 'watermark' | string;

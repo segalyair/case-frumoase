@@ -12,3 +12,6 @@
 	{/each}
 	<img class={$$props.class} src={picture.fallback} alt={picture.alt} {loading} />
 </picture>
+
+<style>
+</style>
