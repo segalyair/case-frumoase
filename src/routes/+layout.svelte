@@ -67,7 +67,7 @@
 		on:click={scrollToTop}
 		aria-label="Scroll back to the top"
 	>
-		<ChevronDown />
+		<ChevronDown width="20" height="20" viewBox="0 0 12 12" />
 	</button>
 </div>
 
@@ -86,10 +86,10 @@
 		right: 4rem;
 		z-index: 1;
 		background: white;
-		padding: 1rem;
+		padding: 2rem;
 		border-radius: 50%;
 		transform: rotate(180deg);
-		border: 1px solid lightgray;
+		border: 2px solid var(--text-dark-color);
 	}
 	.scroll-to-top.show {
 		display: flex;

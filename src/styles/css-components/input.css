@@ -1,7 +1,4 @@
 input:is([type='email'], [type='text']), textarea {
-    background: rgba(255, 255, 255, 0.3);
-    border: 1px solid #402616;
-    border-radius: 4px;
     padding: 1rem;
 }
 
@@ -18,18 +15,17 @@ input[type='checkbox'] {
     cursor: pointer;
     appearance: none;
     margin: 0;
-    background: rgba(255, 255, 255, 0.3);
-    border: 1px solid #402616;
-    border-radius: 4px;
+    border: 1px solid var(--text-dark-color);
     width: 2.4rem;
     height: 2.4rem;
+    transition: 200ms background-color;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' id='Capa_1' x='0px' y='0px' viewBox='0 0 32 32' style='enable-background:new 0 0 32 32;' xml:space='preserve'%3E%3Cpolygon style='fill:%23ffffff;' points='11.941,28.877 0,16.935 5.695,11.24 11.941,17.486 26.305,3.123 32,8.818 '/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 0;
 }
 
 input[type='checkbox']:checked {
-    border-color: #8d5530;
-    background-color: #8d5530;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' id='Capa_1' x='0px' y='0px' viewBox='0 0 32 32' style='enable-background:new 0 0 32 32;' xml:space='preserve'%3E%3Cpolygon style='fill:%23ffffff;' points='11.941,28.877 0,16.935 5.695,11.24 11.941,17.486 26.305,3.123 32,8.818 '/%3E%3C/svg%3E");
+    background-color: var(--text-dark-color);
     background-size: 1.5rem;
-    background-position: center;
-    background-repeat: no-repeat;
 }

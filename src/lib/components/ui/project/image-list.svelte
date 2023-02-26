@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Search from '$lib/svgs/search.svg?component';
-	import type { PictureGroup } from 'src/types/picture';
+	import type { PictureGroup } from '@customTypes/picture';
 	import { onMount } from 'svelte';
 	import Picture from '../picture.svelte';
 
@@ -49,7 +49,7 @@
 					loading={'lazy'}
 				/>
 			{/if}
-			<Picture sizes={pictureGroup.sizes} {picture} loading={'lazy'} />
+			<Picture class="thumbnail" sizes={pictureGroup.sizes} {picture} loading={'lazy'} />
 			<Search
 				class="searchIcon"
 				width="48"
@@ -62,21 +62,17 @@
 </div>
 
 <style>
-	.list {
-		display: grid;
-		grid-template-columns: min-content min-content;
-		align-items: center;
-		justify-items: center;
-		gap: 2.5rem;
-		width: fit-content;
-		margin: auto;
-	}
-
 	button {
 		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		height: fit-content;
+	}
+
+	button :global(.thumbnail) {
+		max-width: 65rem;
+		height: 36.6rem;
 	}
 
 	button :global(.fullImage) {

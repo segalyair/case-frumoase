@@ -44,3 +44,13 @@ export function buildPictureGroup(
 	}
 	return pictureGroup;
 }
+
+export function buildPicture(
+	image: Media,
+	transform: CloudinaryTransform,
+	types: string[] = ['webp'],
+	widths: string[] = []
+): Picture {
+	const result = buildPictureGroup('100vw', [image], transform, types, widths);
+	return result.pictures[0];
+}

@@ -9,10 +9,10 @@ export const NAV_LINKS = [
     },
     {
         label: 'Blog',
-        href: '/'
+        href: '/blog'
     },
     {
         label: 'Contact',
-        href: '/'
+        href: '/contact'
     },
 ];

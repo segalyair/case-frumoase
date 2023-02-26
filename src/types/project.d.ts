@@ -5,7 +5,7 @@ export interface Project extends BaseStrapi {
 	slug: string;
 	description: string;
 	images: PictureGroup;
-	fullImages?: PictureGroup;
+	fullImages?: PictureGroup; //Created from images
 	project_types: { type: string }[];
 	floors: string;
 	rooms: string;

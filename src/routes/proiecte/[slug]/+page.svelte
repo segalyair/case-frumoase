@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Breadcrumbs from '$lib/components/ui/breadcrumbs.svelte';
 	import ImageList from '$lib/components/ui/project/image-list.svelte';
-	import type { Project } from 'src/types/project';
+	import type { Project } from '@customTypes/project';
 
 	export let data: { project: Project };
 	const { project } = data;

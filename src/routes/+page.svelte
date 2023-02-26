@@ -1,9 +1,12 @@
 <script lang="ts">
 	import captionbg from '$lib/images/orange-bg.png?webp&imagetools';
-	import RecentProjects from '$lib/components/ui/project/recent-projects.svelte';
-	import OurTeam from '$lib/components/ui/our-team.svelte';
+	import RecentProjects from '$lib/components/section/recent-projects.svelte';
+	import OurTeam from '$lib/components/section/our-team.svelte';
 	import type { PictureGroup } from 'src/types/picture';
 	import Picture from '$lib/components/ui/picture.svelte';
+	import RecentBlog from '$lib/components/section/recent-blog.svelte';
+	import type { BlogPost } from '../types/blogpost';
+
 	export let data: {
 		mainSlides: PictureGroup;
 		articles: string[];
@@ -12,8 +15,17 @@
 		youtubeLinks: { title: string; link: string }[];
 		projects: any[];
 		teamMembers: any[];
+		blogPosts: BlogPost[];
 	};
-	const { mainSlides, specializations, clientSlides, youtubeLinks, projects, teamMembers } = data;
+	const {
+		mainSlides,
+		specializations,
+		clientSlides,
+		youtubeLinks,
+		projects,
+		teamMembers,
+		blogPosts
+	} = data;
 </script>
 
 <header class="header">
@@ -31,14 +43,14 @@
 	</article>
 	<RecentProjects {projects} />
 	<OurTeam members={teamMembers} />
+	<RecentBlog posts={blogPosts} />
 </main>
 
 <style>
 	header :global(.landingImage) {
 		display: block;
 		width: 100vw;
-		height: auto;
-		max-height: 100vh;
+		height: 100vh;
 		object-fit: cover;
 	}
 	article {

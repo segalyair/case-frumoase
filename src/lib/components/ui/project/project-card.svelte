@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Project } from 'src/types/project';
+	import type { Project } from '@customTypes/project';
 	import ThumbnailCarousel from '../carousel/thumbnail-carousel.svelte';
 
 	export let project: Project;

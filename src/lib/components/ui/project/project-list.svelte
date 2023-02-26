@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Project } from 'src/types/project';
+	import type { Project } from '@customTypes/project';
 	import ProjectCard from './project-card.svelte';
 
 	export let projects: Project[] = [];

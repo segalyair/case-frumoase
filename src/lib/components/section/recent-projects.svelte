@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Project } from 'src/types/project';
-	import ProjectList from './project-list.svelte';
+	import type { Project } from '@customTypes/project';
+	import ProjectList from '../ui/project/project-list.svelte';
 
 	export let projects: Project[] = [];
 </script>
@@ -22,7 +22,7 @@
 	.projects h2 {
 		padding-bottom: 4rem;
 	}
-	.projects a{
+	.projects a {
 		margin-top: 2rem;
 	}
 </style>

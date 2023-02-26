@@ -15,6 +15,9 @@ const config = {
 		csrf: {
 			checkOrigin: true
 		},
+		alias: {
+			'@customTypes': './src/types'
+		}
 	}
 };
 

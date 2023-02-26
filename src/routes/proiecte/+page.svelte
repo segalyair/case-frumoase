@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Filters from '$lib/components/ui/project/filters.svelte';
 	import ProjectList from '$lib/components/ui/project/project-list.svelte';
-	import type { Project } from 'src/types/project';
+	import type { Project } from '@customTypes/project';
+	
 	export let data: { projects: Project[]; projectTypes: { type: string; label: string }[] };
 	const { projects, projectTypes } = data;
 
@@ -25,6 +26,7 @@
 	main {
 		padding-top: var(--menu-height);
 		margin-top: 6rem;
+		margin-bottom: 4rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
