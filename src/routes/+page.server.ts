@@ -1,9 +1,7 @@
 import type { Load } from '@sveltejs/kit';
-import { STRAPI_API_URL, STRAPI_API_KEY } from '$env/static/private';
-import type { PictureGroup } from 'src/types/picture';
-import { buildPictureGroup } from '$lib/scripts/picture-utils';
+import { DIRECTUS_API_URL, DIRECTUS_TOKEN } from '$env/static/private';
 import { getRecentProjects } from '$lib/services/projects';
-import { getRecentBlogPosts } from '$lib/services/blogPosts';
+// import { getRecentBlogPosts } from '$lib/services/blogPosts';
 
 export const load: Load = async ({ fetch }) => {
 	let result: any = {
@@ -15,23 +13,22 @@ export const load: Load = async ({ fetch }) => {
 		teamMembers: [],
 		blogPosts: []
 	};
-	const headers = { authorization: `bearer ${STRAPI_API_KEY}` };
+	const headers = { authorization: `bearer ${DIRECTUS_TOKEN}` };
 	try {
-		const response = await fetch(`${STRAPI_API_URL}/api/landing-page?populate=*`, {
+		const response = await fetch(`${DIRECTUS_API_URL}/items/homePage`, {
 			headers
 		});
-
 		if (response.ok) {
 			const { data } = await response.json();
-			const mainSlides: PictureGroup = buildPictureGroup(
-				'(max-width: 1280px) 100vw, 1280px',
-				data.mainSlides,
-				'landing-image',
-				['webp', 'avif'],
-				['1920', '1024']
-			);
+			// const mainSlides: PictureGroup = buildPictureGroup(
+			// 	'(max-width: 1280px) 100vw, 1280px',
+			// 	data.mainSlides,
+			// 	'landing-image',
+			// 	['webp', 'avif'],
+			// 	['1920', '1024']
+			// );
 			result = {
-				mainSlides: mainSlides,
+				mainSlides: [],
 				specializations: data.specializations,
 				clientSlides: data.clientSlides,
 				youtubeLinks: data.youtubeLinks,
@@ -39,7 +36,7 @@ export const load: Load = async ({ fetch }) => {
 			};
 		}
 		result.projects = await getRecentProjects(fetch);
-		result.blogPosts = await getRecentBlogPosts(fetch);
+		// result.blogPosts = await getRecentBlogPosts(fetch);
 		return result;
 	} catch {
 		return result;

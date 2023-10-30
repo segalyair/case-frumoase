@@ -1,12 +1,12 @@
 import type { Load } from '@sveltejs/kit';
-import { STRAPI_API_URL, STRAPI_API_KEY } from '$env/static/private';
+import { DIRECTUS_API_URL, DIRECTUS_TOKEN } from '$env/static/private';
 
 type fetch = typeof fetch;
 
 async function getLatestArticles(fetch: fetch) {
 	try {
-		const headers = { authorization: `bearer ${STRAPI_API_KEY}` };
-		const response = await fetch(`${STRAPI_API_URL}/api/articles?populate=*`, {
+		const headers = { authorization: `bearer ${DIRECTUS_TOKEN}` };
+		const response = await fetch(`${DIRECTUS_API_URL}/api/articles?populate=*`, {
 			headers
 		});
 		if (response.ok) {

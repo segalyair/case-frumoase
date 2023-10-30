@@ -1,6 +1,5 @@
 <script lang="ts">
-	import EmblaCarousel from 'embla-carousel';
-	import type { EmblaCarouselType } from 'embla-carousel/components';
+	import EmblaCarousel, { type EmblaCarouselType } from 'embla-carousel';
 	import type { EmblaOptionsType } from 'embla-carousel/components/Options';
 	import Autoplay from 'embla-carousel-autoplay';
 	import type { AutoplayType } from 'embla-carousel-autoplay';
@@ -11,9 +10,7 @@
 
 	export let options: EmblaOptionsType = {
 		loop: true,
-		align: 'center',
-		draggable: false,
-		speed: 6
+		align: 'center'
 	};
 	export let autoplayOptions: Partial<OptionsType> = {
 		delay: 6000

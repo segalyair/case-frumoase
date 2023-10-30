@@ -30,7 +30,7 @@ declare module '*.svg?dataurl' {
 }
 
 declare module '$env/static/private' {
-	export { STRAPI_API_URL, STRAPI_API_KEY };
+	export { DIRECTUS_API_URL, DIRECTUS_TOKEN };
 }
 
 declare module 'sharp' {

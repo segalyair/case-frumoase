@@ -1,19 +1,19 @@
 <script lang="ts">
-	import Picture from '$lib/components/ui/picture.svelte';
-	import ImageList from '$lib/components/ui/project/image-list.svelte';
-	import type { BlogPost } from '@customTypes/blogpost';
+	// import Picture from '$lib/components/ui/picture.svelte';
+	// import ImageList from '$lib/components/ui/project/image-list.svelte';
+	// import type { BlogPost } from '@customTypes/blogpost';
 
-	export let data: BlogPost;
+	// export let data: BlogPost;
 </script>
 
 <header>
-	<Picture class="headerImage" picture={data.headerImage} sizes="100vw" />
-	<h2 class="h2">{data.title}</h2>
+	<!-- <Picture class="headerImage" picture={data.headerImage} sizes="100vw" />
+	<h2 class="h2">{data.title}</h2> -->
 </header>
 <main class="body--vlarge">
-	{@html data.content}
+	<!-- {@html data.content}
 	<h3 class="h3">Poze</h3>
-	<ImageList pictureGroup={data.images} fullImageGroup={data.fullImages} />
+	<ImageList pictureGroup={data.images} fullImageGroup={data.fullImages} /> -->
 </main>
 
 <style>

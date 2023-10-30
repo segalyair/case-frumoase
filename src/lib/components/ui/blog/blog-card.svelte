@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { BlogPost } from '../../../../types/blogpost';
-	import Picture from '../picture.svelte';
+	import PictureBuilder from '../picture-builder.svelte';
 
 	export let post: BlogPost;
 </script>
 
 <a class="post" href={`blog/${post.slug}`}>
-	<Picture class="postImage" picture={post.headerImage} sizes="100vw" />
+	<PictureBuilder class="postImage" picture={post.headerImage} sizes="100vw" />
 	<h4 class="h4">{post.title}</h4>
 	<p class="body--large details">
 		{post.content}

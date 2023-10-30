@@ -1,11 +1,18 @@
-import type { PictureGroup } from './picture';
+import type { Picture } from './picture';
 
-export interface Project extends BaseStrapi {
+type Image = {
+	directus_files_id: {
+		id: string;
+		title: string;
+	}
+}
+
+export type Project = {
 	name: string;
 	slug: string;
-	description: string;
-	images: PictureGroup;
-	fullImages?: PictureGroup; //Created from images
+	content: string;
+	images: Image[];
+	pictures: Picture[]
 	project_types: { type: string }[];
 	floors: string;
 	rooms: string;

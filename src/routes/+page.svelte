@@ -2,13 +2,12 @@
 	import captionbg from '$lib/images/orange-bg.png?webp&imagetools';
 	import RecentProjects from '$lib/components/section/recent-projects.svelte';
 	import OurTeam from '$lib/components/section/our-team.svelte';
-	import type { PictureGroup } from 'src/types/picture';
-	import Picture from '$lib/components/ui/picture.svelte';
+	import PictureBuilder from '$lib/components/ui/picture-builder.svelte';
 	import RecentBlog from '$lib/components/section/recent-blog.svelte';
 	import type { BlogPost } from '../types/blogpost';
 
 	export let data: {
-		mainSlides: PictureGroup;
+		// mainSlides: PictureGroup;
 		articles: string[];
 		specializations: any[];
 		clientSlides: any[];
@@ -18,7 +17,7 @@
 		blogPosts: BlogPost[];
 	};
 	const {
-		mainSlides,
+		// mainSlides,
 		specializations,
 		clientSlides,
 		youtubeLinks,
@@ -29,7 +28,7 @@
 </script>
 
 <header class="header">
-	<Picture class="landingImage" sizes={mainSlides.sizes} picture={mainSlides.pictures[0]} />
+	<!-- <Picture class="landingImage" sizes={mainSlides.sizes} picture={mainSlides.pictures[0]} /> -->
 	<div class="caption" style={`background-image: url('${captionbg}')`}>
 		<h1 class="h2">Realizăm case <br /> în stil neoromânesc</h1>
 		<a href="/proiecte" class="button caps">Vezi proiecte</a>

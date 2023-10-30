@@ -1,11 +1,11 @@
-import { STRAPI_API_URL, STRAPI_API_KEY } from '$env/static/private';
-import { buildPicture, buildPictureGroup } from '$lib/scripts/picture-utils';
+import { DIRECTUS_API_URL, DIRECTUS_TOKEN } from '$env/static/private';
+import { buildPicture, buildPictureGroup } from '$lib/scripts/picture';
 import type { BlogPost } from '@customTypes/dto/blogpost';
 
 export async function getRecentBlogPosts(fetch: any) {
-	const headers = { authorization: `bearer ${STRAPI_API_KEY}` };
+	const headers = { authorization: `bearer ${DIRECTUS_TOKEN}` };
 	try {
-		const response = await fetch(`${STRAPI_API_URL}/api/blog-posts?populate=*`, {
+		const response = await fetch(`${DIRECTUS_API_URL}/api/blog-posts?populate=*`, {
 			headers
 		});
 		if (response.ok) {
@@ -22,10 +22,10 @@ export async function getRecentBlogPosts(fetch: any) {
 }
 
 export async function getBlogPostBySlug(fetch: any, slug: string) {
-	const headers = { authorization: `bearer ${STRAPI_API_KEY}` };
+	const headers = { authorization: `bearer ${DIRECTUS_TOKEN}` };
 	try {
 		const response = await fetch(
-			`${STRAPI_API_URL}/api/blog-posts?populate=*&filters[slug][$eq]=${slug}`,
+			`${DIRECTUS_API_URL}/api/blog-posts?populate=*&filters[slug][$eq]=${slug}`,
 			{
 				headers
 			}

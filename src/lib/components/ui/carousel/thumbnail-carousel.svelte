@@ -1,29 +1,24 @@
 <script lang="ts">
-	import type { PictureGroup } from 'src/types/picture';
-	import Picture from '../picture.svelte';
+	import type { Picture } from '@customTypes/picture';
+	import PictureBuilder from '../picture-builder.svelte';
 	import Carousel from './carousel.svelte';
-	export let pictureGroup: PictureGroup;
+	export let pictures: Picture[];
 </script>
 
 <Carousel
-	active={pictureGroup.pictures.length > 0}
-	slideCount={pictureGroup.pictures.length}
+	active={pictures.length > 0}
+	slideCount={pictures.length}
 	options={{
 		loop: true,
 		align: 'center',
-		draggable: true
+		dragFree: true
 	}}
 	autoplayOptions={{ active: false }}
 >
 	<div slot="slides" class="embla__container">
-		{#each pictureGroup.pictures as picture, i}
+		{#each pictures as picture, i}
 			<div class="embla__slide">
-				<Picture
-					class="embla__slide__img"
-					sizes={pictureGroup.sizes}
-					{picture}
-					loading={i > 0 ? 'lazy' : undefined}
-				/>
+				<PictureBuilder class="embla__slide__img" {picture} loading={i > 0 ? 'lazy' : undefined} />
 			</div>
 		{/each}
 	</div>

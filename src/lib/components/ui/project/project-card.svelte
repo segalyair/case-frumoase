@@ -6,7 +6,7 @@
 </script>
 
 <a class="project" href={`proiecte/${project.slug}`}>
-	<ThumbnailCarousel pictureGroup={project.images} />
+	<ThumbnailCarousel pictures={project.pictures} />
 	<h3 class="h3">{project.name}</h3>
 	<p class="body--large details">
 		<span>{project.floors} niveluri</span>
@@ -26,7 +26,7 @@
 		transition: border 200ms;
 	}
 
-	.project:hover{
+	.project:hover {
 		border-color: var(--primary-color);
 	}
 

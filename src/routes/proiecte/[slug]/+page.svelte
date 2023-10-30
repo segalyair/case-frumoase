@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import Breadcrumbs from '$lib/components/ui/breadcrumbs.svelte';
 	import ImageList from '$lib/components/ui/project/image-list.svelte';
 	import type { Project } from '@customTypes/project';
@@ -13,10 +13,10 @@
 		<Breadcrumbs />
 	</header>
 	<main class="body--vlarge">
-		{project.description || ''}
+		{@html project.content}
 	</main>
 
-	<ImageList pictureGroup={project.images} fullImageGroup={project.fullImages} />
+	<ImageList pictures={project.pictures} />
 </div>
 
 <style>
@@ -39,4 +39,4 @@
 		white-space: pre-wrap;
 		max-width: 92rem;
 	}
-</style>
+</style> -->

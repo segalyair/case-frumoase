@@ -1,11 +1,10 @@
 <script lang="ts">
 	import Search from '$lib/svgs/search.svg?component';
-	import type { PictureGroup } from '@customTypes/picture';
 	import { onMount } from 'svelte';
-	import Picture from '../picture.svelte';
+	import PictureBuilder from '../picture-builder.svelte';
+	import type { Picture } from '@customTypes/picture';
 
-	export let fullImageGroup: PictureGroup = { sizes: '', pictures: [] };
-	export let pictureGroup: PictureGroup;
+	export let pictures: Picture[];
 
 	let scrollPosition: number;
 	let fullscreenImage: HTMLImageElement | null | undefined = undefined;
@@ -39,17 +38,17 @@
 </script>
 
 <div class="list">
-	{#each pictureGroup.pictures as picture, i}
+	{#each pictures as picture, i}
 		<button type="button" on:click={setFullscreenImage}>
-			{#if fullImageGroup.pictures.length > 0}
-				<Picture
+			{#if pictures.length > 0}
+				<PictureBuilder
 					class="fullImage"
-					sizes={fullImageGroup.sizes}
-					picture={fullImageGroup.pictures[i]}
+					sizes={picture.sizes}
+					picture={pictures[i]}
 					loading={'lazy'}
 				/>
 			{/if}
-			<Picture class="thumbnail" sizes={pictureGroup.sizes} {picture} loading={'lazy'} />
+			<PictureBuilder class="thumbnail" sizes={picture.sizes} {picture} loading={'lazy'} />
 			<Search
 				class="searchIcon"
 				width="48"

@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import Filters from '$lib/components/ui/project/filters.svelte';
 	import ProjectList from '$lib/components/ui/project/project-list.svelte';
 	import type { Project } from '@customTypes/project';
@@ -31,4 +31,4 @@
 		flex-direction: column;
 		align-items: center;
 	}
-</style>
+</style> -->
