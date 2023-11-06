@@ -4,7 +4,7 @@
 	import PictureBuilder from '../picture-builder.svelte';
 	import type { Picture } from '@customTypes/picture';
 
-	export let pictures: Picture[];
+	export let pictures: Picture[], fullsizePictures: Picture[] | undefined;
 
 	let scrollPosition: number;
 	let fullscreenImage: HTMLImageElement | null | undefined = undefined;
@@ -39,24 +39,26 @@
 
 <div class="list">
 	{#each pictures as picture, i}
-		<button type="button" on:click={setFullscreenImage}>
-			{#if pictures.length > 0}
+		{#if fullsizePictures}
+			<button type="button" on:click={setFullscreenImage}>
 				<PictureBuilder
 					class="fullImage"
-					sizes={picture.sizes}
-					picture={pictures[i]}
+					sizes={fullsizePictures[i].sizes}
+					picture={fullsizePictures[i]}
 					loading={'lazy'}
 				/>
-			{/if}
+				<PictureBuilder class="thumbnail" sizes={picture.sizes} {picture} loading={'lazy'} />
+				<Search
+					class="searchIcon"
+					width="48"
+					height="48"
+					viewBox="0 0 24 24"
+					color="var(--text-light-color)"
+				/>
+			</button>
+		{:else}
 			<PictureBuilder class="thumbnail" sizes={picture.sizes} {picture} loading={'lazy'} />
-			<Search
-				class="searchIcon"
-				width="48"
-				height="48"
-				viewBox="0 0 24 24"
-				color="var(--text-light-color)"
-			/>
-		</button>
+		{/if}
 	{/each}
 </div>
 
@@ -70,8 +72,7 @@
 	}
 
 	button :global(.thumbnail) {
-		max-width: 65rem;
-		height: 36.6rem;
+		max-width: 50rem;
 	}
 
 	button :global(.fullImage) {

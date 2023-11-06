@@ -12,7 +12,7 @@ export function buildPicture(
 	for (const type of types) {
 		for (const width of widths) {
 			srcsetParts.push(
-				`/image/${id}_${type}_${width} ${width}w`
+				`/image/${id}_${type}_${width}/${title} ${width}w`
 			);
 		}
 		sources.push({ srcset: srcsetParts.join(', '), type: `image/${type}` });
@@ -21,7 +21,7 @@ export function buildPicture(
 	return {
 		sources,
 		sizes,
-		fallback: `/image/${id}`,
+		fallback: `/image/${id}/${title}`,
 		alt: title
 	};
 }

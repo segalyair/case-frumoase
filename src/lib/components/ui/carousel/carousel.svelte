@@ -1,16 +1,17 @@
 <script lang="ts">
 	import EmblaCarousel, { type EmblaCarouselType } from 'embla-carousel';
-	import type { EmblaOptionsType } from 'embla-carousel/components/Options';
 	import Autoplay from 'embla-carousel-autoplay';
-	import type { AutoplayType } from 'embla-carousel-autoplay';
 	import { onMount, onDestroy } from 'svelte';
 	import { createEventDispatcher } from 'svelte';
-	import type { OptionsType } from 'embla-carousel-autoplay/components/Options';
 	import Pagination from './pagination.svelte';
+	import type { EmblaOptionsType } from 'embla-carousel/components/Options';
+	import type { AutoplayType } from 'embla-carousel-autoplay';
+	import type { OptionsType } from 'embla-carousel-autoplay/components/Options';
 
 	export let options: EmblaOptionsType = {
 		loop: true,
-		align: 'center'
+		align: 'center',
+		dragFree: false
 	};
 	export let autoplayOptions: Partial<OptionsType> = {
 		delay: 6000

@@ -5,9 +5,10 @@
 	import PictureBuilder from '$lib/components/ui/picture-builder.svelte';
 	import RecentBlog from '$lib/components/section/recent-blog.svelte';
 	import type { BlogPost } from '../types/blogpost';
+	import type { Picture } from '@customTypes/picture';
 
 	export let data: {
-		// mainSlides: PictureGroup;
+		landingPicture: Picture;
 		articles: string[];
 		specializations: any[];
 		clientSlides: any[];
@@ -17,7 +18,7 @@
 		blogPosts: BlogPost[];
 	};
 	const {
-		// mainSlides,
+		landingPicture,
 		specializations,
 		clientSlides,
 		youtubeLinks,
@@ -28,7 +29,7 @@
 </script>
 
 <header class="header">
-	<!-- <Picture class="landingImage" sizes={mainSlides.sizes} picture={mainSlides.pictures[0]} /> -->
+	<PictureBuilder class="landingImage" picture={landingPicture} />
 	<div class="caption" style={`background-image: url('${captionbg}')`}>
 		<h1 class="h2">Realizăm case <br /> în stil neoromânesc</h1>
 		<a href="/proiecte" class="button caps">Vezi proiecte</a>

@@ -11,7 +11,7 @@
 	options={{
 		loop: true,
 		align: 'center',
-		dragFree: true
+		dragFree: false
 	}}
 	autoplayOptions={{ active: false }}
 >

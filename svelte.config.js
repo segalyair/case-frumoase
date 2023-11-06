@@ -9,7 +9,7 @@ const config = {
 		csp: {
 			mode: "auto",
 			directives: {
-				'script-src': ['self']
+				// 'script-src': ['self', 'https://case-frumoase-comments-kxxoe1hx1-segalyair.vercel.app'],
 			},
 		},
 		csrf: {

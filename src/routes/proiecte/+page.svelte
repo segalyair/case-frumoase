@@ -1,19 +1,19 @@
-<!-- <script lang="ts">
+<script lang="ts">
 	import Filters from '$lib/components/ui/project/filters.svelte';
 	import ProjectList from '$lib/components/ui/project/project-list.svelte';
 	import type { Project } from '@customTypes/project';
-	
+
 	export let data: { projects: Project[]; projectTypes: { type: string; label: string }[] };
 	const { projects, projectTypes } = data;
 
-	let activeFilter = projectTypes[0];
 	//First filter is always reserved for all data
+	const ALL_PROJECTS = projectTypes[0];
+
+	let activeFilter = ALL_PROJECTS;
 	$: getProjects =
-		activeFilter.type != projectTypes[0].type && activeFilter.type
-			? projects.filter((p) =>
-					p.project_types.map(({ type }: { type: string }) => type).includes(activeFilter.type)
-			  )
-			: projects;
+		activeFilter.type === ALL_PROJECTS.type
+			? projects
+			: projects.filter((p) => p.types.find((t) => t.projectTypes_id.type === activeFilter.type));
 </script>
 
 <main>
@@ -31,4 +31,4 @@
 		flex-direction: column;
 		align-items: center;
 	}
-</style> -->
+</style>

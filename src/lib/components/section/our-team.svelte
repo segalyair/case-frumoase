@@ -1,4 +1,6 @@
 <script lang="ts">
+	import PictureBuilder from '../ui/picture-builder.svelte';
+
 	export let members: any[] = [];
 </script>
 
@@ -7,7 +9,7 @@
 	<div class="content">
 		{#each members as member}
 			<span class="member">
-				<img src={member.image.url} alt="Team member" />
+				<PictureBuilder picture={member.picture} alt="Team member" />
 				<p class="body--large">{member.name}</p>
 				<p class="body--large">{member.role}</p>
 			</span>
@@ -24,11 +26,11 @@
 		padding-bottom: 6rem;
 		grid-column: 1/4;
 	}
-    .member{
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
+	.member {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
 	.content {
 		display: grid;
 		grid-template-columns: auto auto auto;

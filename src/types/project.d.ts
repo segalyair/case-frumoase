@@ -12,8 +12,9 @@ export type Project = {
 	slug: string;
 	content: string;
 	images: Image[];
-	pictures: Picture[]
-	project_types: { type: string }[];
+	pictures: Picture[];
+	fullSizePictures?: Picture[];
+	types: { projectTypes_id: { type: string } }[];
 	floors: string;
 	rooms: string;
 	bathrooms: string;
