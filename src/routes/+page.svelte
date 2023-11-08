@@ -6,6 +6,7 @@
 	import RecentBlog from '$lib/components/section/recent-blog.svelte';
 	import type { BlogArticle } from '../types/blogArticle';
 	import type { Picture } from '@customTypes/picture';
+	import { onMount } from 'svelte';
 
 	export let data: {
 		landingPictures: Picture[];
@@ -13,19 +14,25 @@
 		teamMembers: any[];
 		blogPosts: BlogArticle[];
 	};
-	const { landingPictures, projects, teamMembers, blogPosts } = data,
+	const { landingPictures, projects, teamMembers, blogPosts } = data;
+	let randomLandingImageIndex = -1;
+	onMount(() => {
 		randomLandingImageIndex = Math.floor(Math.random() * landingPictures.length);
+	});
 </script>
 
 <header class="header">
 	{#each landingPictures as pic, i}
-		<div style:display={i === randomLandingImageIndex ? 'initial' : 'none'}>
-			<PictureBuilder
-				class="landingImage"
-				picture={pic}
-				loading={i === randomLandingImageIndex ? undefined : 'lazy'}
-			/>
+		<div
+			style:display={randomLandingImageIndex !== -1 && i === randomLandingImageIndex
+				? 'initial'
+				: 'none'}
+		>
+			<PictureBuilder class="landingImage" picture={pic} loading={'lazy'} />
 		</div>
+		{#if randomLandingImageIndex === -1}
+			<div class="landingImage" />
+		{/if}
 	{/each}
 	<div class="caption" style={`background-image: url('${captionbg}')`}>
 		<h1 class="h2">Realizăm case <br /> în stil neoromânesc</h1>
