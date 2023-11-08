@@ -3,6 +3,7 @@ import { getRecentProjects } from '$lib/services/projects';
 import { buildPicture } from '$lib/scripts/picture';
 import { getTeamMembers } from '$lib/services/teamMembers';
 import type { LandingPage } from '@customTypes/landing-page';
+import { getRecentBlogArticles } from '$lib/services/blogArticles';
 
 export const load: Load = async ({ fetch }) => {
 	try {
@@ -10,6 +11,7 @@ export const load: Load = async ({ fetch }) => {
 		const result: LandingPage = {
 			landingPictures: landingImages.map(i => buildPicture(i.id, '(max-width: 800px) 720px, 1280px', i.title, ['avif', 'webp'], ['720', '1280'])),
 			projects: await getRecentProjects(fetch),
+			blogPosts: await getRecentBlogArticles(fetch),
 			teamMembers: await getTeamMembers(fetch)
 		};
 		return result;

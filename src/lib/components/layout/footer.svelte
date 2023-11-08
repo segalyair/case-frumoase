@@ -6,7 +6,9 @@
 </script>
 
 <footer class="footer">
-	<img width="139" src={logo} alt="Logo case frumoase" />
+	<a href="/" aria-label="Spre pagina principala">
+		<img width="139" src={logo} alt="Logo case frumoase" />
+	</a>
 	<nav>
 		{#each NAV_LINKS as link, i}
 			<a class="link" href={link.href}>

@@ -23,7 +23,7 @@
 		object-fit: cover;
 	}
 	header h2 {
-		max-width: 130rem;
+		max-width: 90rem;
 		margin: 4rem auto;
 	}
 	main {
@@ -32,7 +32,7 @@
 		margin: auto;
 		margin-bottom: 4rem;
 	}
-	main h2{
+	main h2 {
 		margin: 4rem 0;
 		text-align: center;
 	}

@@ -10,3 +10,12 @@
 		<BlogCard {article} />
 	{/each}
 </div>
+
+<style>
+	.list {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+		margin: auto;
+	}
+</style>

@@ -47,7 +47,7 @@
 	</article>
 	<RecentProjects {projects} />
 	<OurTeam members={teamMembers} />
-	<RecentBlog posts={blogPosts} />
+	<RecentBlog articles={blogPosts} />
 </main>
 
 <style>
@@ -69,13 +69,13 @@
 		position: relative;
 	}
 	.caption {
-		width: 45vw;
-		aspect-ratio: 429 / 226;
-		padding: 4rem;
+		width: 700px;
+		height: 350px;
+		padding: 0 1rem;
 		position: absolute;
 		bottom: 0;
 		left: 0;
-		gap: 4rem;
+		gap: 2rem;
 		color: var(--text-light-color);
 		background-repeat: no-repeat;
 		background-size: contain;

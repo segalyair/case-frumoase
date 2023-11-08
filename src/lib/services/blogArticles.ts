@@ -5,7 +5,7 @@ import type { BlogArticle } from '@customTypes/blogArticle';
 export async function getRecentBlogArticles(fetch: any) {
 	const headers = { authorization: `bearer ${DIRECTUS_TOKEN}` };
 	try {
-		const response = await fetch(`${DIRECTUS_API_URL}/items/BlogArticles?fields=*.*.*`, {
+		const response = await fetch(`${DIRECTUS_API_URL}/items/BlogArticles?fields=*.*.*&limit=4&sort=-date_created`, {
 			headers
 		});
 		if (response.ok) {

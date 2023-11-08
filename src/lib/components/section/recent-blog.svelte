@@ -2,12 +2,12 @@
 	import BlogList from '../ui/blog/blog-list.svelte';
 	import type { BlogArticle } from '@customTypes/blogArticle';
 
-	export let posts: BlogArticle[] = [];
+	export let articles: BlogArticle[] = [];
 </script>
 
 <article class="pageSection recentBlogs">
 	<h2 class="h2">Case Frumoase de Altadată</h2>
-	<BlogList {posts} />
+	<BlogList {articles} />
 	<a href="/blog" class="button button--dark caps">Vezi mai multe</a>
 </article>
 
