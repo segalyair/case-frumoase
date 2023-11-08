@@ -1,8 +1,8 @@
 <script lang="ts">
 	import BlogList from '../ui/blog/blog-list.svelte';
-	import type { BlogPost } from '@customTypes/blogpost';
+	import type { BlogArticle } from '@customTypes/blogArticle';
 
-	export let posts: BlogPost[] = [];
+	export let posts: BlogArticle[] = [];
 </script>
 
 <article class="pageSection recentBlogs">

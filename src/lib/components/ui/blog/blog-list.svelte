@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type { BlogPost } from '../../../../types/blogpost';
+	import type { BlogArticle } from '../../../../types/blogArticle';
 	import BlogCard from './blog-card.svelte';
 
-	export let posts: BlogPost[] = [];
+	export let articles: BlogArticle[] = [];
 </script>
 
 <div class="list">
-	{#each posts as post}
-		<BlogCard {post} />
+	{#each articles as article}
+		<BlogCard {article} />
 	{/each}
 </div>

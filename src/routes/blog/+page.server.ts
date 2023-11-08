@@ -1,7 +1,7 @@
-// import { getRecentBlogPosts } from '$lib/services/blogPosts';
-// import type { Load } from '@sveltejs/kit';
+import { getRecentBlogArticles } from '$lib/services/blogArticles';
+import type { Load } from '@sveltejs/kit';
 
-// export const load: Load = async ({ fetch }) => {
-// 	const posts = await getRecentBlogPosts(fetch);
-// 	return { posts };
-// };
+export const load: Load = async ({ fetch }) => {
+	const articles = await getRecentBlogArticles(fetch);
+	return { articles };
+};

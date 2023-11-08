@@ -1,5 +1,7 @@
 import { DIRECTUS_API_URL, DIRECTUS_TOKEN } from '$env/static/private';
+import { updateContentImages } from '$lib/scripts/page-content';
 import { buildPicture } from '$lib/scripts/picture';
+import * as cheerio from 'cheerio';
 import type { Project } from '@customTypes/project';
 
 export async function getRecentProjects(fetch: any) {
@@ -46,7 +48,7 @@ export async function getProjects(fetch: any) {
 	}
 }
 
-export async function getProjectBySlug(fetch: any, slug: string): Promise<Project[]> {
+export async function getProjectBySlug(fetch: any, slug: string): Promise<Project | null> {
 	const headers = { authorization: `bearer ${DIRECTUS_TOKEN}` };
 	try {
 		const response = await fetch(
@@ -56,13 +58,18 @@ export async function getProjectBySlug(fetch: any, slug: string): Promise<Projec
 			}
 		);
 		if (response.ok) {
-			const { data } = await response.json();
-			return data as Project[];
+			const { data } = await response.json(),
+				[project] = data as Project[],
+				$ = cheerio.load(project.content, null, false),
+				$img = $('img')
+			updateContentImages($img, DIRECTUS_API_URL);
+			project.content = $.html();
+			return project as Project;
 		}
 	} catch (err) {
 		console.error(err)
 	}
-	return [];
+	return null;
 }
 
 export async function getProjectTypes(fetch: any) {

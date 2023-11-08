@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { Picture } from '@customTypes/picture';
 
-	export let picture: Picture;
-	export let loading: undefined | 'lazy' = undefined;
+	export let picture: Picture,
+		loading: undefined | 'lazy' = undefined;
 </script>
 
 <picture>

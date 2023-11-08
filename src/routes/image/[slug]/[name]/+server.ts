@@ -1,4 +1,3 @@
-// // this will do the trick
 export const prerender = true;
 import { DIRECTUS_API_URL, DIRECTUS_TOKEN } from '$env/static/private';
 

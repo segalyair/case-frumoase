@@ -1,19 +1,16 @@
 <script lang="ts">
-	// import Picture from '$lib/components/ui/picture.svelte';
-	// import ImageList from '$lib/components/ui/project/image-list.svelte';
-	// import type { BlogPost } from '@customTypes/blogpost';
+	import PictureBuilder from '$lib/components/ui/picture-builder.svelte';
+	import type { BlogArticle } from '@customTypes/blogArticle';
 
-	// export let data: BlogPost;
+	export let data: BlogArticle;
 </script>
 
 <header>
-	<!-- <Picture class="headerImage" picture={data.headerImage} sizes="100vw" />
-	<h2 class="h2">{data.title}</h2> -->
+	<PictureBuilder class="headerImage" picture={data.thumbnailPicture} />
+	<h2 class="h2">{data.title}</h2>
 </header>
 <main class="body--vlarge">
-	<!-- {@html data.content}
-	<h3 class="h3">Poze</h3>
-	<ImageList pictureGroup={data.images} fullImageGroup={data.fullImages} /> -->
+	{@html data.content}
 </main>
 
 <style>
@@ -31,11 +28,11 @@
 	}
 	main {
 		white-space: pre-wrap;
-		max-width: 130rem;
+		max-width: 90rem;
 		margin: auto;
 		margin-bottom: 4rem;
 	}
-	main h3{
+	main h2{
 		margin: 4rem 0;
 		text-align: center;
 	}

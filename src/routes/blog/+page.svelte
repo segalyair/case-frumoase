@@ -1,15 +1,14 @@
 <script lang="ts">
-	// import BlogList from '$lib/components/ui/blog/blog-list.svelte';
-	// import type { BlogPost } from '@customTypes/blogpost';
+	import BlogList from '$lib/components/ui/blog/blog-list.svelte';
+	import type { BlogArticle } from '@customTypes/blogArticle';
 
-	// export let data: { posts: BlogPost[] };
-	// const { posts } = data;
+	export let data: { articles: BlogArticle[] };
+	const { articles } = data;
 </script>
 
 <main>
 	<h1 class="h1">Case frumoase de altădată</h1>
-	<a href="/blog/lul">WOW</a>
-	<!-- <BlogList {posts} /> -->
+	<BlogList {articles} />
 </main>
 
 <style>

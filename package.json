@@ -36,6 +36,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"cheerio": "1.0.0-rc.12",
 		"embla-carousel": "8.0.0-rc14",
 		"embla-carousel-autoplay": "8.0.0-rc14",
 		"imagetools-core": "^5.1.0",

@@ -1,20 +1,20 @@
 <script lang="ts">
-	import type { BlogPost } from '../../../../types/blogpost';
+	import type { BlogArticle } from '../../../../types/blogArticle';
 	import PictureBuilder from '../picture-builder.svelte';
 
-	export let post: BlogPost;
+	export let article: BlogArticle;
 </script>
 
-<a class="post" href={`blog/${post.slug}`}>
-	<PictureBuilder class="postImage" picture={post.headerImage} sizes="100vw" />
-	<h4 class="h4">{post.title}</h4>
+<a class="article" href={`blog/${article.slug}`}>
+	<PictureBuilder class="articleImage" picture={article.thumbnailPicture} sizes="100vw" />
+	<h4 class="h4">{article.title}</h4>
 	<p class="body--large details">
-		{post.content}
+		{article.shortDescription}
 	</p>
 </a>
 
 <style>
-	.post {
+	.article {
 		border: 2px solid transparent;
 		border-radius: 4px;
 		width: 65rem;
@@ -23,17 +23,17 @@
 		transition: border 200ms;
 	}
 
-	.post:hover {
+	.article:hover {
 		border-color: var(--primary-color);
 	}
 
-	.post :global(.postImage) {
+	.article :global(.articleImage) {
 		width: 100%;
 		height: 36.5rem;
 		object-fit: cover;
 	}
 
-	.post h4 {
+	.article h4 {
 		margin: 2rem;
 	}
 

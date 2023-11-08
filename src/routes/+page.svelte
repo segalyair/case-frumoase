@@ -4,7 +4,7 @@
 	import OurTeam from '$lib/components/section/our-team.svelte';
 	import PictureBuilder from '$lib/components/ui/picture-builder.svelte';
 	import RecentBlog from '$lib/components/section/recent-blog.svelte';
-	import type { BlogPost } from '../types/blogpost';
+	import type { BlogArticle } from '../types/blogArticle';
 	import type { Picture } from '@customTypes/picture';
 
 	export let data: {
@@ -15,7 +15,7 @@
 		youtubeLinks: { title: string; link: string }[];
 		projects: any[];
 		teamMembers: any[];
-		blogPosts: BlogPost[];
+		blogPosts: BlogArticle[];
 	};
 	const {
 		landingPicture,

@@ -7,23 +7,12 @@
 
 	export let data: { project: Project };
 	const { project } = data;
-	let ready = false;
-
 	onMount(() => {
-		window.CUSDIS.initial();
-		const elements = document.getElementsByTagName('img');
-		for (const element of elements) {
-			if (element.src.includes('localhost:8')) {
-				// Directus appends ? at end of src of image for some wierd reason 
-				const id = element.src.split('/').slice(-1)[0].replaceAll('?', ''),
-					newSrc = `/image/${id}`;
-				element.classList.add('blog-image');
-				element.src = `${newSrc}_webp_720/${element.alt}`;
-				element.srcset = `${newSrc}_webp_300/${element.alt} 300w, ${newSrc}_webp_500/${element.alt} 500w, ${newSrc}_webp_720/${element.alt} 720w`;
-				element.sizes = '(max-width: 500px) 300px, (max-width: 800px) 500px, 720px';
-			}
+		try {
+			window.CUSDIS.initial();
+		} catch {
+			//TO DO: Why is this throwing an error locally?
 		}
-		ready = true;
 	});
 </script>
 
@@ -32,7 +21,7 @@
 		<h1 class="h1">{project.name}</h1>
 		<Breadcrumbs />
 	</header>
-	<main class="body--vlarge" class:show={ready}>
+	<main class="body--vlarge">
 		{@html project.content}
 	</main>
 
@@ -71,12 +60,8 @@
 	}
 
 	main {
-		display: none;
 		white-space: pre-wrap;
 		max-width: 92rem;
-	}
-	main.show {
-		display: initial;
 	}
 
 	.container :global(.blog-image) {
