@@ -11,9 +11,9 @@
 
 	let activeFilter = ALL_PROJECTS;
 	$: getProjects =
-		activeFilter.type === ALL_PROJECTS.type
+		activeFilter?.type === ALL_PROJECTS?.type
 			? projects
-			: projects.filter((p) => p.types.find((t) => t.projectTypes_id.type === activeFilter.type));
+			: projects.filter((p) => p.types.find((t) => t.projectTypes_id?.type === activeFilter?.type));
 </script>
 
 <main>
