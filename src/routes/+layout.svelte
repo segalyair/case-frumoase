@@ -10,8 +10,8 @@
 	export let data;
 	let scrollY: number = 0,
 		mounted = false;
-	const { articles } = data;
-
+	// const { articles } = data;
+	const articles = [];
 	function scrollToTop() {
 		if (mounted && scrollY > 0) {
 			window.scrollTo({ top: 0 });

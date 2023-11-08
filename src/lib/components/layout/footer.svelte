@@ -2,7 +2,7 @@
 	import logo from '$lib/images/logo.png';
 	import { NAV_LINKS } from '$lib/scripts/constants';
 	const currentYear = new Date().getFullYear();
-	export let articles: Article[] = [];
+	export let articles: any[] = [];
 </script>
 
 <footer class="footer">
