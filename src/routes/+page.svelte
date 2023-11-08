@@ -14,11 +14,19 @@
 		blogPosts: BlogArticle[];
 	};
 	const { landingPictures, projects, teamMembers, blogPosts } = data,
-		randomLandingImage = landingPictures[Math.floor(Math.random() * landingPictures.length)];
+		randomLandingImageIndex = Math.floor(Math.random() * landingPictures.length);
 </script>
 
 <header class="header">
-	<PictureBuilder class="landingImage" picture={randomLandingImage} />
+	{#each landingPictures as pic, i}
+		<div style:display={i === randomLandingImageIndex ? 'initial' : 'none'}>
+			<PictureBuilder
+				class="landingImage"
+				picture={pic}
+				loading={i === randomLandingImageIndex ? undefined : 'lazy'}
+			/>
+		</div>
+	{/each}
 	<div class="caption" style={`background-image: url('${captionbg}')`}>
 		<h1 class="h2">Realizăm case <br /> în stil neoromânesc</h1>
 		<a href="/proiecte" class="button caps">Vezi proiecte</a>
