@@ -3,7 +3,7 @@ import type { Project } from "./project";
 import type { TeamMember } from "./team-member"
 
 export type LandingPage = {
-    landingPicture: Picture;
+    landingPictures: Picture[];
     projects?: Project[];
     teamMembers?: TeamMember[];
 }

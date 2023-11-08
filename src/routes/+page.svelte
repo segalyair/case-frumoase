@@ -8,28 +8,17 @@
 	import type { Picture } from '@customTypes/picture';
 
 	export let data: {
-		landingPicture: Picture;
-		articles: string[];
-		specializations: any[];
-		clientSlides: any[];
-		youtubeLinks: { title: string; link: string }[];
+		landingPictures: Picture[];
 		projects: any[];
 		teamMembers: any[];
 		blogPosts: BlogArticle[];
 	};
-	const {
-		landingPicture,
-		specializations,
-		clientSlides,
-		youtubeLinks,
-		projects,
-		teamMembers,
-		blogPosts
-	} = data;
+	const { landingPictures, projects, teamMembers, blogPosts } = data,
+		randomLandingImage = landingPictures[Math.floor(Math.random() * landingPictures.length)];
 </script>
 
 <header class="header">
-	<PictureBuilder class="landingImage" picture={landingPicture} />
+	<PictureBuilder class="landingImage" picture={randomLandingImage} />
 	<div class="caption" style={`background-image: url('${captionbg}')`}>
 		<h1 class="h2">Realizăm case <br /> în stil neoromânesc</h1>
 		<a href="/proiecte" class="button caps">Vezi proiecte</a>
