@@ -29,7 +29,7 @@
 </script>
 
 <header class="header">
-	<!-- <PictureBuilder class="landingImage" picture={landingPicture} /> -->
+	<PictureBuilder class="landingImage" picture={landingPicture} />
 	<div class="caption" style={`background-image: url('${captionbg}')`}>
 		<h1 class="h2">Realizăm case <br /> în stil neoromânesc</h1>
 		<a href="/proiecte" class="button caps">Vezi proiecte</a>
