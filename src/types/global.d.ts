@@ -33,7 +33,3 @@ declare module '$env/static/private' {
 	export { DIRECTUS_API_URL, DIRECTUS_TOKEN };
 }
 
-declare module 'sharp' {
-	const sharp;
-	export default sharp;
-}

@@ -9,8 +9,33 @@
 	let scrollPosition: number;
 	let fullscreenImage: HTMLImageElement | null | undefined = undefined;
 
+	function getFullscreenElement() {
+		return (
+			document.fullscreenElement ??
+			document.webkitFullscreenElement ??
+			document.mozFullScreenElement ??
+			document.msFullscreenElement
+		);
+	}
+
+	async function requestFullscreen(
+		element: HTMLImageElement,
+		options: FullscreenOptions | undefined
+	) {
+		//@ts-ignore
+		if (element.requestFullscreen) {
+			element.requestFullscreen(options);
+		} else if (element.webkitRequestFullscreen) {
+			element.webkitRequestFullscreen(options);
+		} else if (element.mozRequestFullScreen) {
+			element.mozRequestFullScreen(options);
+		} else {
+			element.msRequestFullscreen?.(options);
+		}
+	}
+
 	async function setFullscreenImage(e: MouseEvent) {
-		if (document.fullscreenElement) {
+		if (getFullscreenElement()) {
 			return;
 		}
 		const button = e.target as HTMLButtonElement;
@@ -18,12 +43,12 @@
 		if (fullscreenImage) {
 			scrollPosition = window.scrollY;
 			fullscreenImage.style.display = 'initial';
-			await fullscreenImage.requestFullscreen({ navigationUI: 'show' });
+			await requestFullscreen(fullscreenImage, { navigationUI: 'show' });
 		}
 	}
 
 	function removeFullscreenImage() {
-		if (!document.fullscreenElement && fullscreenImage) {
+		if (!getFullscreenElement() && fullscreenImage) {
 			fullscreenImage.style.display = 'none';
 			window.scrollTo({ top: scrollPosition });
 		}

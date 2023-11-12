@@ -16,9 +16,9 @@ interface Document {
 }
 
 interface HTMLElement {
-    webkitRequestFullscreen: RequestFullscreen;
-    mozRequestFullScreen: RequestFullscreen;
-    msRequestFullscreen: RequestFullscreen;
+    webkitRequestFullscreen?: RequestFullscreen;
+    mozRequestFullScreen?: RequestFullscreen;
+    msRequestFullscreen?: RequestFullscreen;
 }
 
 type ExitFullscreen = typeof document.exitFullscreen

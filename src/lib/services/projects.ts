@@ -16,7 +16,7 @@ export async function getRecentProjects(fetch: any) {
 				return {
 					...p,
 					pictures: p.images.map(({ directus_files_id: { id, title } }) =>
-						buildPicture(id, '(max-width: 800px) 300px, 500px', title, ['avif', 'webp'], ['500', '300'])
+						buildPicture(id, title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], true)
 					)
 				};
 			});
@@ -38,7 +38,7 @@ export async function getProjects(fetch: any) {
 				return {
 					...p,
 					pictures: p.images.map(({ directus_files_id: { id, title } }) =>
-						buildPicture(id, '(max-width: 800px) 300px, 500px', title, ['avif', 'webp'], ['500', '300'])
+						buildPicture(id, title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], true)
 					)
 				};
 			});

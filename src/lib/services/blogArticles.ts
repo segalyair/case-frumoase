@@ -11,7 +11,7 @@ export async function getRecentBlogArticles(fetch: any) {
 		if (response.ok) {
 			const { data: blogArticles } = await response.json() as { data: BlogArticle[] };
 			for (const article of blogArticles) {
-				article.thumbnailPicture = buildPicture(article.thumbnail.id, '(max-width: 800px) 300px, 500px', article.thumbnail.title, ['avif', 'webp'], ['500', '300'])
+				article.thumbnailPicture = buildPicture(article.thumbnail.id, article.thumbnail.title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'])
 			}
 			return blogArticles;
 		}
@@ -32,7 +32,7 @@ export async function getBlogArticleBySlug(fetch: any, slug: string) {
 		if (response.ok) {
 			const { data } = await response.json(),
 				[article] = data as BlogArticle[];
-			article.thumbnailPicture = buildPicture(article.thumbnail.id, '(max-width: 800px) 300px, 500px', article.thumbnail.title, ['avif', 'webp'], ['500', '300'])
+			article.thumbnailPicture = buildPicture(article.thumbnail.id, article.thumbnail.title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'])
 			return article;
 		}
 	} catch {

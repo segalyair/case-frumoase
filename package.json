@@ -19,6 +19,7 @@
 		"@sveltejs/adapter-vercel": "^3.0.3",
 		"@sveltejs/kit": "^1.27.1",
 		"@types/cookie": "^0.5.3",
+		"@types/node": "^20.9.0",
 		"@typescript-eslint/eslint-plugin": "^6.9.0",
 		"@typescript-eslint/parser": "^6.9.0",
 		"eslint": "^8.52.0",
@@ -40,6 +41,7 @@
 		"embla-carousel": "8.0.0-rc14",
 		"embla-carousel-autoplay": "8.0.0-rc14",
 		"imagetools-core": "^5.1.0",
-		"node-fetch": "^3.3.2"
+		"node-fetch": "^3.3.2",
+		"sharp": "^0.32.6"
 	}
 }

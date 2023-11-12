@@ -5,7 +5,7 @@
 	import Seo from '$lib/components/head/seo.svelte';
 	import ChevronDown from '$lib/svgs/chevron-down.svg?component';
 	import '../styles/styles.css';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 
 	export let data;
 	let scrollY: number = 0,
@@ -20,6 +20,11 @@
 
 	onMount(() => {
 		mounted = true;
+		document.addEventListener('contextmenu', (event) => {
+			if ((event.target as HTMLElement)?.tagName === 'IMG') {
+				event.preventDefault();
+			}
+		});
 	});
 </script>
 

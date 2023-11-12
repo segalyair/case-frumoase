@@ -9,7 +9,7 @@ export const load: Load = async ({ fetch }) => {
 	try {
 		const landingImages = await (await fetch('/image/landing')).json() as { id: string, title: string }[];
 		const result: LandingPage = {
-			landingPictures: landingImages.map(i => buildPicture(i.id, '(max-width: 800px) 720px, 1280px', i.title, ['avif', 'webp'], ['720', '1280'])),
+			landingPictures: landingImages.map(i => buildPicture(i.id, i.title, '(max-width: 800px) 720px, 1280px', ['avif', 'webp'], ['720', '1280'])),
 			projects: await getRecentProjects(fetch),
 			blogPosts: await getRecentBlogArticles(fetch),
 			teamMembers: await getTeamMembers(fetch)

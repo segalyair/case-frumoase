@@ -12,7 +12,7 @@ export async function getTeamMembers(fetch: any) {
             const { data } = await response.json() as { data: TeamMember[] };
             return data.map((t) => ({
                 ...t,
-                picture: buildPicture(t.image.id, '300px', t.image.title, ['avif', 'webp'], ['300'])
+                picture: buildPicture(t.image.id, t.image.title, '300px', ['avif', 'webp'], ['300'])
             }));
         }
     } catch {
