@@ -7,7 +7,7 @@
 
 <a class="article" href={`blog/${article.slug}`}>
 	<PictureBuilder class="articleImage" picture={article.thumbnailPicture} sizes="100vw" />
-	<h4 class="h4">{article.title}</h4>
+	<h2 class="h4">{article.title}</h2>
 	<p class="body--large details">
 		{article.shortDescription}
 	</p>
@@ -15,12 +15,15 @@
 
 <style>
 	.article {
+		width: 50rem;
+		position: relative;
+		display: grid;
+		grid-template-rows: auto 6rem auto;
+		gap: 1rem;
+		padding-bottom: 1rem;
 		border: 2px solid transparent;
 		border-radius: 4px;
-		width: 65rem;
-		height: 55rem;
-		position: relative;
-		transition: border 200ms;
+		transition: border-color 200ms;
 	}
 
 	.article:hover {
@@ -33,15 +36,18 @@
 		object-fit: cover;
 	}
 
-	.article h4 {
-		margin: 2rem;
+	.article h2 {
+		padding: 0 2rem;
+		height: 5.76rem;
 	}
 
 	.details {
-		white-space: pre-wrap;
+		text-align: left;
+		padding: 0 2rem;
+		text-overflow: ellipsis;
 		overflow: hidden;
-		text-overflow: clip;
-		margin: 2rem;
-		height: 10rem;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
 	}
 </style>

@@ -1,71 +1,15 @@
 <script lang="ts">
-	import Search from '$lib/svgs/search.svg?component';
-	import { onMount } from 'svelte';
 	import PictureBuilder from '../picture-builder.svelte';
+	import FullscreenButton from '../fullscreen-button.svelte';
 	import type { Picture } from '@customTypes/picture';
 
 	export let pictures: Picture[], fullsizePictures: Picture[] | undefined;
-
-	let scrollPosition: number;
-	let fullscreenImage: HTMLImageElement | null | undefined = undefined;
-
-	function getFullscreenElement() {
-		return (
-			document.fullscreenElement ??
-			document.webkitFullscreenElement ??
-			document.mozFullScreenElement ??
-			document.msFullscreenElement
-		);
-	}
-
-	async function requestFullscreen(
-		element: HTMLImageElement,
-		options: FullscreenOptions | undefined
-	) {
-		//@ts-ignore
-		if (element.requestFullscreen) {
-			element.requestFullscreen(options);
-		} else if (element.webkitRequestFullscreen) {
-			element.webkitRequestFullscreen(options);
-		} else if (element.mozRequestFullScreen) {
-			element.mozRequestFullScreen(options);
-		} else {
-			element.msRequestFullscreen?.(options);
-		}
-	}
-
-	async function setFullscreenImage(e: MouseEvent) {
-		if (getFullscreenElement()) {
-			return;
-		}
-		const button = e.target as HTMLButtonElement;
-		fullscreenImage = button.firstElementChild?.querySelector('img');
-		if (fullscreenImage) {
-			scrollPosition = window.scrollY;
-			fullscreenImage.style.display = 'initial';
-			await requestFullscreen(fullscreenImage, { navigationUI: 'show' });
-		}
-	}
-
-	function removeFullscreenImage() {
-		if (!getFullscreenElement() && fullscreenImage) {
-			fullscreenImage.style.display = 'none';
-			window.scrollTo({ top: scrollPosition });
-		}
-	}
-
-	onMount(() => {
-		addEventListener('fullscreenchange', removeFullscreenImage);
-		return () => {
-			removeEventListener('fullscreenchange', removeFullscreenImage);
-		};
-	});
 </script>
 
 <div class="list">
 	{#each pictures as picture, i}
 		{#if fullsizePictures}
-			<button type="button" on:click={setFullscreenImage}>
+			<FullscreenButton>
 				<PictureBuilder
 					class="fullImage"
 					sizes={fullsizePictures[i].sizes}
@@ -73,14 +17,7 @@
 					loading={'lazy'}
 				/>
 				<PictureBuilder class="thumbnail" sizes={picture.sizes} {picture} loading={'lazy'} />
-				<Search
-					class="searchIcon"
-					width="48"
-					height="48"
-					viewBox="0 0 24 24"
-					color="var(--text-light-color)"
-				/>
-			</button>
+			</FullscreenButton>
 		{:else}
 			<PictureBuilder class="thumbnail" sizes={picture.sizes} {picture} loading={'lazy'} />
 		{/if}
@@ -88,42 +25,4 @@
 </div>
 
 <style>
-	button {
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: fit-content;
-	}
-
-	button :global(.thumbnail) {
-		max-width: 50rem;
-	}
-
-	button :global(.fullImage) {
-		display: none;
-	}
-
-	button :global(.searchIcon) {
-		position: absolute;
-		transition: all 200ms;
-		opacity: 0;
-	}
-
-	button::before {
-		content: '';
-		position: absolute;
-		background-color: var(--background-semi-transparent);
-		width: 100%;
-		height: 100%;
-		transition: all 200ms;
-		opacity: 0;
-	}
-
-	button:hover::before {
-		opacity: 1;
-	}
-	button:hover :global(.searchIcon) {
-		opacity: 1;
-	}
 </style>

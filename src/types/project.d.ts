@@ -14,6 +14,9 @@ export type Project = {
 	images: Image[];
 	pictures: Picture[];
 	fullSizePictures?: Picture[];
+	paginationPictures?: Picture[];
+	thumbnail: { id: string, title: string };
+	thumbnailPicture?: Picture;
 	types: { projectTypes_id: { type: string } }[];
 	floors: string;
 	rooms: string;

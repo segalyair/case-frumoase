@@ -7,7 +7,7 @@
 
 <header>
 	<PictureBuilder class="headerImage" picture={data.thumbnailPicture} />
-	<h2 class="h2">{data.title}</h2>
+	<h1 class="h2">{data.title}</h1>
 </header>
 <main class="body--vlarge">
 	{@html data.content}
@@ -15,14 +15,15 @@
 
 <style>
 	header {
+		margin-top: calc(var(--menu-height) + 6rem);
 		text-align: center;
 	}
 	header :global(.headerImage) {
-		width: 100%;
-		height: 80vh;
+		width: 90rem;
+		height: 45rem;
 		object-fit: cover;
 	}
-	header h2 {
+	header h1 {
 		max-width: 90rem;
 		margin: 4rem auto;
 	}
@@ -31,9 +32,5 @@
 		max-width: 90rem;
 		margin: auto;
 		margin-bottom: 4rem;
-	}
-	main h2 {
-		margin: 4rem 0;
-		text-align: center;
 	}
 </style>

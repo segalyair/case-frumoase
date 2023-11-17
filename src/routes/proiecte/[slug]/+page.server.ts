@@ -1,4 +1,3 @@
-import { buildPicture } from '$lib/scripts/picture';
 import { getProjectBySlug } from '$lib/services/projects';
 import type { Load } from '@sveltejs/kit';
 
@@ -8,14 +7,5 @@ export const load: Load = async ({ fetch, params }) => {
         return { project: {} };
     }
     const project = await getProjectBySlug(fetch, slug);
-    if (project) {
-        project.pictures = project.images.map(i =>
-            buildPicture(i.directus_files_id.id, i.directus_files_id.title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], true)
-        )
-        project.fullSizePictures = project.images.map(i =>
-            buildPicture(i.directus_files_id.id, i.directus_files_id.title, '(max-width: 800px) 720px, 1280px', ['avif', 'webp'], ['1280', '720'], true)
-        )
-    }
-
     return { project };
 };

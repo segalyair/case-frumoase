@@ -17,7 +17,8 @@ export async function getRecentProjects(fetch: any) {
 					...p,
 					pictures: p.images.map(({ directus_files_id: { id, title } }) =>
 						buildPicture(id, title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], true)
-					)
+					),
+					thumbnailPicture: buildPicture(p.thumbnail.id, p.thumbnail.title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], true),
 				};
 			});
 		}
@@ -39,7 +40,8 @@ export async function getProjects(fetch: any) {
 					...p,
 					pictures: p.images.map(({ directus_files_id: { id, title } }) =>
 						buildPicture(id, title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], true)
-					)
+					),
+					thumbnailPicture: buildPicture(p.thumbnail.id, p.thumbnail.title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], true),
 				};
 			});
 		}
@@ -64,6 +66,15 @@ export async function getProjectBySlug(fetch: any, slug: string): Promise<Projec
 				$img = $('img')
 			updateContentImages($img, DIRECTUS_API_URL);
 			project.content = $.html();
+			project.pictures = project.images.map(({ directus_files_id: { id, title } }) =>
+				buildPicture(id, title, '(max-width: 600px) 300px, (max-width: 1100px) 600px, 900px', ['avif', 'webp'], ['900', '600', '300'], true)
+			)
+			project.fullSizePictures = project.images.map(({ directus_files_id: { id, title } }) =>
+				buildPicture(id, title, '(max-width: 800px) 720px, 1280px', ['avif', 'webp'], ['1280', '720'], true)
+			)
+			project.paginationPictures = project.images.map(({ directus_files_id: { id, title } }) =>
+				buildPicture(id, title, '200px', ['avif', 'webp'], ['200'])
+			)
 			return project as Project;
 		}
 	} catch (err) {

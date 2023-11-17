@@ -30,12 +30,12 @@
 <svelte:window bind:scrollY />
 
 <div class="navContainer" class:hidden={hiddenNavbar} class:glass={scrollY > 10}>
-	<div class="preNav">
-		<span class="body body--medium">Arhitectură și Design interior</span>
-		<span class="body">•</span>
-		<span class="body body--medium">Str. dr Mihail Mirinescu, nr 9, București</span>
-		<span class="body">•</span>
-		<span class="body body--medium">adrianpaun@case-frumoase.ro</span>
+	<div class="preNav body">
+		<span>Arhitectură și Design interior</span>
+		•
+		<span>Str. dr Mihail Mirinescu, nr 9, București</span>
+		•
+		<span>adrianpaun@case-frumoase.ro</span>
 	</div>
 	<nav class="nav" class:scroll={scrollY !== 0} class:sidebarOpen>
 		<a href="/" aria-label="Spre pagina principala">

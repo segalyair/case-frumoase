@@ -7,23 +7,26 @@
 	import type { EmblaOptionsType } from 'embla-carousel/components/Options';
 	import type { AutoplayType } from 'embla-carousel-autoplay';
 	import type { OptionsType } from 'embla-carousel-autoplay/components/Options';
-
-	export let options: EmblaOptionsType = {
-		loop: true,
-		align: 'center',
-		dragFree: false
-	};
-	export let autoplayOptions: Partial<OptionsType> = {
-		delay: 6000
-	};
-	export let slideCount: number = 0;
-	export let active: boolean = true;
-	export let currentSlide: number = 0;
+	import type { Picture } from '@customTypes/picture';
 
 	const dispatch = createEventDispatcher();
-	let embla: EmblaCarouselType;
-	let autoplay: AutoplayType;
-	let initialized = false;
+
+	export let options: EmblaOptionsType = {
+			loop: true,
+			align: 'center',
+			dragFree: false
+		},
+		autoplayOptions: Partial<OptionsType> = {
+			delay: 6000
+		},
+		slides: Picture[] = [],
+		thumbnails: Picture[] = [],
+		active: boolean = true,
+		currentSlide: number = 0;
+
+	let embla: EmblaCarouselType,
+		autoplay: AutoplayType,
+		initialized = false;
 
 	function scrollTo(index: number) {
 		autoplay.reset();
@@ -42,11 +45,11 @@
 		embla.on('init', () => {
 			initialized = true;
 			dispatch('init');
-			if (slideCount) {
+			if (slides) {
 				onSelect();
 			}
 		});
-		if (slideCount) {
+		if (slides) {
 			embla.on('scroll', onSelect);
 			embla.on('reInit', onSelect);
 		}
@@ -67,8 +70,7 @@
 			<slot name="slides" />
 		</div>
 		{#if initialized}
-			<slot name="caption" />
-			<Pagination items={slideCount} {scrollTo} currentItem={currentSlide} />
+			<Pagination items={thumbnails} {scrollTo} currentItem={currentSlide} />
 		{/if}
 	</div>
 {/if}
@@ -77,6 +79,12 @@
 	.embla {
 		visibility: hidden;
 		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+		background-color: rgba(0, 0, 0, 0.1);
+		/* slide height + pagination height */
+		height: calc(50.6rem + 14rem);
 	}
 	.embla__viewport {
 		overflow: hidden;

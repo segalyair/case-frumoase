@@ -1,18 +1,24 @@
 :root {
     --font-family-primary: 'BarlowCondensed';
-    --font-h1: 400 9.6rem/1.1 var(--font-family-primary);
-    --font-h2: 400 6.4rem/1.2 var(--font-family-primary);
-    --font-h3: 400 4.8rem/1.2 var(--font-family-primary);
-    --font-h4: 400 2.4rem/1.2 var(--font-family-primary);
-    --font-h5: 400 1.6rem/1.2 var(--font-family-primary);
-    --font-h6: 400 1.2rem/1.2 var(--font-family-primary);
-    --font-body: 600 1.6rem/1.5 var(--font-family-primary);
-    --font-h1-mobile: 400 6.4rem/1.1 var(--font-family-primary);
-    --font-h2-mobile: 400 4.8rem/1.1 var(--font-family-primary);
-    --font-h3-mobile: 400 3.2rem/1.1 var(--font-family-primary);
+    --font-h1: 500 9.6rem/1.1 var(--font-family-primary);
+    --font-h2: 500 6.4rem/1.2 var(--font-family-primary);
+    --font-h3: 500 4.8rem/1.2 var(--font-family-primary);
+    --font-h4: 500 2.4rem/1.2 var(--font-family-primary);
+    --font-h5: 500 1.6rem/1.2 var(--font-family-primary);
+    --font-h6: 500 1.2rem/1.2 var(--font-family-primary);
+    --font-body: 500 1.6rem/1.5 var(--font-family-primary);
+    --font-body-small: 500 1.4rem/1.5 var(--font-family-primary);
+    --font-body-large: 500 2rem/1.5 var(--font-family-primary);
+    --font-body-vlarge: 500 2.4rem/1.5 var(--font-family-primary);
+    --font-body-huge: 500 3rem/1.5 var(--font-family-primary);
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6 {
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
     margin: 0;
 }
 
@@ -44,20 +50,20 @@
     font: var(--font-body);
 }
 
-.body--medium {
-    font-weight: 600;
-}
-
 .body--small {
-    font-size: 1.4rem;
+    font: var(--font-body-small);
 }
 
 .body--large {
-    font-size: 2rem;
+    font: var(--font-body-large);
 }
 
 .body--vlarge {
-    font-size: 2.4rem;
+    font: var(--font-body-vlarge);
+}
+
+.body--huge {
+    font: var(--font-body-huge);
 }
 
 .caps {
@@ -66,31 +72,18 @@
 
 /* var(--phone) */
 @media only screen and (max-width: 1024px) {
-    .h1 {
-        font: var(--font-h1-mobile);
-    }
 
-    .h2 {
-        font: var(--font-h2-mobile);
-    }
-
-    .h3 {
-        font: var(--font-h3-mobile);
-    }
-
-    .body {
-        font-size: 1.4rem;
-    }
-
-    .body--small {
-        font-size: 1.2rem;
-    }
-
-    .body--large {
-        font-size: 1.6rem;
-    }
-
-    .body--vlarge {
-        font-size: 2rem;
+    :root {
+        --font-h1: 500 6.4rem/1.1 var(--font-family-primary);
+        --font-h2: 500 4.8rem/1.2 var(--font-family-primary);
+        --font-h3: 500 3.2rem/1.2 var(--font-family-primary);
+        --font-h4: 500 2.4rem/1.2 var(--font-family-primary);
+        --font-h5: 500 1.6rem/1.2 var(--font-family-primary);
+        --font-h6: 500 1.2rem/1.2 var(--font-family-primary);
+        --font-body: 500 1.6rem/1.5 var(--font-family-primary);
+        --font-body-small: 500 1.2rem/1.5 var(--font-family-primary);
+        --font-body-large: 500 1.6rem/1.5 var(--font-family-primary);
+        --font-body-vlarge: 500 2rem/1.5 var(--font-family-primary);
+        --font-body-huge: 500 2.4rem/1.5 var(--font-family-primary);
     }
 }

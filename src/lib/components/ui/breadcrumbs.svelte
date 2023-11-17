@@ -5,7 +5,7 @@
 	onMount(() => {
 		const pathHierarcy = window.location.pathname.split('/').slice(1);
 		pathHierarcy.forEach((p, i) => {
-			const label = `${p[0].toUpperCase()}${p.slice(1)}`;
+			const label = `${p[0].toUpperCase()}${p.slice(1)}`.replaceAll('-', ' ');
 			paths[i] = {
 				label,
 				url: i === 0 ? p : pathHierarcy.slice(i - 1).join('/'),

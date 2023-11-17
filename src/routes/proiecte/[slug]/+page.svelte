@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import Breadcrumbs from '$lib/components/ui/breadcrumbs.svelte';
-	import ImageList from '$lib/components/ui/project/image-list.svelte';
+	import ThumbnailCarousel from '$lib/components/ui/carousel/thumbnail-carousel.svelte';
+	// import ImageList from '$lib/components/ui/project/image-list.svelte';
 	import type { Project } from '@customTypes/project';
 	import { onMount } from 'svelte';
 
@@ -22,25 +23,33 @@
 		<Breadcrumbs />
 	</header>
 	<main class="body--vlarge">
-		{@html project.content}
+		<ThumbnailCarousel
+			pictures={project.pictures}
+			fullsizePictures={project.fullSizePictures ?? []}
+			thumbnails={project.paginationPictures ?? []}
+		/>
+
+		<div class="content">
+			{@html project.content}
+		</div>
+
+		<div
+			id="cusdis_thread"
+			data-host="https://case-frumoase-comments-kxxoe1hx1-segalyair.vercel.app"
+			data-app-id="58968d46-abc8-44d6-b381-b9e6fa36dfce"
+			data-page-id={project.slug}
+			data-page-url={$page.url}
+			data-page-title={project.name}
+		></div>
+		<script
+			async
+			defer
+			src="https://case-frumoase-comments-kxxoe1hx1-segalyair.vercel.app/js/cusdis.es.js"
+			nonce="lulz"
+		></script>
 	</main>
 
-	<ImageList pictures={project.pictures} fullsizePictures={project.fullSizePictures} />
-
-	<div
-		id="cusdis_thread"
-		data-host="https://case-frumoase-comments-kxxoe1hx1-segalyair.vercel.app"
-		data-app-id="58968d46-abc8-44d6-b381-b9e6fa36dfce"
-		data-page-id={project.slug}
-		data-page-url={$page.url}
-		data-page-title={project.name}
-	></div>
-	<script
-		async
-		defer
-		src="https://case-frumoase-comments-kxxoe1hx1-segalyair.vercel.app/js/cusdis.es.js"
-		nonce="lulz"
-	></script>
+	<!-- <ImageList pictures={project.pictures} fullsizePictures={project.fullSizePictures} /> -->
 </div>
 
 <style>
@@ -61,7 +70,11 @@
 
 	main {
 		white-space: pre-wrap;
-		max-width: 92rem;
+		max-width: 90rem;
+	}
+
+	.content > :global(p) {
+		font: var(--font-body-huge);
 	}
 
 	.container :global(.blog-image) {

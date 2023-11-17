@@ -7,7 +7,7 @@
 	{#each filters as filter}
 		<button
 			type="button"
-			class="body--large"
+			class="body--vlarge"
 			class:active={activeFilter.type === filter.type}
 			on:click={() => (activeFilter = filter)}
 		>

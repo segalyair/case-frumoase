@@ -1,12 +1,14 @@
 <script lang="ts">
 	import type { Project } from '@customTypes/project';
-	import ThumbnailCarousel from '../carousel/thumbnail-carousel.svelte';
+	import PictureBuilder from '../picture-builder.svelte';
 
 	export let project: Project;
 </script>
 
 <a class="project" href={`proiecte/${project.slug}`}>
-	<ThumbnailCarousel pictures={project.pictures} />
+	{#if project.thumbnailPicture}
+		<PictureBuilder picture={project.thumbnailPicture} height="281px" />
+	{/if}
 	<h3 class="h3">{project.name}</h3>
 	<p class="body--large details">
 		<span>{project.floors} niveluri</span>
@@ -19,15 +21,15 @@
 
 <style>
 	.project {
-		border: 2px solid transparent;
+		outline: 2px solid transparent;
 		border-radius: 4px;
-		width: 65rem;
+		width: 50rem;
 		position: relative;
-		transition: border 200ms;
+		transition: outline 200ms;
 	}
 
 	.project:hover {
-		border-color: var(--primary-color);
+		outline-color: var(--primary-color);
 	}
 
 	.project h3 {

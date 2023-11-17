@@ -1,5 +1,26 @@
 <script>
-	let cookiesAccepted = false;
+	import { onMount } from 'svelte';
+
+	let cookiesAccepted = true;
+	const LS_KEY = 'cf-cookies-accepted';
+
+	function setCookiesAccepted() {
+		try {
+			localStorage?.setItem(LS_KEY, 'true');
+		} catch (err) {
+			console.error(err);
+		} finally {
+			cookiesAccepted = true;
+		}
+	}
+	onMount(() => {
+		try {
+			cookiesAccepted = localStorage?.getItem(LS_KEY) === 'true';
+		} catch (err) {
+			cookiesAccepted = false;
+			console.error(err);
+		}
+	});
 </script>
 
 {#if !cookiesAccepted}
@@ -9,7 +30,7 @@
 				Acest site web folosește cookie-uri pentru a îmbunătăți experiența utilizatorului.
 			</span>
 			<div class="actions">
-				<button class="button button--alt" on:click={() => (cookiesAccepted = true)}>
+				<button class="button button--alt" on:click={() => setCookiesAccepted()}>
 					Accept cookie-uri
 				</button>
 				<button class="button button--alt"> Mai multe informații </button>

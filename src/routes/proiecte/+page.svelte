@@ -17,7 +17,7 @@
 </script>
 
 <main>
-	<h1 class="h1">Listă proiecte</h1>
+	<h1 class="h1">Proiecte case frumoase</h1>
 	<Filters bind:activeFilter filters={projectTypes} />
 	<ProjectList projects={getProjects} />
 </main>
@@ -30,5 +30,8 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+	}
+	h1{
+		margin-bottom: 4rem;
 	}
 </style>
