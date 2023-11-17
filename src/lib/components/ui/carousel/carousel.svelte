@@ -69,9 +69,7 @@
 		<div use:emblaCarousel={options} class="embla__viewport">
 			<slot name="slides" />
 		</div>
-		{#if initialized}
-			<Pagination items={thumbnails} {scrollTo} currentItem={currentSlide} />
-		{/if}
+		<Pagination items={thumbnails} {scrollTo} currentItem={currentSlide} />
 	</div>
 {/if}
 

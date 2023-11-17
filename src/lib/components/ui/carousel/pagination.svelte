@@ -46,7 +46,7 @@
 			class:active={currentItem === i}
 			aria-label={`Go to thumbnail number ${i + 1}`}
 		>
-			<PictureBuilder class="thumbnail" picture={item} loading={i > 0 ? 'lazy' : undefined} />
+			<PictureBuilder class="thumbnail" picture={item} />
 		</button>
 	{/each}
 </div>
