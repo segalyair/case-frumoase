@@ -67,7 +67,7 @@ export async function getProjectBySlug(fetch: any, slug: string): Promise<Projec
 			updateContentImages($img, DIRECTUS_API_URL);
 			project.content = $.html();
 			project.pictures = project.images.map(({ directus_files_id: { id, title } }) =>
-				buildPicture(id, title, '(max-width: 600px) 300px, (max-width: 1100px) 600px, 900px', ['avif', 'webp'], ['900', '600', '300'], true)
+				buildPicture(id, title, '(max-width: 600px) 300px, (max-width: 1100px) 500px, 900px', ['avif', 'webp'], ['900', '500', '300'], true)
 			)
 			project.fullSizePictures = project.images.map(({ directus_files_id: { id, title } }) =>
 				buildPicture(id, title, '(max-width: 800px) 720px, 1280px', ['avif', 'webp'], ['1280', '720'], true)
