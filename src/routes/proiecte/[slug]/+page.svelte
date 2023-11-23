@@ -19,7 +19,7 @@
 
 <div class="container">
 	<header>
-		<h1 class="h1">{project.name}</h1>
+		<h1 class="h1" data-pagefind-body>{project.name}</h1>
 		<Breadcrumbs />
 	</header>
 	<main class="body--vlarge">
@@ -29,7 +29,7 @@
 			thumbnails={project.paginationPictures ?? []}
 		/>
 
-		<div class="content">
+		<div class="content" data-pagefind-body>
 			{@html project.content}
 		</div>
 

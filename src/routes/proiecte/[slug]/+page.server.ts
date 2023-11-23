@@ -1,4 +1,4 @@
-import { getProjectBySlug } from '$lib/services/projects';
+import { getProjectBySlug } from '$lib/server/services/projects';
 import type { Load } from '@sveltejs/kit';
 
 export const load: Load = async ({ fetch, params }) => {

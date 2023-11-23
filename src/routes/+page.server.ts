@@ -1,9 +1,9 @@
 import type { Load } from '@sveltejs/kit';
-import { getRecentProjects } from '$lib/services/projects';
+import { getRecentProjects } from '$lib/server/services/projects';
 import { buildPicture } from '$lib/scripts/picture';
-import { getTeamMembers } from '$lib/services/teamMembers';
+import { getTeamMembers } from '$lib/server/services/teamMembers';
 import type { LandingPage } from '@customTypes/landing-page';
-import { getRecentBlogArticles } from '$lib/services/blogArticles';
+import { getRecentBlogArticles } from '$lib/server/services/blogArticles';
 
 export const load: Load = async ({ fetch }) => {
 	try {

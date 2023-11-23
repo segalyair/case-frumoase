@@ -21,6 +21,17 @@
 	});
 </script>
 
+<svelte:head>
+	<script src="/pagefind/pagefind-ui.js"></script>
+	<script>
+		window.addEventListener('DOMContentLoaded', async (event) => {
+			const pagefind = await import("/pagefind/pagefind.js");
+			const search = await pagefind.search("azur");
+			console.log(search)
+		});
+	</script>
+</svelte:head>
+
 <header class="header">
 	{#each landingPictures as pic, i}
 		<div

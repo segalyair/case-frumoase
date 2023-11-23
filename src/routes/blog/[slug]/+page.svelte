@@ -7,9 +7,9 @@
 
 <header>
 	<PictureBuilder class="headerImage" picture={data.thumbnailPicture} />
-	<h1 class="h2">{data.title}</h1>
+	<h1 class="h2" data-pagefind-body>{data.title}</h1>
 </header>
-<main class="body--vlarge">
+<main class="body--vlarge" data-pagefind-body>
 	{@html data.content}
 </main>
 

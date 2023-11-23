@@ -1,5 +1,5 @@
 import type { Load } from '@sveltejs/kit';
-import { getBlogArticleBySlug } from '$lib/services/blogArticles';
+import { getBlogArticleBySlug } from '$lib/server/services/blogArticles';
 
 export const load: Load = async ({ fetch, params }) => {
 	const { slug } = params;

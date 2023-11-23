@@ -3,7 +3,10 @@ import { DIRECTUS_API_URL, DIRECTUS_TOKEN, WATERMARK_LOGO } from '$env/static/pr
 import sharp from "sharp";
 
 export async function GET({ params }) {
-
+    // When building in order to setup pagefind, ignore creating images
+    if (import.meta.env.MODE === "pagefind") {
+        return new Response();
+    }
     const { slug } = params,
         [id, type, width, watermark] = slug.split('_'),
         url = type && width

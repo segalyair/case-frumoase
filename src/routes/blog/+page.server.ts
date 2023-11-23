@@ -1,4 +1,4 @@
-import { getRecentBlogArticles } from '$lib/services/blogArticles';
+import { getRecentBlogArticles } from '$lib/server/services/blogArticles';
 import type { Load } from '@sveltejs/kit';
 
 export const load: Load = async ({ fetch }) => {
