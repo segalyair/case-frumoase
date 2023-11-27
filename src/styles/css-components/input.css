@@ -1,8 +1,8 @@
-input:is([type='email'], [type='text']), textarea {
+input:is([type='email'], [type='text'], [type='search']), textarea {
     padding: 1rem;
 }
 
-input:is([type='email'], [type='text'])::placeholder, textarea::placeholder {
+input:is([type='email'], [type='text'], [type='search'])::placeholder, textarea::placeholder {
     font-family: var(--font-family-primary);
 }
 

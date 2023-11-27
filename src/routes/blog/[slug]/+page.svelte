@@ -9,7 +9,14 @@
 	<PictureBuilder class="headerImage" picture={data.thumbnailPicture} />
 	<h1 class="h2" data-pagefind-body>{data.title}</h1>
 </header>
-<main class="body--vlarge" data-pagefind-body>
+<main
+	class="body--vlarge"
+	id={data.slug}
+	data-pagefind-body
+	data-pagefind-index-attrs="id"
+	data-thumbnail={JSON.stringify(data.thumbnailPicture)}
+	data-pagefind-meta="thumbnail[data-thumbnail]"
+>
 	{@html data.content}
 </main>
 

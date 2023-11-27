@@ -5,7 +5,7 @@
 	import Seo from '$lib/components/head/seo.svelte';
 	import ChevronDown from '$lib/svgs/chevron-down.svg?component';
 	import '../styles/styles.css';
-	import { onDestroy, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
 	export let data;
 	let scrollY: number = 0,
@@ -31,6 +31,10 @@
 <svelte:window bind:scrollY />
 
 <svelte:head>
+	<Seo
+		title="Proiecte Arhitectură Case Frumoase Stil Neoromânesc"
+		description="Case-Frumoase.ro iți oferă proiecte de case în diferite stiluri arhitecturale realizate în funcție de cerințele fiecărui client în parte. Experiență de peste 15 ani."
+	/>
 	<script type="application/ld+json">
 		[
 			{
@@ -53,11 +57,6 @@
 		];
 	</script>
 </svelte:head>
-
-<Seo
-	title="Proiecte Arhitectură Case Frumoase Stil Neoromânesc"
-	description="Case-Frumoase.ro iți oferă proiecte de case în diferite stiluri arhitecturale realizate în funcție de cerințele fiecărui client în parte. Experiență de peste 15 ani."
-/>
 
 <div class="layout-container">
 	<div class="layout">

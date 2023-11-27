@@ -3,8 +3,16 @@
 // and what to do when importing types
 declare namespace App { }
 
+namespace svelteHTML {
+    interface HTMLAttributes<T> {
+        'on:pagefind'?: (event: CustomEvent) => void
+        
+    }
+}
+
 interface Window {
     CUSDIS: { initial: () => void };
+    'setPageFind'?: (value: any) => void
 }
 interface Document {
     webkitFullscreenElement: FullscreenElement;
@@ -24,4 +32,3 @@ interface HTMLElement {
 type ExitFullscreen = typeof document.exitFullscreen
 type RequestFullscreen = typeof document.documentElement.requestFullscreen
 type FullscreenElement = typeof document.fullscreenElement;
-

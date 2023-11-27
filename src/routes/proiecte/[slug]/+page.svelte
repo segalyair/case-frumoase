@@ -11,26 +11,38 @@
 	onMount(() => {
 		try {
 			window.CUSDIS.initial();
-		} catch {
+		} catch (err) {
+			console.error(err);
 			//TO DO: Why is this throwing an error locally?
 		}
 	});
 </script>
 
 <div class="container">
-	<header>
-		<h1 class="h1" data-pagefind-body>{project.name}</h1>
+	<header data-pagefind-body>
+		<h1 class="h1">
+			{project.name}
+		</h1>
 		<Breadcrumbs />
 	</header>
-	<main class="body--vlarge">
+	<main class="body--vlarge" data-pagefind-body>
 		<ThumbnailCarousel
 			pictures={project.pictures}
 			fullsizePictures={project.fullSizePictures ?? []}
 			thumbnails={project.paginationPictures ?? []}
 		/>
 
-		<div class="content" data-pagefind-body>
+		<div
+			class="content"
+			id={project.slug}
+			data-thumbnail={JSON.stringify(project.pictures[0])}
+			data-pagefind-index-attrs="id"
+			data-pagefind-meta="thumbnail[data-thumbnail]"
+		>
 			{@html project.content}
+			<span style="display: none;" data-pagefind-weight="10">
+				{project.types.map((t) => `${t.projectTypes_id.type} ${t.projectTypes_id.label} `)}
+			</span>
 		</div>
 
 		<div
@@ -40,6 +52,7 @@
 			data-page-id={project.slug}
 			data-page-url={$page.url}
 			data-page-title={project.name}
+			data-pagefind-ignore
 		></div>
 		<script
 			async

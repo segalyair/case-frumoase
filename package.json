@@ -5,7 +5,7 @@
 		"dev": "vite dev",
 		"build": "pnpm pagefind && vite build",
 		"preview": "vite preview",
-		"pagefind": "vite build --mode=pagefind && npx -y pagefind --site .vercel/output/static --output-path static/pagefind --force-language ro --verbose",
+		"pagefind": "vite build --mode=pagefind && npx -y pagefind --site .vercel/output/static --output-path static/pagefind --verbose",
 		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
