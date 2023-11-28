@@ -34,6 +34,9 @@
 	onMount(() => {
 		const pageUnsub = page.subscribe(async (p) => await runSearch());
 
+		window.setPageFind = (value) => {
+			pagefind.set(value);
+		};
 		window.dispatchEvent(new CustomEvent('ready'));
 		const pagefindUnsub = pagefind.subscribe(async (pagefind) => {
 			if (!pagefind || pagefindLoaded) return;

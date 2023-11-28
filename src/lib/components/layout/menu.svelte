@@ -7,9 +7,7 @@
 	import Phone from '$lib/svgs/phone.svg?component';
 	import Search from '$lib/svgs/search.svg?component';
 	import logo from '$lib/images/logo.png';
-	import { pagefind } from '$lib/store';
-	import { goto, invalidateAll } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 
 	let sidebarOpen = false,
 		hiddenNavbar = false,
@@ -46,31 +44,10 @@
 				sidebarOpen = false;
 			}
 		};
-		window.setPageFind = (value) => {
-			pagefind.set(value);
-		};
 	});
 </script>
 
 <svelte:window bind:scrollY />
-
-<svelte:head>
-	<script>
-		document.addEventListener(
-			'DOMContentLoaded',
-			() => {
-				const loadPageFind = async () => {
-					const pagefind = await import('/pagefind/pagefind.js');
-					window.setPageFind(pagefind);
-				};
-
-				const button = document.getElementById('search');
-				button.addEventListener('click', loadPageFind, { once: true });
-			},
-			{ once: true }
-		);
-	</script>
-</svelte:head>
 
 <div class="navContainer" class:hidden={hiddenNavbar} class:glass={scrollY > 10}>
 	<div class="preNav body">
@@ -94,21 +71,23 @@
 					{link.label}
 				</a>
 			{/each}
-			<form class="searchContainer" on:submit|preventDefault>
-				{#if searching}
-					<!-- svelte-ignore a11y-autofocus -->
-					<input bind:value={searchValue} autofocus type="search" placeholder="Căutare" />
-				{/if}
-				<button id="search" aria-label="Search" on:click={handleSearch}>
-					<Search
-						class="searchIcon"
-						width="40"
-						height="40"
-						viewBox="0 0 24 24"
-						color="var(--text-light-color)"
-					/>
-				</button>
-			</form>
+			<search>
+				<form class="searchContainer" on:submit|preventDefault>
+					{#if searching}
+						<!-- svelte-ignore a11y-autofocus -->
+						<input bind:value={searchValue} autofocus type="search" placeholder="Căutare" />
+					{/if}
+					<button id="search" aria-label="Search" on:click={handleSearch}>
+						<Search
+							class="searchIcon"
+							width="40"
+							height="40"
+							viewBox="0 0 24 24"
+							color="var(--text-light-color)"
+						/>
+					</button>
+				</form>
+			</search>
 		</span>
 
 		<a class="link contactLink" href="tel:0742081533" aria-label="Call mobile number 0742 081 533">
