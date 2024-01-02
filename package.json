@@ -38,6 +38,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@vercel/blob": "^0.16.1",
 		"cheerio": "1.0.0-rc.12",
 		"embla-carousel": "8.0.0-rc14",
 		"embla-carousel-autoplay": "8.0.0-rc14",

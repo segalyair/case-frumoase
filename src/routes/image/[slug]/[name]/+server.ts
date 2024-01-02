@@ -1,5 +1,6 @@
 export const prerender = true;
-import { DIRECTUS_API_URL, DIRECTUS_TOKEN, WATERMARK_LOGO } from '$env/static/private';
+import { put, list } from '@vercel/blob';
+import { DIRECTUS_API_URL, DIRECTUS_TOKEN, WATERMARK_LOGO, BLOB_READ_WRITE_TOKEN } from '$env/static/private';
 import sharp from "sharp";
 
 export async function GET({ params }) {
@@ -7,12 +8,21 @@ export async function GET({ params }) {
     if (import.meta.env.MODE === "pagefind") {
         return new Response();
     }
-    const { slug } = params,
-        [id, type, width, watermark] = slug.split('_'),
+    const { slug } = params
+
+    // Check cdn
+    const { blobs } = await list({ token: BLOB_READ_WRITE_TOKEN });
+    const blob = blobs.find(b => b.pathname === slug)
+    if (blob) {
+        return await fetch(blob.url);
+    }
+
+    const [id, type, width, watermark] = slug.split('_'),
         url = type && width
             ? `${DIRECTUS_API_URL}/assets/${id}?access_token=${DIRECTUS_TOKEN}&key=${type}-w-${width}`
-            : `${DIRECTUS_API_URL}/assets/${id}?access_token=${DIRECTUS_TOKEN}`,
-        response = await fetch(url)
+            : `${DIRECTUS_API_URL}/assets/${id}?access_token=${DIRECTUS_TOKEN}`;
+
+    let response = await fetch(url)
 
     if (watermark) {
         const logoResponse = await fetch(`${DIRECTUS_API_URL}/assets/${WATERMARK_LOGO}?access_token=${DIRECTUS_TOKEN}`),
@@ -37,7 +47,10 @@ export async function GET({ params }) {
                     { input: overlayImg, gravity: 'southeast' }
                 ])
                 .toBuffer();
-        return new Response(finalImage)
+        response = new Response(finalImage)
     }
+
+    // Add to cdn
+    await put(slug, await response.blob(), { access: "public", token: BLOB_READ_WRITE_TOKEN })
     return response;
 }
