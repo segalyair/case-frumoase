@@ -16,9 +16,9 @@ export async function getRecentProjects(fetch: any) {
 				return {
 					...p,
 					pictures: p.images.map(({ directus_files_id: { id, title } }) =>
-						buildPicture(id, title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], true)
+						buildPicture(id, title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], false)
 					),
-					thumbnailPicture: buildPicture(p.thumbnail.id, p.thumbnail.title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], true),
+					thumbnailPicture: buildPicture(p.thumbnail.id, p.thumbnail.title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], false),
 				};
 			});
 		}
@@ -39,9 +39,9 @@ export async function getProjects(fetch: any) {
 				return {
 					...p,
 					pictures: p.images.map(({ directus_files_id: { id, title } }) =>
-						buildPicture(id, title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], true)
+						buildPicture(id, title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], false)
 					),
-					thumbnailPicture: buildPicture(p.thumbnail.id, p.thumbnail.title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], true),
+					thumbnailPicture: buildPicture(p.thumbnail.id, p.thumbnail.title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], false),
 				};
 			});
 		}

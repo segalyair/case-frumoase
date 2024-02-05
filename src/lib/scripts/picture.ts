@@ -6,14 +6,16 @@ export function buildPicture(
 	sizes: string,
 	types: string[],
 	widths: string[],
-	watermark: boolean = false
+	watermark: boolean = false,
+	path: string = "/images/",
 ): Picture {
 	let sources = [],
 		srcsetParts: string[] = [];
+	const sortedWidths = widths.sort((a, b) => Number(b) - Number(a))
 	for (const type of types) {
-		for (const width of widths) {
+		for (const width of sortedWidths) {
 			srcsetParts.push(
-				`/image/${id}_${type}_${width}${watermark ? "_1" : ""}/${title} ${width}w`
+				`${path}${id}/${width}/${watermark && Number(width) >= 720 ? "w_" : ""}${title}.${type} ${width}w`
 			);
 		}
 		sources.push({ srcset: srcsetParts.join(', '), type: `image/${type}` });
@@ -22,7 +24,7 @@ export function buildPicture(
 	return {
 		sources,
 		sizes,
-		fallback: `/image/${id}/${title}`,
+		fallback: `/images/${id}/${sortedWidths[0]}/${title}.webp`,
 		alt: title
 	};
 }
