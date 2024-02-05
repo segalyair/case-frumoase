@@ -5,7 +5,14 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-    buildAndUploadToVercel();
+    try {
+        buildAndUploadToVercel();
+
+    } catch (err) {
+        res.sendStatus(500);
+    }
+
+    res.sendStatus(200);
 })
 
 app.listen(port, () => {
@@ -13,14 +20,7 @@ app.listen(port, () => {
 })
 
 function buildAndUploadToVercel() {
-    try {
-        execSync('pnpm build',
-            { stdio: 'inherit' }
-        )
-    } catch (err) {
-        res.sendStatus(500);
-    }
-
-    res.sendStatus(200);
+    execSync('pnpm deploy:vercel',
+        { stdio: 'inherit' }
+    )
 }
-
