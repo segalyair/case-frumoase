@@ -89,6 +89,25 @@
 		margin: auto;
 		--row-padding: 6rem;
 	}
+
+	@media only screen and (max-height: 800px), (max-width: 480px) {
+		.caption {
+			width: 100%;
+			height: 130px;
+			gap: 10px;
+			align-items: center;
+			text-align: center;
+			background-image: none !important;
+			background-color: #f68c5d;
+		}
+		.caption a {
+			padding: 8px 30px;
+		}
+		.caption h1 {
+			font: var(--font-h4);
+		}
+	}
+
 	@media only screen and (max-width: 480px) {
 		main {
 			--row-padding: 4rem;

@@ -12,6 +12,9 @@
 </article>
 
 <style>
+	.pageSection {
+		margin: 0 10px;
+	}
 	.projects {
 		display: flex;
 		flex-direction: column;

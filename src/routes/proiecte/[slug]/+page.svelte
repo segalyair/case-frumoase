@@ -86,6 +86,10 @@
 		max-width: 90rem;
 	}
 
+	main > :global(.embla) {
+		height: auto;
+	}
+
 	.content > :global(p) {
 		font: var(--font-body-huge);
 	}
@@ -95,7 +99,20 @@
 		max-width: 720px;
 		margin: auto;
 	}
+
+	header,
+	main,
+	.content,
+	.container :global(#cusdis_thread) {
+		margin: 0 2rem;
+	}
 	@media (max-width: 800px) {
+		header {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+			text-align: center;
+		}
 		.container :global(.blog-image) {
 			max-width: 500px;
 		}

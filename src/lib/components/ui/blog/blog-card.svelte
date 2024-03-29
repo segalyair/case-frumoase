@@ -50,4 +50,32 @@
 		-webkit-line-clamp: 3;
 		-webkit-box-orient: vertical;
 	}
+
+	@media (max-width: 500px) {
+		.article {
+			width: 30rem;
+		}
+		.article :global(img) {
+			max-width: 30rem;
+			height: auto;
+		}
+		.article h2 {
+			font: var(--font-h4) !important;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+		}
+
+		.details {
+			text-align: left;
+			padding: 0 2rem;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
+		}
+	}
 </style>

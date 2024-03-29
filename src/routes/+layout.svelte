@@ -66,7 +66,7 @@
 	<CookiesBanner />
 	<Footer {articles} />
 	<button
-		class="scroll-to-top"
+		class="scrollToTop"
 		class:show={mounted && scrollY > 0}
 		on:click={scrollToTop}
 		aria-label="Scroll back to the top"
@@ -82,7 +82,7 @@
 		margin: auto;
 	}
 
-	.scroll-to-top {
+	.scrollToTop {
 		position: fixed;
 		display: none;
 		align-items: center;
@@ -95,7 +95,15 @@
 		transform: rotate(180deg);
 		border: 2px solid var(--text-dark-color);
 	}
-	.scroll-to-top.show {
+	.scrollToTop.show {
 		display: flex;
+	}
+
+	@media only screen and (max-width: 480px) {
+		.scrollToTop {
+			bottom: 1rem;
+			right: 1rem;
+			padding: 1rem;
+		}
 	}
 </style>

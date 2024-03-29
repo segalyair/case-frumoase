@@ -59,4 +59,22 @@
 		width: 90rem;
 		height: 50.6rem;
 	}
+
+	@media (max-width: 950px) {
+		.embla__container :global(.embla__slide__img) {
+			display: block;
+			object-fit: contain;
+			width: 50rem;
+			height: 28.2rem;
+		}
+	}
+
+	@media (max-width: 500px) {
+		.embla__container :global(.embla__slide__img) {
+			display: block;
+			object-fit: contain;
+			width: 30rem;
+			height: 17rem;
+		}
+	}
 </style>

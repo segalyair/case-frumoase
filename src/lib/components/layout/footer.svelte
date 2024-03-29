@@ -17,7 +17,7 @@
 		{/each}
 	</nav>
 	<p class="body--large">Str. dr Mihail Mirinescu, nr 9, București</p>
-	<p class="body">
+	<p class="body" style="text-align: center">
 		{`Copyright © ${currentYear} Case Frumoase - Toate drepturile rezervate`}
 	</p>
 </footer>

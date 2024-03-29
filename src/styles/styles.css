@@ -16,7 +16,8 @@
 	box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
 	height: 100%;
 	margin: 0;
 }
@@ -112,4 +113,14 @@ details summary {
 
 .pageSection {
 	padding: 6rem 0;
+}
+
+@media only screen and (max-width: 480px) {
+	.pageSection {
+		padding: 6rem 0;
+	}
+
+	.pageSection h2 {
+		font: var(--font-h3) !important;
+	}
 }

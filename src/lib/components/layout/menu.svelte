@@ -1,20 +1,18 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import Sidebar from './sidebar.svelte';
 	import { NAV_LINKS } from '$lib/scripts/constants';
 	import Hamburger from '$lib/svgs/hamburger.svg?component';
-	import Close from '$lib/svgs/close.svg?component';
 	import Phone from '$lib/svgs/phone.svg?component';
-	import Search from '$lib/svgs/search.svg?component';
 	import logo from '$lib/images/logo.png';
-	import { goto } from '$app/navigation';
+	import MobileMenu from './mobileMenu.svelte';
+	import Search from '../ui/search.svelte';
 
 	let sidebarOpen = false,
 		hiddenNavbar = false,
 		oldScrollY: number = 0,
 		scrollY: number,
-		searching = false,
-		searchValue = '';
+		searching: boolean = false,
+		showMobileMenu: boolean = false;
 
 	$: {
 		hiddenNavbar = oldScrollY - scrollY < 0;
@@ -22,19 +20,6 @@
 			searching = false;
 		}
 		oldScrollY = scrollY;
-	}
-
-	function handleSearch() {
-		if (hiddenNavbar) {
-			return;
-		}
-		if (searching) {
-			goto(`/search?q=${searchValue}`);
-			searchValue = '';
-			searching = false;
-			return;
-		}
-		searching = true;
 	}
 
 	onMount(() => {
@@ -52,9 +37,9 @@
 <div class="navContainer" class:hidden={hiddenNavbar} class:glass={scrollY > 10}>
 	<div class="preNav body">
 		<span>Arhitectură și Design interior</span>
-		•
+		<span class="dot">•</span>
 		<span>Str. dr Mihail Mirinescu, nr 9, București</span>
-		•
+		<span class="dot">•</span>
 		<span>adrianpaun@case-frumoase.ro</span>
 	</div>
 	<nav class="nav" class:scroll={scrollY !== 0} class:sidebarOpen class:searching>
@@ -71,30 +56,19 @@
 					{link.label}
 				</a>
 			{/each}
-			<search>
-				<form class="searchContainer" on:submit|preventDefault>
-					{#if searching}
-						<!-- svelte-ignore a11y-autofocus -->
-						<input bind:value={searchValue} autofocus type="search" placeholder="Căutare" />
-					{/if}
-					<button id="search" aria-label="Search" on:click={handleSearch}>
-						<Search
-							class="searchIcon"
-							width="40"
-							height="40"
-							viewBox="0 0 24 24"
-							color="var(--text-light-color)"
-						/>
-					</button>
-				</form>
-			</search>
+			<Search bind:searching />
 		</span>
 
 		<a class="link contactLink" href="tel:0742081533" aria-label="Call mobile number 0742 081 533">
 			<Phone />0742 081 533
 		</a>
+
+		<button class="mobileMenuButton" type="button" on:click={() => (showMobileMenu = true)}>
+			<Hamburger />
+		</button>
 	</nav>
 </div>
+<MobileMenu bind:show={showMobileMenu} />
 
 <style>
 	.navContainer {
@@ -121,12 +95,10 @@
 		width: 100vw;
 		display: grid;
 		justify-items: start;
-		grid-template-columns: 20% 1fr 20%;
+		grid-template-columns: 300px 1fr 300px;
 		border-style: solid;
 		border-color: var(--border-navbar);
 		border-width: 1px 0;
-	}
-	.nav.searching {
 	}
 	.logo {
 		width: 13.9rem;
@@ -151,11 +123,8 @@
 		justify-content: center;
 	}
 
-	.searchContainer {
-		display: inline-flex;
-		align-items: center;
-		gap: 2rem;
-		justify-self: end;
+	.links > :global(search) {
+		margin-left: auto;
 	}
 
 	.contactLink {
@@ -168,15 +137,63 @@
 		height: 100%;
 	}
 
-	@media only screen and (max-width: 1366px) {
+	.mobileMenuButton {
+		display: none;
+		margin: auto;
+	}
+
+	@media only screen and (max-width: 1500px) {
 		.nav {
-			grid-template-columns: 15% 1fr 15%;
+			grid-template-columns: 200px 1fr 200px;
+		}
+		.links {
+			grid-template-columns: repeat(4, 12.5rem) auto;
 		}
 	}
 
-	@media only screen and (max-width: 1024px) {
-		.link:not(.logo) {
+	@media only screen and (max-width: 1200px) {
+		.nav {
+			grid-template-columns: 175px 1fr 175px;
+		}
+		.links {
+			grid-template-columns: repeat(4, 10rem) auto;
+			padding-right: 2rem;
+		}
+	}
+
+	@media only screen and (max-width: 1000px) {
+		.links {
+			grid-template-columns: 1fr;
+		}
+		.link:not(.logo, search) {
 			display: none;
+		}
+		.mobileMenuButton {
+			display: initial;
+		}
+	}
+
+	@media only screen and (max-width: 650px) {
+		.navContainer {
+			height: auto;
+		}
+		.nav {
+			grid-template-columns: 150px 1fr 100px;
+		}
+		.preNav {
+			display: none;
+		}
+		.links {
+			padding-right: 0;
+		}
+	}
+
+	@media only screen and (max-width: 515px) {
+		.links > :global(search) {
+			display: none;
+		}
+		.links {
+			border: none;
 		}
 	}
 </style>

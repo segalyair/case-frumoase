@@ -40,4 +40,14 @@
 		width: fit-content;
 		margin: auto;
 	}
+
+	@media (max-width: 1024px){
+		.content{
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 2rem;
+			padding: 0 2rem;
+		}
+	}
 </style>

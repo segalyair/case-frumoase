@@ -18,4 +18,10 @@
 		gap: 2rem;
 		margin: auto;
 	}
+
+	@media (max-width: 1024px){
+		.list{
+			grid-template-columns: 1fr;
+		}
+	}
 </style>

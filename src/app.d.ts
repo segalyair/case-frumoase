@@ -32,3 +32,8 @@ interface HTMLElement {
 type ExitFullscreen = typeof document.exitFullscreen
 type RequestFullscreen = typeof document.documentElement.requestFullscreen
 type FullscreenElement = typeof document.fullscreenElement;
+
+type OrientationLockType = "any" | "landscape" | "landscape-primary" | "landscape-secondary" | "natural" | "portrait" | "portrait-primary" | "portrait-secondary";
+interface ScreenOrientation extends EventTarget {
+    lock(orientation: OrientationLockType): Promise<void>;
+}

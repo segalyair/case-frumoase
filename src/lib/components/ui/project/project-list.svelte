@@ -18,4 +18,10 @@
 		grid-template-columns: 1fr 1fr;
 		gap: 2rem;
 	}
+
+	@media (max-width: 1024px) {
+		.project-list {
+			grid-template-columns: 1fr;
+		}
+	}
 </style>

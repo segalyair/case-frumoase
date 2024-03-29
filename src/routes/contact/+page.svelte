@@ -89,4 +89,27 @@
 		gap: 1rem;
 		margin-bottom: 2rem;
 	}
+
+	header,
+		main {
+			padding-left: 2rem;
+			padding-right: 2rem;
+		}
+
+	@media (max-width: 500px) {
+		header {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+			text-align: center;
+		}
+
+		.contact {
+			flex-direction: column;
+		}
+
+		form{
+			min-width: unset;
+		}
+	}
 </style>

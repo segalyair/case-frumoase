@@ -20,4 +20,8 @@
 	:root {
 		--content-padding: 2rem;
 	}
+
+	article h2 {
+		font: var(--font-h3) !important;
+	}
 }

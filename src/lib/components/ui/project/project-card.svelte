@@ -47,4 +47,14 @@
 		justify-content: center;
 		gap: 0.5rem;
 	}
+
+	@media (max-width: 500px) {
+		.project {
+			width: 30rem;
+		}
+		.project :global(img) {
+			max-width: 30rem;
+			height: auto;
+		}
+	}
 </style>

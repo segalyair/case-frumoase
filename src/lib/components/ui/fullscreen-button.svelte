@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import Search from '$lib/svgs/search.svg?component';
+	import { browser } from '$app/environment';
 
 	let scrollPosition: number;
 	let fullscreenImage: HTMLImageElement | null | undefined = undefined;
@@ -28,6 +29,7 @@
 		} else {
 			element.msRequestFullscreen?.(options);
 		}
+		window?.screen?.orientation?.lock?.('landscape-primary');
 	}
 
 	async function setFullscreenImage(e: MouseEvent) {
@@ -47,6 +49,7 @@
 		if (!getFullscreenElement() && fullscreenImage) {
 			fullscreenImage.style.display = 'none';
 			window.scrollTo({ top: scrollPosition });
+			window?.screen?.orientation?.unlock?.();
 		}
 	}
 
@@ -55,6 +58,11 @@
 		return () => {
 			removeEventListener('fullscreenchange', removeFullscreenImage);
 		};
+	});
+	onDestroy(() => {
+		if (browser) {
+			window?.screen?.orientation?.unlock?.();
+		}
 	});
 </script>
 
@@ -74,23 +82,34 @@
 		position: absolute;
 		top: 2rem;
 		right: 2rem;
-        padding: 1rem;
+		padding: 1rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		background-color: var(--background-semi-transparent);
 		transition: background-color 200ms;
 	}
-    button:hover{
-        background-color: var(--primary-color);
-    }
+	button:hover {
+		background-color: var(--primary-color);
+	}
 
 	button :global(.fullImage) {
 		display: none;
-        cursor: default;
+		cursor: default;
 	}
 	button :global(.searchIcon) {
-        pointer-events: none;
+		pointer-events: none;
 		user-select: none;
+	}
+
+	@media (max-width: 500px) {
+		button {
+			top: 1rem;
+			right: 1rem;
+		}
+		button > :global(svg) {
+			width: 24px;
+			height: 24px;
+		}
 	}
 </style>

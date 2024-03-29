@@ -7,21 +7,19 @@
 
 	let pagefindLoaded = false,
 		results: any[] = [],
-		loading: boolean = true;
+		loading: boolean = true,
+		searchValue: string | null;
 
 	async function runSearch() {
+		searchValue = $page.url.searchParams.get('q');
 		loading = true;
-		if (!pagefindLoaded) {
-			return;
-		}
-		const searchValue = $page.url.searchParams.get('q');
-		if (!searchValue) {
+		if (!pagefindLoaded || !searchValue) {
 			loading = false;
 			return;
 		}
 
 		const rawResults = (await $pagefind.search(searchValue)).results;
-		results = await Promise.all(rawResults.slice(0, 5).map((r) => r.data()));
+		results = await Promise.all(rawResults.slice(0, 5).map((r: any) => r.data()));
 		for (const result of results) {
 			if (typeof result.meta.thumbnail === 'string') {
 				const parseThumbnail = new DOMParser().parseFromString(result.meta.thumbnail, 'text/html');
@@ -84,8 +82,7 @@
 		{/each}
 	{:else}
 		<div class="noContent">
-			<h1 class="h3">Nu am putut găsi vreun rezultat la căutarea dumneavoastră,</h1>
-			<h2 class="h4">Vă rugăm să încercați din nou.</h2>
+			<h1 class="h3">Nu am putut găsi vreun rezultat la căutarea dumneavoastră: {searchValue}</h1>
 		</div>
 	{/if}
 </div>
