@@ -1,19 +1,23 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import RelatedContent from '$lib/components/section/related-content.svelte';
 	import Breadcrumbs from '$lib/components/ui/breadcrumbs.svelte';
 	import ThumbnailCarousel from '$lib/components/ui/carousel/thumbnail-carousel.svelte';
-	// import ImageList from '$lib/components/ui/project/image-list.svelte';
+	import type { BlogArticle } from '@customTypes/blogArticle';
 	import type { Project } from '@customTypes/project';
 	import { onMount } from 'svelte';
 
-	export let data: { project: Project };
-	const { project } = data;
+	export let data: {
+		project: Project;
+		relatedContent: { projects: Project[]; blogArticles: BlogArticle[] };
+	};
+	const { project, relatedContent } = data;
+	
 	onMount(() => {
 		try {
 			window.CUSDIS.initial();
 		} catch (err) {
 			console.error(err);
-			//TO DO: Why is this throwing an error locally?
 		}
 	});
 </script>
@@ -45,6 +49,11 @@
 			</span>
 		</div>
 
+		<RelatedContent
+			projects={relatedContent.projects}
+			blogArticles={relatedContent.blogArticles}
+		/>
+
 		<div
 			id="cusdis_thread"
 			data-host="https://case-frumoase-comments-kxxoe1hx1-segalyair.vercel.app"
@@ -61,8 +70,6 @@
 			nonce="lulz"
 		></script>
 	</main>
-
-	<!-- <ImageList pictures={project.pictures} fullsizePictures={project.fullSizePictures} /> -->
 </div>
 
 <style>
@@ -83,13 +90,17 @@
 
 	main {
 		white-space: pre-wrap;
-		max-width: 90rem;
+		max-width: 106rem;
 	}
 
 	main > :global(.embla) {
 		height: auto;
 	}
 
+	.content{
+		max-width: 90rem;
+		margin: auto;
+	}
 	.content > :global(p) {
 		font: var(--font-body-huge);
 	}
@@ -106,6 +117,7 @@
 	.container :global(#cusdis_thread) {
 		margin: 0 2rem;
 	}
+
 	@media (max-width: 800px) {
 		header {
 			display: flex;

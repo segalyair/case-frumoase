@@ -97,3 +97,29 @@ export async function getProjectTypes(fetch: any) {
 		return [];
 	}
 }
+
+export async function getRelatedContentProjects(fetch: any, projectTypes: number[], projectId: number) {
+	const headers = { authorization: `bearer ${DIRECTUS_TOKEN}` };
+	try {
+		const filter = `filter={"types":{"projectTypes_id":{"_in":${JSON.stringify(projectTypes)}}},"id":{"_neq":${projectId}}}`,
+			response = await fetch(
+				`${DIRECTUS_API_URL}/items/projects?fields=*.*.*&${filter}&limit=4&sort=-date_created`,
+				{ headers }
+			);
+		if (response.ok) {
+			const { data } = await response.json() as { data: Project[] };
+			return data.map(p => {
+				return {
+					...p,
+					pictures: p.images.map(({ directus_files_id: { id, title } }) =>
+						buildPicture(id, title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], false)
+					),
+					thumbnailPicture: buildPicture(p.thumbnail.id, p.thumbnail.title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'], false),
+				};
+			});
+		}
+	} catch (err) {
+		console.error(err)
+		return [];
+	}
+}

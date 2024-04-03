@@ -12,11 +12,12 @@
 	<h3 class="h3">{project.name}</h3>
 	<p class="body--large details">
 		<span>{project.floors} niveluri</span>
-		-
+		<span>-</span>
 		<span>{project.rooms} camere</span>
-		-
+		<span>-</span>
 		<span>{project.bathrooms} băi</span>
 	</p>
+	<button class="button button--dark button--small">VEZI PROIECT</button>
 </a>
 
 <style>

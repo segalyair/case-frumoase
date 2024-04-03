@@ -22,13 +22,11 @@
 
 <style>
 	header {
-		margin-top: calc(var(--menu-height) + 6rem);
+		margin-top: calc(var(--menu-height) + 3rem);
 		text-align: center;
 	}
 	header :global(.headerImage) {
-		width: 90rem;
-		height: 45rem;
-		object-fit: cover;
+		min-height: 70vh;
 	}
 	header h1 {
 		max-width: 90rem;
@@ -36,8 +34,14 @@
 	}
 	main {
 		white-space: pre-wrap;
-		max-width: 90rem;
-		margin: auto;
-		margin-bottom: 4rem;
+		max-width: 80rem;
+		margin: 0 auto 4rem;
+	}
+
+	@media only screen and (max-width: 900px) {
+		header :global(.headerImage) {
+			width: 100vw;
+			height: 50vh;
+		}
 	}
 </style>

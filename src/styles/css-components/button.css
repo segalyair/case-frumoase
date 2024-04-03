@@ -41,6 +41,10 @@
     font: 1.6rem/1.5 var(--font-family-primary);
 }
 
+.button--small {
+    padding: 1rem;
+}
+
 @media only screen and (max-width: 480px) {
     .button {
         font-size: 1.4rem;

@@ -7,4 +7,5 @@ export interface BlogArticle {
 	content: string;
 	thumbnail: { id: string, title: string };
 	thumbnailPicture: Picture;
+	relatedProjects: ({ item: { id: number } })[];
 }

@@ -8,6 +8,7 @@ type Image = {
 }
 
 export type Project = {
+	id: number;
 	name: string;
 	slug: string;
 	content: string;
@@ -17,7 +18,7 @@ export type Project = {
 	paginationPictures?: Picture[];
 	thumbnail: { id: string, title: string };
 	thumbnailPicture?: Picture;
-	types: { projectTypes_id: { type: string, label: string } }[];
+	types: { projectTypes_id: { id: number, type: string, label: string } }[];
 	floors: string;
 	rooms: string;
 	bathrooms: string;

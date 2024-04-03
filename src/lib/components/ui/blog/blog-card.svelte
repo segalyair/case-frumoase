@@ -11,6 +11,7 @@
 	<p class="body--large details">
 		{article.shortDescription}
 	</p>
+	<button class="button button--dark button--small">CITEȘTE MAI MULT</button>
 </a>
 
 <style>
@@ -49,6 +50,9 @@
 		display: -webkit-box;
 		-webkit-line-clamp: 3;
 		-webkit-box-orient: vertical;
+	}
+	.button {
+		margin: auto;
 	}
 
 	@media (max-width: 500px) {

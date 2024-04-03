@@ -105,12 +105,12 @@
 		align-items: center;
 		justify-content: center;
 		gap: 2rem;
-		grid-column: 1/3;
+		grid-column: span 2;
 	}
 	h1 {
 		text-align: center;
 		margin-bottom: 2rem;
-		grid-column: 1/3;
+		grid-column: span 2;
 	}
 	h2 {
 		margin: 0 2rem;
@@ -142,5 +142,24 @@
 		text-align: center;
 		background-color: var(--primary-color);
 		padding: 1rem;
+	}
+
+	@media only screen and (max-width: 1100px) {
+		.container {
+			grid-template-columns: 1fr;
+			padding: 0;
+		}
+		h1 {
+			grid-column: 1;
+		}
+	}
+	@media only screen and (max-width: 500px) {
+		.link{
+			width: 30rem;
+		}
+		/* .link :global(.resultImage) {
+			width: 30rem;
+			height: auto;
+		} */
 	}
 </style>

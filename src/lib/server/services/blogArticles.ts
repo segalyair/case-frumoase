@@ -20,6 +20,24 @@ export async function getRecentBlogArticles(fetch: any) {
 	}
 }
 
+export async function getBlogArticles(fetch: any) {
+	const headers = { authorization: `bearer ${DIRECTUS_TOKEN}` };
+	try {
+		const response = await fetch(`${DIRECTUS_API_URL}/items/BlogArticles?fields=*.*.*&sort=-date_created`, {
+			headers
+		});
+		if (response.ok) {
+			const { data: blogArticles } = await response.json() as { data: BlogArticle[] };
+			for (const article of blogArticles) {
+				article.thumbnailPicture = buildPicture(article.thumbnail.id, article.thumbnail.title, '(max-width: 800px) 300px, 500px', ['avif', 'webp'], ['500', '300'])
+			}
+			return blogArticles;
+		}
+	} catch {
+		return [];
+	}
+}
+
 export async function getBlogArticleBySlug(fetch: any, slug: string) {
 	const headers = { authorization: `bearer ${DIRECTUS_TOKEN}` };
 	try {
