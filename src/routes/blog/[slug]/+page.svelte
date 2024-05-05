@@ -22,15 +22,15 @@
 
 <style>
 	header {
-		margin-top: calc(var(--menu-height) + 3rem);
+		margin: calc(var(--menu-height) + 3rem) auto auto;
 		text-align: center;
+	}
+	header h1 {
+		max-width: 80rem;
+		margin: 2rem auto 4rem;
 	}
 	header :global(.headerImage) {
 		min-height: 70vh;
-	}
-	header h1 {
-		max-width: 90rem;
-		margin: 4rem auto;
 	}
 	main {
 		white-space: pre-wrap;
@@ -38,10 +38,20 @@
 		margin: 0 auto 4rem;
 	}
 
-	@media only screen and (max-width: 900px) {
+	@media only screen and (max-width: 1000px) {
+		header {
+			margin-top: calc(var(--menu-height) + 2rem);
+		}
+		header,
+		main {
+			margin-left: 2rem;
+			margin-right: 2rem;
+		}
+
 		header :global(.headerImage) {
-			width: 100vw;
-			height: 50vh;
+			width: 100%;
+			min-height: 50vh;
+			object-fit: cover;
 		}
 	}
 </style>

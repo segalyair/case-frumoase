@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import Close from '$lib/svgs/close.svg?component';
+	import Phone from '$lib/svgs/phone.svg?component';
 	import { NAV_LINKS } from '$lib/scripts/constants';
 	import { onMount } from 'svelte';
 	import Search from '../ui/search.svelte';
@@ -24,6 +25,9 @@
 
 {#if show}
 	<div class="overlay" transition:fade>
+		<a class="link contactLink" href="tel:0742081533" aria-label="Call mobile number 0742 081 533">
+			<Phone />0742 081 533
+		</a>
 		<button type="button" on:click={() => (show = false)}>
 			<Close />
 		</button>
@@ -42,18 +46,19 @@
 		height: 100%;
 		top: 0;
 		left: 0;
+		padding-top: 40px;
+		padding-right: 40px;
 		display: grid;
 		grid-template-rows: repeat(6, 100px);
 		align-items: center;
 		justify-items: end;
 		text-align: right;
-		padding-top: 40px;
-		padding-right: 40px;
 		background: var(--background-color);
 	}
 	.overlay :global(svg) {
 		color: var(--text-dark-color);
 	}
+
 	a {
 		height: 100%;
 		width: 100px;
@@ -63,6 +68,19 @@
 		display: none;
 	}
 
+	.contactLink {
+		height: 100px;
+		color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		background: var(--primary-color);
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+	}
+
 	@media only screen and (max-height: 600px) {
 		.overlay {
 			grid-template-columns: min-content min-content;
@@ -70,7 +88,7 @@
 			column-gap: 8rem;
 			row-gap: 2rem;
 		}
-		.overlay > button {
+		.overlay .topMenu button {
 			grid-column: span 2;
 		}
 		.overlay :global(search) {

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ProjectList from '$lib/components/ui/project/project-list.svelte';
-	import BlogList from '$lib/components/ui/blog/blog-list.svelte';
+	import BlogCard from '../ui/blog/blog-card.svelte';
+	import ProjectCard from '../ui/project/project-card.svelte';
 	import type { BlogArticle } from '@customTypes/blogArticle';
 	import type { Project } from '@customTypes/project';
 
@@ -9,8 +9,14 @@
 
 <section>
 	<h2>V-ar putea interesa</h2>
-	<BlogList articles={blogArticles} />
-	<ProjectList projects={projects.slice(0, Math.max(0, 4 - blogArticles.length))} />
+	<div class="list">
+		{#each blogArticles as article}
+			<BlogCard {article} />
+		{/each}
+		{#each projects.slice(0, Math.max(0, 4 - blogArticles.length)) as project, i}
+			<ProjectCard {project} />
+		{/each}
+	</div>
 </section>
 
 <style>
@@ -19,5 +25,19 @@
 		flex-direction: column;
 		align-items: center;
 		margin: auto;
+		row-gap: 2 rem;
+	}
+
+	.list {
+		text-align: center;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+	}
+
+	@media (max-width: 1024px) {
+		.list {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>

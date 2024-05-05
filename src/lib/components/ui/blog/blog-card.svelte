@@ -5,7 +5,7 @@
 	export let article: BlogArticle;
 </script>
 
-<a class="article" href={`blog/${article.slug}`}>
+<a data-sveltekit-reload class="article" href={`/blog/${article.slug}`}>
 	<PictureBuilder class="articleImage" picture={article.thumbnailPicture} sizes="100vw" />
 	<h2 class="h4">{article.title}</h2>
 	<p class="body--large details">

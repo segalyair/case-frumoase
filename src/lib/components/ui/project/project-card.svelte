@@ -5,7 +5,7 @@
 	export let project: Project;
 </script>
 
-<a class="project" href={`proiecte/${project.slug}`}>
+<a data-sveltekit-reload class="project" href={`/proiecte/${project.slug}`}>
 	{#if project.thumbnailPicture}
 		<PictureBuilder picture={project.thumbnailPicture} height="281px" />
 	{/if}
@@ -39,14 +39,18 @@
 
 	.details {
 		width: 30rem;
-		margin: auto auto 2rem auto;
 		padding: 2rem 0;
+		margin: auto auto 2rem;
 		border: 0 dashed var(--background-semi-transparent);
 		border-width: 1px 0;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 0.5rem;
+	}
+
+	.button {
+		margin: auto auto 2rem;
 	}
 
 	@media (max-width: 500px) {

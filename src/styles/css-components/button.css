@@ -42,7 +42,7 @@
 }
 
 .button--small {
-    padding: 1rem;
+    padding: 1rem 3rem;
 }
 
 @media only screen and (max-width: 480px) {
