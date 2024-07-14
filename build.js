@@ -1,18 +1,23 @@
 // import { DIRECTUS_API_URL, DIRECTUS_TOKEN, WATERMARK_LOGO, BLOB_READ_WRITE_TOKEN } from '$env/static/private';
-import fs from 'fs';
-import { readdir } from 'fs/promises';
 import sharp from 'sharp';
+import { createClient } from '@supabase/supabase-js'
 
-const types = ["avif", "webp"]
-const widths = [1280, 900, 720, 500, 300, 200, 100];
-
-const DIRECTUS_API_URL = "http://localhost:8055/",
+const types = ["avif", "webp"],
+    DIRECTUS_API_URL = "http://localhost:8055/",
     WATERMARK_ID = "543c60f6-750a-48b6-85ba-51a3d63cd9ed",
-    ACCESS_TOKEN = "4aDlrOgJuWiQXrP6r78fIXhuZsoLSalO",
-    PROJECTS_FOLDER_ID = "ad7d2c61-03b7-4ae1-9dfa-269456aac2b9";
+    ACCESS_TOKEN = "wLtSCVwQFpfZROKIerQUr4FOZZJ-c18a",
+    PROJECTS_FOLDER_ID = "ad7d2c61-03b7-4ae1-9dfa-269456aac2b9",
+    TEAMS_FOLDER_ID = "97ed6f21-96b3-48c0-8eda-6de64e575771",
+    BLOG_FOLDER_ID = "b2f2edce-158d-41af-96ef-a85b78be1edf"
+
+const supabase = createClient('https://ygnhsnlbzrqvwamckttc.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlnbmhzbmxienJxdndhbWNrdHRjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyMDI4NDg2MSwiZXhwIjoyMDM1ODYwODYxfQ.zNZdrbjI5i7t0BqKPD-Aw_UxW1VBMLW60kXmuGlei44')
+const patchHeaders = new Headers();
+patchHeaders.append("Content-Type", "application/json");
+
+const skipCheckingWidths = true;
 
 let logoArrayBuffer;
-async function addWatermark(imageArrayBuffer) {
+async function addWatermark(imageArrayBuffer, filename) {
     if (!logoArrayBuffer) {
         const logoResponse = await fetch(`${DIRECTUS_API_URL}assets/${WATERMARK_ID}?access_token=${ACCESS_TOKEN}`);
         logoArrayBuffer = await logoResponse.arrayBuffer()
@@ -36,42 +41,126 @@ async function addWatermark(imageArrayBuffer) {
                 { input: overlayImg, gravity: 'southeast' }
             ])
             .toBuffer();
-    return finalImage;
+    supabase
+        .storage
+        .from('images')
+        .upload(filename, finalImage, {
+            cacheControl: '3600',
+            upsert: false
+        })
 }
 
-async function getImages() {
-    !fs.existsSync("./static/images/") && fs.mkdirSync("./static/images/", { recursive: true })
+function sleep(ms = 1000) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-    const directories = (await readdir('./static/images', { withFileTypes: true }))
-        .filter(dirent => dirent.isDirectory())
-        .map(dir => dir.name);
+async function createAndUploadImage(file, type, width, limiter, includeWatermark) {
+    const dir = `${file.id}/${width}/`,
+        response = await fetch(`${DIRECTUS_API_URL}assets/${file.id}?access_token=${ACCESS_TOKEN}&key=${type}-w-${width}`, {})
 
-    const folderResponse = await fetch(`${DIRECTUS_API_URL}folders?access_token=${ACCESS_TOKEN}`),
-        { data: folders } = await folderResponse.json(),
-        projectFolders = folders.filter(f => f.parent === PROJECTS_FOLDER_ID).map(f => f.id),
-        filesResponse = await fetch(`${DIRECTUS_API_URL}files?access_token=${ACCESS_TOKEN}`),
+    if (limiter % 6 === 0) {
+        await sleep(400);
+    }
+    response.arrayBuffer().then(async (arrayBuffer) => {
+        supabase
+            .storage
+            .from('images')
+            .upload(`${dir}${file.title}.${type}`, arrayBuffer, {
+                cacheControl: '3600',
+                upsert: false
+            })
+        if (width >= 720 && includeWatermark) {
+            addWatermark(arrayBuffer, `${dir}w_${file.title}.${type}`);
+        }
+    });
+    return limiter + 1;
+}
+
+async function getRegularImages(currentFiles, widths, folder) {
+    const filesResponse = await fetch(`${DIRECTUS_API_URL}files?access_token=${ACCESS_TOKEN}&filter[folder][_eq]=${folder}`),
         { data: files } = await filesResponse.json();
-    for (const file of files.filter(f => !directories.includes(f.id))) {
+
+    let limiter = 0;
+    for (const file of files.filter(f => !currentFiles.includes(f.id))) {
+        const newFileTitle = `${file.title.replaceAll(' ', '-')}`;
+        if (file.title !== newFileTitle) {
+            fetch(`${DIRECTUS_API_URL}files/${file.id}?access_token=${ACCESS_TOKEN}`, {
+                method: "PATCH",
+                headers: patchHeaders,
+                body: JSON.stringify({ "title": newFileTitle })
+            });
+            file.title = newFileTitle;
+        }
         for (const type of types) {
             for (const width of widths) {
-                // All widths for project images only
-                if (!projectFolders.includes(file.folder) && file.width < width) {
-                    continue;
-                }
-                const fileResponse = await fetch(`${DIRECTUS_API_URL}assets/${file.id}?access_token=${ACCESS_TOKEN}&key=${type}-w-${width}`),
-                    dir = `./static/images/${file.id}/${width}/`;
-
-                !fs.existsSync(dir) && fs.mkdirSync(dir, { recursive: true })
-                const imageArrayBuffer = await fileResponse.arrayBuffer();
-                fs.writeFileSync(`${dir}${file.title}.${type}`, Buffer.from(imageArrayBuffer))
-
-                if (width >= 720) {
-                    const watermarkBuffer = await addWatermark(imageArrayBuffer);
-                    fs.writeFileSync(`${dir}w_${file.title}.${type}`, Buffer.from(watermarkBuffer))
-                }
+                limiter = await createAndUploadImage(file, type, width, limiter, false);
             }
         }
     }
 }
 
+async function getProjectImages(currentFiles, widths, includeWatermark) {
+    const foldersMap = {},
+        folderResponse = await fetch(`${DIRECTUS_API_URL}folders?access_token=${ACCESS_TOKEN}&filter[parent][_eq]=${PROJECTS_FOLDER_ID}`),
+        { data: folders } = await folderResponse.json();
+
+    folders.forEach(f => { foldersMap[f.id] = { name: f.name, index: 1 } })
+
+    let allFiles = [];
+    for (const folder of folders.map(f => f.id)) {
+        const filesResponse = await fetch(`${DIRECTUS_API_URL}files?access_token=${ACCESS_TOKEN}&filter[folder][_eq]=${folder}`),
+            { data: files } = await filesResponse.json();
+        allFiles = [...allFiles, ...files];
+    }
+
+    let limiter = 0;
+    for (const file of allFiles.filter(f => !currentFiles.includes(f.id))) {
+        //rename file title
+        const folder = foldersMap[file.folder],
+            newFileTitle = `${folder.name.replaceAll(' ', '-')}-${folder.index}`;
+        folder.index += 1;
+
+        console.log(`Working on file ${newFileTitle} - ${file.id}...`);
+        if (file.title !== newFileTitle) {
+            fetch(`${DIRECTUS_API_URL}files/${file.id}?access_token=${ACCESS_TOKEN}`, {
+                method: "PATCH",
+                headers: patchHeaders,
+                body: JSON.stringify({ "title": newFileTitle })
+            });
+            file.title = newFileTitle;
+        }
+
+        let selectedWidths = widths;
+        if (!skipCheckingWidths) {
+            const { data: supabaseFiles } = await supabase
+                .storage
+                .from('images')
+                .list(file.id),
+                currentWidths = supabaseFiles.map(f => Number(f.name));
+            selectedWidths = widths.filter(w => !currentWidths.includes(w))
+        }
+        for (const type of types) {
+            for (const width of selectedWidths) {
+                limiter = await createAndUploadImage(file, type, width, limiter, includeWatermark);
+            }
+        }
+    }
+}
+
+async function getImages() {
+    const { data: supabaseFiles } = await supabase
+        .storage
+        .from('images')
+        .list('', {
+            limit: 2000,
+        }),
+        currentFiles = supabaseFiles.map(f => f.name);
+    await getProjectImages(currentFiles, [1280, 900, 720, 500, 200], true);
+    await getRegularImages(currentFiles, [300], TEAMS_FOLDER_ID);
+    await getRegularImages(currentFiles, [500, 300], BLOG_FOLDER_ID);
+}
+
 getImages();
+// const { data, error } = await supabase
+//   .storage
+//   .emptyBucket('images')

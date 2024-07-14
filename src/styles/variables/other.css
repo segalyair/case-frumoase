@@ -19,6 +19,7 @@
 @media only screen and (max-width: 480px) {
 	:root {
 		--content-padding: 2rem;
+		--menu-height: 12.2rem;
 	}
 
 	article h2 {

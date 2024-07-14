@@ -76,7 +76,11 @@
 		{#each results as result, i}
 			<a class="link" href={result.url.split('.')[0]}>
 				<span class="tag body">{result.url.includes('proiecte') ? 'Proiect' : 'Blog'}</span>
-				<PictureBuilder class="resultImage" picture={result.meta.thumbnail} loading="lazy" />
+				<PictureBuilder
+					class="resultImage"
+					picture={result.meta.thumbnail}
+					loading={i > 3 ? 'lazy' : undefined}
+				/>
 				<h2 class="h4">{@html result.meta.title}</h2>
 			</a>
 		{/each}
@@ -154,7 +158,7 @@
 		}
 	}
 	@media only screen and (max-width: 500px) {
-		.link{
+		.link {
 			width: 30rem;
 		}
 		/* .link :global(.resultImage) {

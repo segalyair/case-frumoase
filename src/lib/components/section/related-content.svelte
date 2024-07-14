@@ -7,7 +7,7 @@
 	export let blogArticles: BlogArticle[], projects: Project[];
 </script>
 
-<section>
+<section data-pagefind-ignore>
 	<h2>V-ar putea interesa</h2>
 	<div class="list">
 		{#each blogArticles as article}

@@ -72,9 +72,9 @@
 	@media (max-width: 500px) {
 		.embla__container :global(.embla__slide__img) {
 			display: block;
-			object-fit: contain;
-			width: 30rem;
-			height: 17rem;
+			object-fit: cover;
+			width: calc(100vw - (2 * var(--content-padding)));
+			height: 28rem;
 		}
 	}
 </style>

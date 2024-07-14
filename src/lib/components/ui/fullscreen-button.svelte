@@ -29,7 +29,9 @@
 		} else {
 			element.msRequestFullscreen?.(options);
 		}
-		window?.screen?.orientation?.lock?.('landscape-primary');
+		try {
+			window?.screen?.orientation?.lock('landscape');
+		} catch (err) {}
 	}
 
 	async function setFullscreenImage(e: MouseEvent) {
@@ -49,7 +51,9 @@
 		if (!getFullscreenElement() && fullscreenImage) {
 			fullscreenImage.style.display = 'none';
 			window.scrollTo({ top: scrollPosition });
-			window?.screen?.orientation?.unlock?.();
+			try {
+				window?.screen?.orientation?.unlock?.();
+			} catch (err) {}
 		}
 	}
 
@@ -61,7 +65,9 @@
 	});
 	onDestroy(() => {
 		if (browser) {
-			window?.screen?.orientation?.unlock?.();
+			try {
+				window?.screen?.orientation?.unlock?.();
+			} catch (err) {}
 		}
 	});
 </script>

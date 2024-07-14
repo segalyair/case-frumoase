@@ -28,7 +28,11 @@
 				? 'initial'
 				: 'none'}
 		>
-			<PictureBuilder class="landingImage" picture={pic} loading={'lazy'} />
+			<PictureBuilder
+				class="landingImage"
+				picture={pic}
+				loading={i === randomLandingImageIndex ? undefined : 'lazy'}
+			/>
 		</div>
 		{#if randomLandingImageIndex === -1}
 			<div class="landingImage" />
@@ -93,7 +97,7 @@
 	@media only screen and (max-height: 800px), (max-width: 480px) {
 		.caption {
 			width: 100%;
-			height: 130px;
+			height: 160px;
 			gap: 10px;
 			align-items: center;
 			text-align: center;
@@ -104,7 +108,7 @@
 			padding: 8px 30px;
 		}
 		.caption h1 {
-			font: var(--font-h4);
+			font: var(--font-h3);
 		}
 	}
 

@@ -4,6 +4,7 @@ type Image = {
 	directus_files_id: {
 		id: string;
 		title: string;
+		filename_download: string;
 	}
 }
 

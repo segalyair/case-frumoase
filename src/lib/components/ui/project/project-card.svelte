@@ -2,12 +2,13 @@
 	import type { Project } from '@customTypes/project';
 	import PictureBuilder from '../picture-builder.svelte';
 
-	export let project: Project;
+	export let project: Project,
+		loading: 'lazy' | undefined = undefined;
 </script>
 
 <a data-sveltekit-reload class="project" href={`/proiecte/${project.slug}`}>
 	{#if project.thumbnailPicture}
-		<PictureBuilder picture={project.thumbnailPicture} height="281px" />
+		<PictureBuilder picture={project.thumbnailPicture} {loading} height="281px" />
 	{/if}
 	<h3 class="h3">{project.name}</h3>
 	<p class="body--large details">
@@ -27,6 +28,10 @@
 		width: 50rem;
 		position: relative;
 		transition: outline 200ms;
+	}
+	.project :global(img) {
+		width: 50rem;
+		object-fit: cover;
 	}
 
 	.project:hover {
@@ -58,6 +63,7 @@
 			width: 30rem;
 		}
 		.project :global(img) {
+			width: 30rem;
 			max-width: 30rem;
 			height: auto;
 		}

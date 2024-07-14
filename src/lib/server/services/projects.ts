@@ -7,7 +7,7 @@ import type { Project } from '@customTypes/project';
 export async function getRecentProjects(fetch: any) {
 	const headers = { authorization: `bearer ${DIRECTUS_TOKEN}` };
 	try {
-		const response = await fetch(`${DIRECTUS_API_URL}/items/projects?fields=*.*.*&limit=4&sort=-date_created`, {
+		const response = await fetch(`${DIRECTUS_API_URL}/items/projects?fields=*.*.*&limit=4&sort=-date`, {
 			headers
 		});
 		if (response.ok) {
@@ -30,7 +30,7 @@ export async function getRecentProjects(fetch: any) {
 export async function getProjects(fetch: any) {
 	const headers = { authorization: `bearer ${DIRECTUS_TOKEN}` };
 	try {
-		const response = await fetch(`${DIRECTUS_API_URL}/items/projects?fields=*.*.*&sort=-date_created`, {
+		const response = await fetch(`${DIRECTUS_API_URL}/items/projects?fields=*.*.*&sort=-date`, {
 			headers
 		});
 		if (response.ok) {
@@ -67,7 +67,7 @@ export async function getProjectBySlug(fetch: any, slug: string): Promise<Projec
 			updateContentImages($img, DIRECTUS_API_URL);
 			project.content = $.html();
 			project.pictures = project.images.map(({ directus_files_id: { id, title } }) =>
-				buildPicture(id, title, '(max-width: 600px) 300px, (max-width: 1100px) 500px, 900px', ['avif', 'webp'], ['900', '500', '300'], true)
+				buildPicture(id, title, '(max-width: 950px) 500px, 900px', ['avif', 'webp'], ['900', '500'], true)
 			)
 			project.fullSizePictures = project.images.map(({ directus_files_id: { id, title } }) =>
 				buildPicture(id, title, '(max-width: 800px) 720px, 1280px', ['avif', 'webp'], ['1280', '720'], true)
@@ -103,7 +103,7 @@ export async function getRelatedContentProjects(fetch: any, projectTypes: number
 	try {
 		const filter = `filter={"types":{"projectTypes_id":{"_in":${JSON.stringify(projectTypes)}}},"id":{"_neq":${projectId}}}`,
 			response = await fetch(
-				`${DIRECTUS_API_URL}/items/projects?fields=*.*.*&${filter}&limit=4&sort=-date_created`,
+				`${DIRECTUS_API_URL}/items/projects?fields=*.*.*&${filter}&limit=4&sort=-date`,
 				{ headers }
 			);
 		if (response.ok) {

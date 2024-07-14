@@ -12,7 +12,6 @@
 		relatedContent: { projects: Project[]; blogArticles: BlogArticle[] };
 	};
 	const { project, relatedContent } = data;
-	
 	onMount(() => {
 		try {
 			window.CUSDIS.initial();

@@ -7,7 +7,7 @@
 
 <div class="project-list">
 	{#each projects as project, i}
-		<ProjectCard {project} />
+		<ProjectCard {project} loading={i > 3 ? 'lazy' : undefined} />
 	{/each}
 </div>
 

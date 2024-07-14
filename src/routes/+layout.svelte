@@ -10,8 +10,6 @@
 	export let data;
 	let scrollY: number = 0,
 		mounted = false;
-	// const { articles } = data;
-	const articles = [];
 	function scrollToTop() {
 		if (mounted && scrollY > 0) {
 			window.scrollTo({ top: 0 });
@@ -64,7 +62,7 @@
 		<slot />
 	</div>
 	<CookiesBanner />
-	<Footer {articles} />
+	<Footer />
 	<button
 		class="scrollToTop"
 		class:show={mounted && scrollY > 0}

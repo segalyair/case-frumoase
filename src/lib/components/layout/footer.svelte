@@ -2,7 +2,6 @@
 	import logo from '$lib/images/logo.png';
 	import { NAV_LINKS } from '$lib/scripts/constants';
 	const currentYear = new Date().getFullYear();
-	export let articles: any[] = [];
 </script>
 
 <footer class="footer">
@@ -17,7 +16,7 @@
 		{/each}
 	</nav>
 	<p class="body--large">Str. dr Mihail Mirinescu, nr 9, București</p>
-	<p class="body" style="text-align: center">
+	<p class="body">
 		{`Copyright © ${currentYear} Case Frumoase - Toate drepturile rezervate`}
 	</p>
 </footer>
@@ -32,6 +31,9 @@
 		padding-bottom: 4rem;
 		background: var(--text-dark-color);
 		color: var(--text-light-color);
+	}
+	.footer p {
+		text-align: center;
 	}
 	nav {
 		display: flex;

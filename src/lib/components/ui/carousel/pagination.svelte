@@ -41,6 +41,7 @@
 <div bind:this={pagination} class="pagination">
 	{#each items as item, i}
 		<button
+			type="button"
 			bind:this={buttons[i]}
 			on:click|preventDefault={() => scrollTo(i)}
 			class:active={currentItem === i}
@@ -56,8 +57,8 @@
 		--thumbnail-size: 10rem;
 		width: 100%;
 		display: flex;
-		gap: 2rem;
-		padding: 2rem;
+		gap: 1rem;
+		padding: 1rem;
 		overflow-y: auto;
 	}
 
@@ -92,5 +93,11 @@
 		width: var(--thumbnail-size);
 		height: var(--thumbnail-size);
 		object-fit: cover;
+	}
+
+	@media only screen and (max-width: 480px) {
+		.pagination {
+			--thumbnail-size: 7.5rem;
+		}
 	}
 </style>

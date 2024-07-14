@@ -100,5 +100,14 @@
 		.overlay :global(search) {
 			display: initial;
 		}
+		.overlay {
+			grid-template-rows: repeat(6, 8rem);
+		}
+		a {
+			display: flex;
+			align-items: center;
+			justify-content: end;
+			text-align: right;
+		}
 	}
 </style>
