@@ -47,7 +47,7 @@
 			class="logo"
 			href="/"
 			aria-label="Spre pagina principala"
-			style={`background: url('${logo}')`}
+			style={`background: no-repeat center / contain url('${logo}')`}
 		>
 		</a>
 		<span class="links">
@@ -101,7 +101,7 @@
 		border-width: 1px 0;
 	}
 	.logo {
-		width: 13.9rem;
+		width: 100%;
 		height: 12rem;
 		margin: auto;
 	}
@@ -174,6 +174,9 @@
 	}
 
 	@media only screen and (max-width: 650px) {
+		.logo {
+			height: 9rem;
+		}
 		.navContainer {
 			height: auto;
 		}
@@ -185,6 +188,18 @@
 		}
 		.links {
 			padding-right: 0;
+		}
+	}
+
+	@media only screen and (max-height: 600px) {
+		.logo {
+			height: 9rem;
+		}
+		.navContainer {
+			height: auto;
+		}
+		.preNav {
+			display: none;
 		}
 	}
 

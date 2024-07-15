@@ -57,10 +57,12 @@
 <style>
 	header :global(.landingImage) {
 		display: block;
-		width: 100%;
+		width: 100vw;
+		max-width: 100%;
 		height: 100vh;
 		object-fit: cover;
 	}
+
 	article {
 		max-width: 70%;
 		text-align: center;
@@ -102,7 +104,7 @@
 		}
 	}
 
-	@media only screen and (max-height: 800px), (max-width: 800px) {
+	@media only screen and (max-height: 600px), (max-width: 800px) {
 		.caption {
 			width: 100%;
 			height: unset;
@@ -119,8 +121,8 @@
 		}
 	}
 
-	@media only screen and (max-height: 800px){
-		.caption h1{
+	@media only screen and (max-height: 600px) {
+		.caption h1 {
 			font: var(--font-h3);
 		}
 	}

@@ -22,6 +22,7 @@
 			flex-direction: column;
 			gap: 2rem;
 			text-align: center;
+			margin-top: 0;
 		}
 	}
 </style>
