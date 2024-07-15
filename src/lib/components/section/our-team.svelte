@@ -53,17 +53,17 @@
 	}
 	.caption {
 		width: 100%;
-		height: 13.5rem;
+		height: 14.5rem;
 		position: absolute;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
 		text-align: center;
 		gap: 0.25rem;
 		bottom: 0;
 		left: 0;
-		padding: 0.5rem 1rem;
+		padding: 1rem;
 		background: var(--background-semi-transparent);
 		color: var(--text-light-color);
 		transition: height 0.3s;
@@ -71,7 +71,6 @@
 	.description {
 		height: 0;
 		overflow: hidden;
-		margin-bottom: auto;
 		transition: height 0.1s;
 	}
 	.description.toggled {
@@ -80,7 +79,6 @@
 	}
 	.caption.toggled {
 		height: 100%;
-		justify-content: space-between;
 	}
 	.content {
 		display: grid;

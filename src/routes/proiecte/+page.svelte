@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Header from '$lib/components/layout/header.svelte';
 	import Filters from '$lib/components/ui/project/filters.svelte';
 	import ProjectList from '$lib/components/ui/project/project-list.svelte';
 	import type { Project } from '@customTypes/project';
@@ -16,23 +17,18 @@
 			: projects.filter((p) => p.types.find((t) => t.projectTypes_id?.type === activeFilter?.type));
 </script>
 
+<Header title={'Proiecte Case Frumoase'}></Header>
 <main>
-	<h1 class="h1">Proiecte case frumoase</h1>
 	<Filters bind:activeFilter filters={projectTypes} />
 	<ProjectList projects={getProjects} />
 </main>
 
 <style>
 	main {
-		padding-top: var(--menu-height);
-		margin-top: 6rem;
 		margin-bottom: 4rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
-	}
-	h1 {
-		margin-bottom: 4rem;
 	}
 </style>

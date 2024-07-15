@@ -57,7 +57,7 @@
 <style>
 	header :global(.landingImage) {
 		display: block;
-		width: 100vw;
+		width: 100%;
 		height: 100vh;
 		object-fit: cover;
 	}
@@ -73,16 +73,16 @@
 		position: relative;
 	}
 	.caption {
-		width: 700px;
+		width: 122rem;
 		height: 350px;
-		padding: 0 1rem;
+		padding-left: 10rem;
 		position: absolute;
 		bottom: 0;
 		left: 0;
 		gap: 2rem;
 		color: var(--text-light-color);
 		background-repeat: no-repeat;
-		background-size: contain;
+		background-size: cover;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -94,20 +94,33 @@
 		--row-padding: 6rem;
 	}
 
-	@media only screen and (max-height: 800px), (max-width: 480px) {
+	@media only screen and (max-width: 1024px) {
+		.caption {
+			padding-left: 4rem;
+			width: 79rem;
+			height: 300px;
+		}
+	}
+
+	@media only screen and (max-height: 800px), (max-width: 800px) {
 		.caption {
 			width: 100%;
-			height: 160px;
-			gap: 10px;
+			height: unset;
+			gap: 1rem;
 			align-items: center;
+			justify-content: space-between;
 			text-align: center;
 			background-image: none !important;
 			background-color: #f68c5d;
+			padding: 1rem;
 		}
-		.caption a {
-			padding: 8px 30px;
+		.caption h1 br {
+			display: none;
 		}
-		.caption h1 {
+	}
+
+	@media only screen and (max-height: 800px){
+		.caption h1{
 			font: var(--font-h3);
 		}
 	}

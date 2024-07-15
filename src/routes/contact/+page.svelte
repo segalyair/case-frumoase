@@ -1,11 +1,8 @@
 <script>
-	import Breadcrumbs from '$lib/components/ui/breadcrumbs.svelte';
+	import Header from '$lib/components/layout/header.svelte';
 </script>
 
-<header>
-	<h1 class="h2">Te ajutăm cu tot ce ai nevoie</h1>
-	<Breadcrumbs />
-</header>
+<Header title={'Te ajutăm cu tot ce ai nevoie'}></Header>
 <main>
 	<iframe
 		title="Locația mea"
@@ -43,17 +40,8 @@
 </main>
 
 <style>
-	header {
-		max-width: 130rem;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding-top: var(--menu-height);
-		margin: 4rem auto auto auto;
-	}
 	main {
-		max-width: 130rem;
-		margin: 4rem auto 4rem auto;
+		margin: 4rem var(--content-margins) 4rem ;
 		display: flex;
 		flex-direction: column;
 	}
@@ -90,25 +78,12 @@
 		margin-bottom: 2rem;
 	}
 
-	header,
-		main {
-			padding-left: 2rem;
-			padding-right: 2rem;
-		}
-
 	@media (max-width: 500px) {
-		header {
-			display: flex;
-			flex-direction: column;
-			gap: 2rem;
-			text-align: center;
-		}
-
 		.contact {
 			flex-direction: column;
 		}
 
-		form{
+		form {
 			min-width: unset;
 		}
 	}

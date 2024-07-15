@@ -76,7 +76,6 @@
 <style>
 	.layout {
 		min-height: 100vh;
-		max-width: var(--content-max-width);
 		margin: auto;
 	}
 

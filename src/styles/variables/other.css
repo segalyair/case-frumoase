@@ -1,24 +1,29 @@
 :root {
-	--content-max-width: 192rem;
-	--content-padding: 10rem;
+	--content-margins: 20rem;
 	--menu-height: 16.7rem;
+}
+
+@media only screen and (max-width: 1320px) {
+	:root {
+		--content-margins: 10rem;
+	}
 }
 
 @media only screen and (max-width: 1024px) {
 	:root {
-		--content-padding: 6rem;
+		--content-margins: 6rem;
 	}
 }
 
 @media only screen and (max-width: 768px) {
 	:root {
-		--content-padding: 3rem;
+		--content-margins: 3rem;
 	}
 }
 
 @media only screen and (max-width: 480px) {
 	:root {
-		--content-padding: 2rem;
+		--content-margins: 2rem;
 		--menu-height: 12.2rem;
 	}
 

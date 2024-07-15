@@ -46,7 +46,7 @@
 		z-index: 2;
 		bottom: 0;
 		width: 100vw;
-		padding: 2rem var(--content-padding);
+		padding: 2rem var(--content-margins);
 		background: var(--text-dark-color);
 		color: var(--text-light-color);
 	}

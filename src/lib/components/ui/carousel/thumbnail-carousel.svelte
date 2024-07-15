@@ -73,7 +73,7 @@
 		.embla__container :global(.embla__slide__img) {
 			display: block;
 			object-fit: cover;
-			width: calc(100vw - (2 * var(--content-padding)));
+			width: calc(100vw - (2 * var(--content-margins)));
 			height: 28rem;
 		}
 	}

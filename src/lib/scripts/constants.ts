@@ -5,7 +5,7 @@ export const NAV_LINKS = [
     },
     {
         label: 'Servicii',
-        href: '/'
+        href: '/servicii'
     },
     {
         label: 'Blog',

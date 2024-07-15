@@ -22,7 +22,7 @@
 		gap: 3rem;
 		grid-column: 1/3;
 		padding: 1rem 2rem;
-		margin: 4rem 0;
+		margin: 0 0 4rem;
 		box-shadow:
 			0 3px 6px rgba(0, 0, 0, 0.16),
 			0 3px 6px rgba(0, 0, 0, 0.23);
@@ -37,6 +37,8 @@
 	@media (max-width: 500px) {
 		.filters {
 			gap: 1rem;
+			flex-wrap: wrap;
+			justify-content: center;
 		}
 	}
 </style>
