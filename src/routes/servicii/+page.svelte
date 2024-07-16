@@ -1,6 +1,5 @@
 <script>
 	import Header from '$lib/components/layout/header.svelte';
-	import Breadcrumbs from '$lib/components/ui/breadcrumbs.svelte';
 </script>
 
 <Header title={'Serviciile noastre'} />
@@ -116,6 +115,50 @@
 				proiectanților un Studiu Geotehnic (cu tot cu verificare) și o Ridicare Topografică pe
 				Suport Cadastral vizată OCPI.
 			</p>
+			<h3 class="h3">Avizare și autorizare</h3>
+			<p class="body body--vlarge">
+				Asigurăm la cererea clientului, prin colaboratori, contra cost (in București și Ilfov)
+				depunerea şi ridicarea documentelor pentru obţinerea următoarelor acte necesare în vederea
+				construirii: CU, avize şi acorduri cerute prin CU, DTAC. Din punct de vedere al obţinerii
+				autorizaţiei de construire trebuie urmariţi câţiva paşi:
+				<br /> 1. Certificatul de Urbanism (CU) și Avizele solicitate prin CU
+				<br /> 2. Avize speciale – în marea majoritate a cazurilor acestea nu se cer când e vorba de
+				realizarea unei locuinţe unifamiliale. Acestea, de obicei, se cer prin Certificatul de
+				Urbanism pentru ansambluri rezidenţiale, locuinţe colective (blocuri), clădiri publice, şi
+				altele. Exemple de avize speciale: Aviz de Circulatie, Aviz de la Autoritatea Aeronautica,
+				Descarcare Arheologica, Aviz de la MApN, Aviz ISU, etc. Aceste Avize speciale se realizeaza
+				de catre colaboratori externi si se platesc separat.
+				<br />3. Autorizaţie de Construire Asigurăm la cererea clientului, depunerea şi ridicarea
+				documentelor pentru obţinerea actelor necesare în vederea construirii: CU, avize şi acorduri
+				cerute prin CU, DTAC. Notă: aceste servicii depunere si ridicare a documentalor sunt
+				valabile pentru București și împrejurimi, și sunt efectuate de colaboratori externi,
+				contracost.
+			</p>
+			<h3 class="h3">Urmărire de șantier</h3>
+			<p class="body body--vlarge">
+				Proiectantul este recomandat să fie prezent pe şantier la anumite faze cheie ale construrii,
+				denumite faze determinante. Acest serviciu este oferit la cerere si contracost.
+			</p>
+			<p class="body body--vlarge">
+				Pe şantier pot apărea situaţii neprevăzute în proiect şi care pot fi soluţionate de către
+				noi.
+			</p>
+			<h3 class="h3">Consultanță post - execuție</h3>
+			<p class="body body--vlarge">
+				Consiliere legată de recepţia lucrărilor. Pentru a va asigura ca lucrarile sunt finalizate
+				la standarde de calitate puteti apela la ajutorul nostru de specialitate.
+			</p>
+			<h3 class="h3">Design interior</h3>
+			<p class="body body--vlarge">
+				Proiect de design interior şi amenajări, cu indicaţii de materiale şi furnizori specifici,
+				atât ca decoraţii cât şi ca echipamente (de exemplu corpuri de iluminat, obiecte sanitare,
+				etc).
+			</p>
+			<h3 class="h3">Prețuri proiecte case frumoase</h3>
+			<p class="body body--vlarge">
+				Proiect personalizat: 30-40 euro mp2 pentru case de peste 200 mp2
+				<br />Proiecte standard: 20-25 euro mp2
+			</p>
 		</div>
 	</section>
 </main>
@@ -125,9 +168,10 @@
 		margin-bottom: 4rem;
 	}
 
-    h2,h3{
-        text-align: center;
-    }
+	h2,
+	h3 {
+		text-align: center;
+	}
 
 	.content {
 		min-width: 100%;
@@ -138,7 +182,7 @@
 	.banner {
 		position: relative;
 		margin-bottom: 4rem;
-        width: 100%;
+		width: 100%;
 		height: 70rem;
 	}
 
@@ -161,12 +205,12 @@
 		z-index: 1;
 		text-align: center;
 		background: var(--primary-color);
-        padding: 1rem 0;
+		padding: 1rem 0;
 	}
 
 	.content > .text {
-        max-width: 130rem;
-        margin: auto;
+		max-width: 130rem;
+		margin: auto;
 		padding: 0 var(--content-margins);
 		display: flex;
 		flex-direction: column;
